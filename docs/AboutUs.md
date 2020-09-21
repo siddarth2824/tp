@@ -29,14 +29,14 @@ You can reach us at the email <ay2021s1-cs2103t-w16-3@googlegroups.com>
 * Role: Team Co-Lead
 * Responsibilities: Git/CI Expert, Integration
 
-### Johnny Doe
+### Siddarth Nandanahosur Suresh
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/siddarth2824.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/siddarth2824)] [[portfolio](team/siddarth2824.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Scheduling and Tracking, User Interface-In-Charge
 
 ### Jean Doe
 
