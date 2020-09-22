@@ -36,7 +36,7 @@ You can reach us at the email <ay2021s1-cs2103t-w16-3@googlegroups.com>
 [[github](http://github.com/siddarth2824)] [[portfolio](team/siddarth2824.md)]
 
 * Role: Developer
-* Responsibilities: Scheduling and Tracking, User Interface-In-Charge
+* Responsibilities: Scheduling and Tracking, User Interface
 
 ### Jean Doe
 
