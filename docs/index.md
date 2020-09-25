@@ -8,10 +8,10 @@ title: Fine$$e
 
 ![Ui](images/Ui.png)
 
-Fine$$e is a **desktop app for managing finances, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fine\$\$e can track and help you cultivate good financial habits faster than traditional GUI apps.
+**Fine$$e is a desktop app for managing finances, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fine\$\$e can track and help you cultivate good financial habits faster than traditional GUI apps.
 
 * If you are interested in using Fine$$e, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing Fine$$e, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+* If you are interested in developing Fine$$e, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
 
 
 **Acknowledgements**
