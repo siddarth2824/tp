@@ -1,4 +1,4 @@
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
+[![CI Status](https://github.com/AY2021S1-CS2103T-W16-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-W16-3/tp/actions)
 
 ![Ui](docs/images/Ui.png)
 
@@ -6,10 +6,12 @@
 
  Site Map
 ==
+
 * [User Guide](https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html)
 * [Developer Guide](https://ay2021s1-cs2103t-w16-3.github.io/tp/DeveloperGuide.html)
 * [About Us](https://ay2021s1-cs2103t-w16-3.github.io/tp/AboutUs.html)
 
 Acknowledgments
 ==
+
 * Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
