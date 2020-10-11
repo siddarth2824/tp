@@ -14,10 +14,7 @@ import ay2021s1_cs2103_w16_3.finesse.ui.expense.ExpensePanel;
 import ay2021s1_cs2103_w16_3.finesse.ui.income.IncomePanel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -47,49 +44,36 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane commandBoxPlaceholder;
-
+    @FXML
+    private Button commandBoxButton;
     @FXML
     private MenuItem helpMenuItem;
-
     @FXML
     private MenuItem incomeTabItem;
-
     @FXML
     private MenuItem expenseTabItem;
-
     @FXML
     private MenuItem analyticsTabItem;
-
     @FXML
     private MenuItem overviewTabItem;
-
     @FXML
     private StackPane transactionListPanelPlaceholder;
-
     @FXML
     private StackPane resultDisplayPlaceholder;
-
     @FXML
     private StackPane savingsGoalPlaceholder;
-
     @FXML
     private StackPane statusbarPlaceholder;
-
     @FXML
     private Menu menuHelpTab;
-
     @FXML
     private Menu menuIncomeTab;
-
     @FXML
     private Menu menuExpenseTab;
-
     @FXML
     private Menu menuOverviewTab;
-
     @FXML
     private Menu menuAnalyticsTab;
-
     @FXML
     private Label panelLabel;
 

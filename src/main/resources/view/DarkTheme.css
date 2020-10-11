@@ -153,7 +153,14 @@
 }
 
 .stack-pane {
-     -fx-background-color: #3B3B44;
+     -fx-background-color: #2E2E36;
+     -fx-hgap: 7;
+}
+
+.command-box {
+     -fx-background-color: #3B3B44 !important;
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
 }
 
 .result-container {
@@ -281,53 +288,37 @@
     -fx-text-fill: white;
     -fx-font-size: 16pt;
 }
+
+.command-box-button {
+    -fx-background-color: #3B3B44;
+    -fx-border-color: #3B3B44;
+    -fx-border-radius: 5, 4;
+    -fx-background-radius: 5, 4;
+    -fx-background-insets: 0,3,2,3;
+    -fx-font-family: "Roboto Condensed";
+    -fx-font-size: 12pt;
+    -fx-text-fill: #d8d8d8;
+}
+
 /*
  * Metro style Push Button
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
-.button {
-    -fx-padding: 5 22 5 22;
-    -fx-border-color: #e2e2e2;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
-    -fx-background-color: #2E2E36;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 11pt;
-    -fx-text-fill: #d8d8d8;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+.button:pressed, .button:default:hover:pressed {
+     -fx-background-color: white;
+     -fx-text-fill: #1d1d1d;
 }
 
 .button:hover {
-    -fx-background-color: #3a3a3a;
-}
-
-.button:pressed, .button:default:hover:pressed {
-  -fx-background-color: white;
-  -fx-text-fill: #1d1d1d;
-}
-
-.button:focused {
-    -fx-border-color: #3B3B44;
-    -fx-border-width: 1, 1;
-    -fx-border-style: solid, segments(1, 1);
-    -fx-border-radius: 0, 0;
-    -fx-border-insets: 1 1 1 1, 0;
+    -fx-background-color: white;
+    -fx-text-fill: #1d1d1d;
 }
 
 .button:disabled, .button:default:disabled {
-    -fx-opacity: 0.4;
+    -fx-opacity: 0.8;
     -fx-background-color: #2E2E36;
     -fx-text-fill: white;
-}
-
-.button:default {
-    -fx-background-color: #2E2E36;
-    -fx-text-fill: #ffffff;
-}
-
-.button:default:hover {
-    -fx-background-color: derive(-fx-focus-color, 30%);
 }
 
 .dialog-pane {

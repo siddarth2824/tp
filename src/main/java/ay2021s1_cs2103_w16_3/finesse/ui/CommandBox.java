@@ -3,9 +3,13 @@ package ay2021s1_cs2103_w16_3.finesse.ui;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
 /**
@@ -19,7 +23,13 @@ public class CommandBox extends UiPart<Region> {
     private final CommandExecutor commandExecutor;
 
     @FXML
+    private HBox commandBoxContainer;
+    @FXML
     private TextField commandTextField;
+    @FXML
+    private Label commandBoxLabel;
+    @FXML
+    private Button commandBoxButton;
 
     /**
      * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
@@ -29,6 +39,17 @@ public class CommandBox extends UiPart<Region> {
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+        commandBoxContainer.setSpacing(10);
+        BooleanBinding isUserInputEmpty = new BooleanBinding() {
+            {
+                super.bind(commandTextField.textProperty());
+            }
+            @Override
+            protected boolean computeValue() {
+                return commandTextField.getText().isEmpty();
+            }
+        };
+        commandBoxButton.disableProperty().bind(isUserInputEmpty);
     }
 
     /**
