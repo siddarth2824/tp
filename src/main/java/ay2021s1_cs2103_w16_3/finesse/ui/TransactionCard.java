@@ -6,6 +6,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
@@ -15,6 +16,7 @@ import javafx.scene.layout.VBox;
 public class TransactionCard extends UiPart<Region> {
 
     private static final String FXML = "TransactionListCard.fxml";
+    private static final double PREFFERED_CARD_HEIGHT = 70.00;
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -35,9 +37,9 @@ public class TransactionCard extends UiPart<Region> {
     @FXML
     private Label amount;
     @FXML
-    private Label date;
-    @FXML
     private FlowPane categories;
+    @FXML
+    private GridPane transactionDetails;
 
     /**
      * Creates a {@code TransactionCard} with the given {@code Transaction} and index to display.
@@ -45,11 +47,10 @@ public class TransactionCard extends UiPart<Region> {
     public TransactionCard(Transaction transaction, int displayedIndex) {
         super(FXML);
         this.transaction = transaction;
+        cardPane.setPrefHeight(PREFFERED_CARD_HEIGHT);
         id.setText(displayedIndex + ". ");
         title.setText(transaction.getTitle().fullTitle);
         amount.setText(transaction.getAmount().value);
-        date.setText(transaction.getDate().value);
-        categories.setHgap(10);
         transaction.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> {

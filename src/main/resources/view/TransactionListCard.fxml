@@ -8,31 +8,24 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.RowConstraints?>
 
 <VBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER">
-  <GridPane HBox.hgrow="ALWAYS">
-    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
-    </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-      <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
-      </padding>
-      <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_big_label">
-          <minWidth>
-            <Region fx:constant="USE_PREF_SIZE" />
-          </minWidth>
-        </Label>
-        <Label fx:id="title" text="\$title" styleClass="cell_big_label" />
-        <FlowPane fx:id="categories" styleClass="cell_categories"/>
-      </HBox>
-      <Label fx:id="amount" styleClass="cell_small_label" text="\$amount" />
-      <Label fx:id="date" styleClass="cell_small_label" text="\$date" />
-    </VBox>
-    <rowConstraints>
-      <RowConstraints />
-    </rowConstraints>
-  </GridPane>
+      <GridPane fx:id="transactionDetails" alignment="CENTER_LEFT">
+          <columnConstraints>
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="20" prefWidth="200" />
+          </columnConstraints>
+          <padding>
+              <Insets top="5" right="10" bottom="5" left="10" />
+          </padding>
+          <HBox GridPane.columnIndex="0" GridPane.halignment="LEFT">
+              <Label fx:id="id" styleClass="cell_big_label" >
+                  <minWidth>
+                      <Region fx:constant="USE_PREF_SIZE" />
+                  </minWidth>
+              </Label>
+              <Label fx:id="title" text="\$title" styleClass="cell_big_label" />
+          </HBox>
+          <FlowPane fx:id="categories" styleClass="cell_categories" GridPane.columnIndex="1" />
+          <Label fx:id="amount" styleClass="cell_small_label" text="\$amount" GridPane.columnIndex="2" GridPane.halignment="RIGHT"/>
+      </GridPane>
 </VBox>
