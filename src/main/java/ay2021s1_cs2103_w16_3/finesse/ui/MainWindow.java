@@ -27,6 +27,10 @@ import javafx.stage.Stage;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
+    public static final String USERGUIDE_URL = "https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html";
+    public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
+    public static final String WELCOME_MESSAGE = "Welcome to Fine$$e - your personal finance tracker."
+            + "\nPlease enter the command \"help\" to view the user guide on the various commands you can use.";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -39,7 +43,6 @@ public class MainWindow extends UiPart<Stage> {
     private IncomePanel incomePanel;
     private ExpensePanel expensePanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
     private SavingsGoalPanel savingsGoalPanel;
 
     @FXML
@@ -82,8 +85,6 @@ public class MainWindow extends UiPart<Stage> {
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
-
-        helpWindow = new HelpWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -114,6 +115,7 @@ public class MainWindow extends UiPart<Stage> {
         savingsGoalPlaceholder.getChildren().add(savingsGoalPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
+        resultDisplay.setFeedbackToUser(WELCOME_MESSAGE);
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getFinanceTrackerFilePath());
@@ -137,7 +139,7 @@ public class MainWindow extends UiPart<Stage> {
         });
 
         menuHelpTab.setOnSelectionChanged(event -> {
-            handleHelp();
+            handleTabHelp();
         });
 
         menuIncomeTab.setOnSelectionChanged(event -> {
@@ -169,14 +171,14 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleHelp() {
+    public void handleTabHelp() {
         if (menuHelpTab.isSelected()) {
-            if (!helpWindow.isShowing()) {
-                helpWindow.show();
-            } else {
-                helpWindow.focus();
-            }
+            resultDisplay.setFeedbackToUser(HELP_MESSAGE);
         }
+    }
+
+    @FXML void handleCommandHelp() {
+        resultDisplay.setFeedbackToUser(HELP_MESSAGE);
     }
 
     /**
@@ -252,7 +254,6 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
         primaryStage.hide();
     }
 
@@ -272,7 +273,7 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             if (commandResult.isShowHelp()) {
-                handleHelp();
+                handleCommandHelp();
             }
 
             if (commandResult.isExit()) {
@@ -291,7 +292,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-<<<<<<< HEAD
      * Programmatically switches UI tab based on the specified tab. If the specified tab is {@code null},
      * do nothing.
      *
