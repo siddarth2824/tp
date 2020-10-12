@@ -27,10 +27,11 @@ import javafx.stage.Stage;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
-    public static final String USERGUIDE_URL = "https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html";
-    public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
-    public static final String WELCOME_MESSAGE = "Welcome to Fine$$e - your personal finance tracker."
+
+    private static final String WELCOME_MESSAGE = "Welcome to Fine$$e - your personal finance tracker."
             + "\nPlease enter the command \"help\" to view the user guide on the various commands you can use.";
+    private static final String USERGUIDE_URL = "https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html";
+    private static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
