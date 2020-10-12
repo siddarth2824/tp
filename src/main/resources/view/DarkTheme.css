@@ -188,6 +188,8 @@
      -fx-background-color: #3B3B44;
      -fx-border-color: #3B3B44;
      -fx-border-top-width: 1px;
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
 }
 
 .right-panel-content {
