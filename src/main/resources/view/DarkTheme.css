@@ -13,6 +13,10 @@
     background-color: #2E2E36; /* Used in the default.html file */
 }
 
+.root {
+    -tab-text-color: #888888;
+}
+
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -41,11 +45,14 @@
 
 .tab-pane {
     -fx-padding: 0 0 0 1;
+    -fx-border-color: #2E2E36;
+    -fx-tab-min-height:30px;
+    -fx-tab-max-height:30px;
 }
 
 .tab-pane .tab-header-area {
     -fx-padding: 0 0 0 0;
-    -fx-min-height: 0;
+    -fx-min-height: 50;
     -fx-max-height: 0;
 }
 
@@ -241,39 +248,41 @@
     -fx-background-color: #2E2E36;
 }
 
-.context-menu {
+.tab-pane .tab-header-area .tab-header-background {
     -fx-background-color: #2E2E36;
+    -fx-border-color: #2E2E36;
 }
 
-.context-menu .label {
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: #2E2E36;
+}
+
+.tab-label {
+    -fx-text-fill: -tab-text-color;
+    -fx-font-family: "Roboto Condensed";
+    -fx-font-size: 24px;
+}
+
+.tab {
+    -fx-background-color: #2E2E36;
+    -fx-border-color: #2E2E36;
     -fx-text-fill: white;
 }
 
-.menu-bar {
-    -fx-background-color: #2E2E36;
-}
-
-.menu-bar .label {
+.tab-pane .label {
     -fx-font-size: 18pt;
     -fx-font-family: "Roboto Condensed";
     -fx-text-fill: white;
-    -fx-opacity: 0.9;
 }
 
-.menu .left-container {
+.tab-pane .left-container {
     -fx-background-color: black;
+    -fx-border-color: #2E2E36;
 }
 
-.menu {
+.tab {
     -fx-padding: 15, 0, 0, 0;
-}
-
-.menu-item {
-    -fx-font-size: 16pt;
-}
-
-.menu-item:focused {
-    -fx-background-color: #3e7b91;
+    -fx-border-color: #2E2E36;
 }
 
 .command-box-label {
@@ -286,10 +295,11 @@
 .panel-label {
     -fx-font-family: "Roboto Condensed";
     -fx-text-fill: white;
-    -fx-font-size: 16pt;
+    -fx-font-size: 18pt;
 }
 
 .command-box-button {
+    -fx-opacity: 1;
     -fx-background-color: #3B3B44;
     -fx-border-color: #3B3B44;
     -fx-border-radius: 5, 4;
@@ -297,7 +307,7 @@
     -fx-background-insets: 0,3,2,3;
     -fx-font-family: "Roboto Condensed";
     -fx-font-size: 12pt;
-    -fx-text-fill: #d8d8d8;
+    -fx-text-fill: white;
 }
 
 /*
@@ -315,10 +325,10 @@
     -fx-text-fill: #1d1d1d;
 }
 
-.button:disabled, .button:default:disabled {
-    -fx-opacity: 0.8;
-    -fx-background-color: #2E2E36;
-    -fx-text-fill: white;
+.button:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #3B3B44;
+    -fx-text-fill: #d8d8d8;
 }
 
 .dialog-pane {
