@@ -12,7 +12,7 @@
 <VBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER">
       <GridPane fx:id="transactionDetails" alignment="CENTER_LEFT">
           <columnConstraints>
-              <ColumnConstraints hgrow="SOMETIMES" minWidth="20" prefWidth="200" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="20" prefWidth="150" />
           </columnConstraints>
           <padding>
               <Insets top="5" right="10" bottom="5" left="10" />

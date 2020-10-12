@@ -43,6 +43,7 @@ public class MainWindow extends UiPart<Stage> {
     private ExpensePanel expensePanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private SavingsGoalPanel savingsGoalPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -67,6 +68,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane resultDisplayPlaceholder;
+
+    @FXML
+    private StackPane savingsGoalPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -158,6 +162,9 @@ public class MainWindow extends UiPart<Stage> {
 
         transactionListPanel = new TransactionListPanel(logic.getFilteredTransactionList());
         transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());
+
+        savingsGoalPanel = new SavingsGoalPanel();
+        savingsGoalPlaceholder.getChildren().add(savingsGoalPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

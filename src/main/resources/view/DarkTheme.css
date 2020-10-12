@@ -172,6 +172,19 @@
      -fx-border-top-width: 1px;
 }
 
+.left-panel {
+     -fx-background-color: #3B3B44;
+     -fx-border-color: #3B3B44;
+     -fx-border-top-width: 1px;
+}
+
+.left-panel-content {
+     -fx-font-family: "Roboto Condensed";
+     -fx-text-fill: white;
+     -fx-font-size: 16pt;
+     -fx-line-spacing: 10px;
+}
+
 .command-pane{
     -fx-background-color: #2E2E36;
     -fx-border-color: #2E2E36;
