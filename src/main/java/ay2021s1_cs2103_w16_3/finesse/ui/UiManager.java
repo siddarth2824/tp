@@ -45,6 +45,7 @@ public class UiManager implements Ui {
         try {
             mainWindow = new MainWindow(primaryStage, logic, uiState);
             mainWindow.show(); //This should be called before creating other UI parts
+            mainWindow.disableStageResizing();
             mainWindow.fillInnerParts();
             mainWindow.setActionHandlers();
 
