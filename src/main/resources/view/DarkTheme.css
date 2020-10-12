@@ -378,6 +378,8 @@
 #cardPane {
     -fx-background-color: #3B3B44;
     -fx-border-width: 0;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
 }
 
 #commandTypeLabel {
