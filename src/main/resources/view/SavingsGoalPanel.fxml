@@ -6,7 +6,7 @@
 
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER"
-      styleClass="left-panel">
+      styleClass="right-panel">
     <padding>
         <Insets left="10" top="10" bottom="15" />
     </padding>
@@ -15,15 +15,15 @@
         <padding>
             <Insets bottom="10" top="20"/>
         </padding>
-        <Label fx:id="savingsGoalHeader" styleClass="left-panel-content"/>
+        <Label fx:id="savingsGoalHeader" styleClass="right-panel-content"/>
     </HBox>
     <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
         <padding>
             <Insets bottom="10" top="10"/>
         </padding>
-        <Label fx:id="savingsGoalContent" wrapText="true" styleClass="left-panel-content"/>
+        <Label fx:id="savingsGoalContent" wrapText="true" styleClass="right-panel-content"/>
     </HBox>
     <Region VBox.vgrow="ALWAYS"/>
     <ImageView fx:id="savingsPicture" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"/>
-    <Label text="\$100.00" styleClass="left-panel-content"/>
+    <Label text="\$100.00" styleClass="right-panel-content"/>
 </VBox>
