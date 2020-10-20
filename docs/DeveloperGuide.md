@@ -191,9 +191,9 @@ call `FinanceTrackerParser#parseCommand(“convert-frequent-expense 1 d/05/05/20
 2. The `LogicManager` will then call `ConvertFrequentExpenseCommand#execute`, which will call
 `Model#getFilteredFrequentExpenseList()` to retrieve the list of frequent expenses in the finance tracker.
 3. The program will then retrieve the specified frequent expense from the list of frequent expenses. It will
-then call `FrequentExpense#convert` on the frequent expense together with the date the user has inputted and convert 
+then call `FrequentExpense#convert` on the frequent expense together with the date the user has inputted and convert
 it to an `Expense` object.
-4. After converting the `FrequentExpense` object to an `Expense` object, it will call `Model#addExpense` to add the 
+4. After converting the `FrequentExpense` object to an `Expense` object, it will call `Model#addExpense` to add the
 `Expense` object to the expense list in the finance tracker.
 --------------------------------------------------------------------------------------------------------------------
 
