@@ -155,6 +155,46 @@ The monthly budgeting feature is implemented via `SetSavingsGoalCommand` as well
 
 [Coming soon]
 
+### [Proposed] Frequent Expense Feature
+
+#### Proposed Implementation 
+The Frequent Expense feature consists of `add-frequent-expense`, `edit-frequent-expense`, `delete-frequent-expense`,
+`convert-frequent-expense`.
+
+Frequent expenses are expenses that the user have identified to be occurring regularly or with high frequency.
+Examples of such expenses can be phone bill, music subscription or buying bubble tea on a weekly basis.
+
+This feature allows users to add frequent expenses to the finance tracker. The user can then choose to convert a 
+frequent expense to an expense that the user wants to add to the transaction list in the finance tracker. This is done by
+calling `Logic#execute` which creates an  `AddFrequentExpenseCommand`. This command then calls 
+`ModelManager#addFrequentExpense`, adding the specified frequent expense into the frequent expense list.
+
+This feature also simplifies the deletion and editing of frequent expenses, and they work in a similar manner.
+
+#### Convert Frequent Expense To Expense Feature
+
+The purpose of this feature is to allow users to add expenses, that they add to the transaction list in the finance 
+tracker on a frequent basis in a convenient manner. After adding a frequent expense into the frequent expense list in 
+the finance tracker, the user can call convert-frequent-expense to the respective frequent expense to make the 
+conversion.
+
+Given below is the proposed UML sequence diagram and explanation of an example usage scenario for 
+convert-frequent-expense
+
+![Sequence Diagram of the Convert Frequent Expense To Expense Feature](images/ConvertFrequentExpenseSequenceDiagram.png)
+
+1. User enters the command `convert-frequent-expense 1 d/05/05/2020`, where `1` is the index of the respective frequent 
+expense in the frequent expense list and `d/05/05/20` is the date on which the user wants to carry out the conversion, 
+to add the selected frequent expense into the expense list. This command is executed by `LogicManager`, which will then 
+call `FinanceTrackerParser#parseCommand(“convert-frequent-expense 1 d/05/05/2020”)`. This will create a 
+`ConvertFrequentExpenseCommand` object and return it to the `LogicManager`.
+2. The `LogicManager` will then call `ConvertFrequentExpenseCommand#execute`, which will call 
+`Model#getFilteredFrequentExpenseList()` to retrieve the list of frequent expenses in the finance tracker.
+3. The program will then retrieve the specified frequent expense from the list of frequent expenses. It will 
+then call `FrequentExpense#convert` on the frequent expense together with the date the user has inputted and convert it to an 
+`Expense` object. 
+4. After converting the `FrequentExpense` object to an `Expense` object, it will call `Model#addExpense` to add the 
+`Expense` object to the expense list in the finance tracker.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
