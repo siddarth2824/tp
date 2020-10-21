@@ -17,15 +17,15 @@ public class FrequentIncomePanel extends UiPart<Region> {
     private ListView<FrequentExpense> frequentTransactionList;
 
     /**
-     * Creates a {@code FrequentExpensePanel} with the given {@code ObservableList}.
+     * Creates a {@code FrequentIncomePanel} with the given {@code ObservableList}.
      */
-    public FrequentIncomePanel(ObservableList<FrequentExpense> frequentExpensesList) {
+    public FrequentIncomePanel(ObservableList<FrequentExpense> frequentIncomesList) {
         super(FXML);
-        frequentTransactionList.setItems(frequentExpensesList);
-        frequentTransactionList.setCellFactory(listView -> new FrequentExpenseListViewCell());
+        frequentTransactionList.setItems(frequentIncomesList);
+        frequentTransactionList.setCellFactory(listView -> new FrequentIncomeListViewCell());
     }
 
-    class FrequentExpenseListViewCell extends ListCell<FrequentExpense> {
+    class FrequentIncomeListViewCell extends ListCell<FrequentExpense> {
         @Override
         protected void updateItem(FrequentExpense frequentExpense, boolean empty) {
             super.updateItem(frequentExpense, empty);
