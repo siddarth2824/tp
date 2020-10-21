@@ -1,8 +1,5 @@
 package ay2021s1_cs2103_w16_3.finesse.ui.frequent;
 
-import java.util.logging.Logger;
-
-import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiPart;
@@ -13,9 +10,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 
-public class FrequentExpensePanel extends UiPart<Region> {
+public class FrequentIncomePanel extends UiPart<Region> {
     private static final String FXML = "FrequentTransactionPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(FrequentExpensePanel.class);
 
     @FXML
     private ListView<FrequentExpense> frequentTransactionList;
@@ -23,7 +19,7 @@ public class FrequentExpensePanel extends UiPart<Region> {
     /**
      * Creates a {@code FrequentExpensePanel} with the given {@code ObservableList}.
      */
-    public FrequentExpensePanel(ObservableList<FrequentExpense> frequentExpensesList) {
+    public FrequentIncomePanel(ObservableList<FrequentExpense> frequentExpensesList) {
         super(FXML);
         frequentTransactionList.setItems(frequentExpensesList);
         frequentTransactionList.setCellFactory(listView -> new FrequentExpenseListViewCell());

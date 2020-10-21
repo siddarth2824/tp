@@ -13,6 +13,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 import ay2021s1_cs2103_w16_3.finesse.ui.expense.ExpensePanel;
 import ay2021s1_cs2103_w16_3.finesse.ui.frequent.FrequentExpensePanel;
+import ay2021s1_cs2103_w16_3.finesse.ui.frequent.FrequentIncomePanel;
 import ay2021s1_cs2103_w16_3.finesse.ui.income.IncomePanel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,6 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private TransactionListPanel transactionListPanel;
     private FrequentExpensePanel frequentExpensePanel;
+    private FrequentIncomePanel frequentIncomePanel;
     private IncomePanel incomePanel;
     private ExpensePanel expensePanel;
     private ResultDisplay resultDisplay;
@@ -115,6 +117,9 @@ public class MainWindow extends UiPart<Stage> {
 
         frequentExpensePanel = new FrequentExpensePanel(logic.getFilteredFrequentExpenseList());
         savingsGoalPlaceholder.getChildren().add(frequentExpensePanel.getRoot());
+
+        frequentIncomePanel = new FrequentIncomePanel(logic.getFilteredFrequentExpenseList());
+        savingsGoalPlaceholder.getChildren().add(frequentIncomePanel.getRoot());
 
         transactionListPanel = new TransactionListPanel(logic.getFilteredTransactionList());
         transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());
@@ -195,14 +200,15 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleIncome() {
         if (menuIncomeTab.isSelected()) {
-            panelLabel.setText("Income");
-
-            savingsGoalPanel = new SavingsGoalPanel();
-            savingsGoalPlaceholder.getChildren().add(savingsGoalPanel.getRoot());
+            panelLabel.setText("Incomes");
+            rightPanelLabel.setText("Frequent Incomes");
 
             incomePanel = new IncomePanel(logic.getFilteredIncomeList());
             transactionListPanelPlaceholder.getChildren().add(incomePanel.getRoot());
             incomePanel.getRoot().toFront();
+
+            frequentIncomePanel = new FrequentIncomePanel(logic.getFilteredFrequentExpenseList());
+            savingsGoalPlaceholder.getChildren().add(frequentIncomePanel.getRoot());
         }
         onIncome();
         uiState.setCurrentTab(UiState.Tab.INCOME);
@@ -235,9 +241,14 @@ public class MainWindow extends UiPart<Stage> {
     private void handleAnalytics() {
         if (menuAnalyticsTab.isSelected()) {
             panelLabel.setText("Analytics");
+            rightPanelLabel.setText("Savings Summary");
+
             transactionListPanel = new TransactionListPanel(logic.getFilteredTransactionList());
             transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());
             transactionListPanel.getRoot().toFront();
+
+            savingsGoalPanel = new SavingsGoalPanel();
+            savingsGoalPlaceholder.getChildren().add(savingsGoalPanel.getRoot());
         }
         onAnalytics();
         uiState.setCurrentTab(UiState.Tab.ANALYTICS);

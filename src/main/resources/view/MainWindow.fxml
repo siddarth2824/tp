@@ -23,7 +23,7 @@
         <TabPane fx:id="tabPane" VBox.vgrow="NEVER" styleClass="tab-pane" tabMinHeight="30">
           <Tab fx:id="menuHelpTab" text="Help" closable="false" />
           <Tab fx:id="menuOverviewTab" text="Overview" closable="false" />
-          <Tab fx:id="menuIncomeTab" text="Income" closable="false" />
+          <Tab fx:id="menuIncomeTab" text="Incomes" closable="false" />
           <Tab fx:id="menuExpenseTab" text="Expenses" closable="false" />
           <Tab fx:id="menuAnalyticsTab" text="Analytics" closable="false" />
         </TabPane>
