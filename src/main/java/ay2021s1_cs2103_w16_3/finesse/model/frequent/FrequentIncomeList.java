@@ -1,12 +1,12 @@
 package ay2021s1_cs2103_w16_3.finesse.model.frequent;
 
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import static java.util.Objects.requireNonNull;
 
 import java.util.Iterator;
 
-import static java.util.Objects.requireNonNull;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class FrequentIncomeList implements Iterable<FrequentIncome> {
     private final ObservableList<FrequentIncome> internalFrequentIncomeList = FXCollections.observableArrayList();
@@ -16,10 +16,10 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     /**
      * Adds a frequent income to the list.
      */
-    public void addFrequentIncome(FrequentIncome toAdd) {
+    public void add(FrequentIncome toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateFrequentTransactionException();
+            throw new DuplicateFrequentTransactionException("income");
         }
         internalFrequentIncomeList.add(toAdd);
     }
@@ -32,9 +32,11 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
         return internalFrequentIncomeList.stream().anyMatch(toCheck::equals);
     }
 
-    @Override
-    public Iterator<FrequentIncome> iterator() {
-        return this.iterator();
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList<FrequentIncome> asUnmodifiableObservableList() {
+        return internalUnmodifiableFrequentIncomeList;
     }
 
     @Override
@@ -42,5 +44,15 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
         return other == this
                 || (other instanceof FrequentExpenseList)
                 && internalFrequentIncomeList.equals(((FrequentIncomeList) other).internalFrequentIncomeList);
+    }
+
+    @Override
+    public int hashCode() {
+        return internalFrequentIncomeList.hashCode();
+    }
+
+    @Override
+    public Iterator<FrequentIncome> iterator() {
+        return this.iterator();
     }
 }

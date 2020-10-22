@@ -1,20 +1,24 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers;
 
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_AMOUNT;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGORY;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
+
+import java.util.Set;
+import java.util.stream.Stream;
+
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.*;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentMultimap;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentTokenizer;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.Parser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.ParserUtil;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.Prefix;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
-
-import java.util.Set;
-import java.util.stream.Stream;
-
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_AMOUNT;
-import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGORY;
-import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
 
 public class AddFrequentIncomeCommandParser implements Parser<AddFrequentIncomeCommand> {
 

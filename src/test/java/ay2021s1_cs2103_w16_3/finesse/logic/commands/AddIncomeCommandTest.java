@@ -19,6 +19,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyUserPrefs;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -117,6 +118,11 @@ public class AddIncomeCommandTest {
         }
 
         @Override
+        public void addFrequentIncome(FrequentIncome frequentIncome) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setFinanceTracker(ReadOnlyFinanceTracker newData) {
             throw new AssertionError("This method should not be called.");
         }
@@ -163,7 +169,12 @@ public class AddIncomeCommandTest {
 
         @Override
         public ObservableList<FrequentExpense> getFilteredFrequentExpenseList() {
-            return null;
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<FrequentIncome> getFilteredFrequentIncomeList() {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -204,5 +215,4 @@ public class AddIncomeCommandTest {
             return new FinanceTracker();
         }
     }
-
 }

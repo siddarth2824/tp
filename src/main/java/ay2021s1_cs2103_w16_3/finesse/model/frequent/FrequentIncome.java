@@ -1,12 +1,12 @@
 package ay2021s1_cs2103_w16_3.finesse.model.frequent;
 
+import java.util.Set;
+
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
-
-import java.util.Set;
 
 public class FrequentIncome extends FrequentTransaction<Income> {
 

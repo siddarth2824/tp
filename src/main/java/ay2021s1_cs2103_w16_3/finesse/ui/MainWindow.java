@@ -118,7 +118,7 @@ public class MainWindow extends UiPart<Stage> {
         frequentExpensePanel = new FrequentExpensePanel(logic.getFilteredFrequentExpenseList());
         savingsGoalPlaceholder.getChildren().add(frequentExpensePanel.getRoot());
 
-        frequentIncomePanel = new FrequentIncomePanel(logic.getFilteredFrequentExpenseList());
+        frequentIncomePanel = new FrequentIncomePanel(logic.getFilteredFrequentIncomeList());
         savingsGoalPlaceholder.getChildren().add(frequentIncomePanel.getRoot());
 
         transactionListPanel = new TransactionListPanel(logic.getFilteredTransactionList());
@@ -207,7 +207,7 @@ public class MainWindow extends UiPart<Stage> {
             transactionListPanelPlaceholder.getChildren().add(incomePanel.getRoot());
             incomePanel.getRoot().toFront();
 
-            frequentIncomePanel = new FrequentIncomePanel(logic.getFilteredFrequentExpenseList());
+            frequentIncomePanel = new FrequentIncomePanel(logic.getFilteredFrequentIncomeList());
             savingsGoalPlaceholder.getChildren().add(frequentIncomePanel.getRoot());
         }
         onIncome();

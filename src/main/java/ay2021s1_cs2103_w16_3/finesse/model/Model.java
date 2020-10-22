@@ -25,8 +25,10 @@ public interface Model {
     /** {@code Predicate} that evaluates to true if the transaction is an {@code Income} */
     Predicate<Transaction> PREDICATE_SHOW_ALL_INCOMES = transaction -> transaction instanceof Income;
 
-    Predicate<FrequentExpense> PREDICATE_SHOW_ALL_FREQUENT_EXPENSES = unused -> true;
+    /** {@code Predicate} that always evaluates to true. */
+    Predicate<FrequentExpense> PREDICATE_SHOW_ALL_FREQUENT_EXPENSES = frequentExpense -> true;
 
+    Predicate<FrequentIncome> PREDICATE_SHOW_ALL_FREQUENT_INCOMES = frequentIncome -> true;
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -121,6 +123,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered frequent expense list. */
     ObservableList<FrequentExpense> getFilteredFrequentExpenseList();
 
+    /** Returns an unmodifiable view of the filtered frequent income list. */
+    ObservableList<FrequentIncome> getFilteredFrequentIncomeList();
+
     /**
      * Updates the filter of the filtered transaction list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
@@ -144,5 +149,4 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredFrequentExpenseList(Predicate<FrequentExpense> predicate);
-
 }

@@ -30,6 +30,7 @@ public class ModelManager implements Model {
     private final FilteredList<Transaction> filteredExpenses;
     private final FilteredList<Transaction> filteredIncomes;
     private final FilteredList<FrequentExpense> filteredFrequentExpenses;
+    private final FilteredList<FrequentIncome> filteredFrequentIncomes;
 
     /**
      * Initializes a ModelManager with the given financeTracker and userPrefs.
@@ -45,8 +46,8 @@ public class ModelManager implements Model {
         filteredTransactions = new FilteredList<>(this.financeTracker.getTransactionList());
         filteredExpenses = new FilteredList<>(this.financeTracker.getTransactionList(), PREDICATE_SHOW_ALL_EXPENSES);
         filteredIncomes = new FilteredList<>(this.financeTracker.getTransactionList(), PREDICATE_SHOW_ALL_INCOMES);
-        filteredFrequentExpenses = new FilteredList<>(this.financeTracker.getFrequentExpenseList(),
-                PREDICATE_SHOW_ALL_FREQUENT_EXPENSES);
+        filteredFrequentExpenses = new FilteredList<>(this.financeTracker.getFrequentExpenseList());
+        filteredFrequentIncomes = new FilteredList<>(this.financeTracker.getFrequentIncomeList());
     }
 
     public ModelManager() {
@@ -194,6 +195,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<FrequentIncome> getFilteredFrequentIncomeList() {
+        return filteredFrequentIncomes;
+    }
+
+    @Override
     public void updateFilteredTransactionList(Predicate<Transaction> predicate) {
         requireNonNull(predicate);
         filteredTransactions.setPredicate(predicate);
@@ -231,5 +237,4 @@ public class ModelManager implements Model {
                 && filteredExpenses.equals(other.filteredExpenses)
                 && filteredIncomes.equals(other.filteredIncomes);
     }
-
 }

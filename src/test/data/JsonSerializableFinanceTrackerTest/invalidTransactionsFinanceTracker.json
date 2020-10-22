@@ -11,10 +11,16 @@
     "date": "not a date",
     "categories": [ "Work" ]
   } ],
-  "frequentExpenses": [{
+  "frequentExpenses": [ {
     "title": "Phone Bill",
     "amount": "$60.00",
     "date": "not a date",
     "categories": [ "Utilities" ]
-  }]
+  } ],
+  "frequentIncomes": [ {
+    "title": "Internship",
+    "amount": "$1000",
+    "date": "not a date",
+    "categories": [ "Work" ]
+  } ]
 }

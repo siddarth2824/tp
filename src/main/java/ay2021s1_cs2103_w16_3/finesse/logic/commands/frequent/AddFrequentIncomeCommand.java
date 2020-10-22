@@ -1,14 +1,16 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent;
 
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_AMOUNT;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGORY;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
+import static java.util.Objects.requireNonNull;
+
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
-
-import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.*;
-import static java.util.Objects.requireNonNull;
 
 public class AddFrequentIncomeCommand extends Command {
     public static final String COMMAND_WORD = "add-frequent-income";

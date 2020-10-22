@@ -29,7 +29,7 @@ public class FrequentExpenseList implements Iterable<FrequentExpense> {
     public void add(FrequentExpense toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateFrequentTransactionException();
+            throw new DuplicateFrequentTransactionException("expense");
         }
         internalFrequentExpenseList.add(toAdd);
     }

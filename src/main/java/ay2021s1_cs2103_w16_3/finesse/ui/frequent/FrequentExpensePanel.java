@@ -8,7 +8,6 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiPart;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
@@ -41,7 +40,7 @@ public class FrequentExpensePanel extends UiPart<Region> {
             } else {
                 FrequentTransactionCard<Expense> frequentTransactionCard =
                         new FrequentTransactionCard<>(frequentExpense, getIndex() + 1, 12);
-                setGraphic((Node) frequentTransactionCard.getRoot());
+                setGraphic(frequentTransactionCard.getRoot());
             }
         }
     }

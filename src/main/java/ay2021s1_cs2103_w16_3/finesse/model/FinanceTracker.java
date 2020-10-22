@@ -89,8 +89,11 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
         frequentExpenses.add(frequentExpense);
     }
 
+    /**
+     * Adds a frequent income to the finance tracker.
+     */
     public void addFrequentIncome(FrequentIncome frequentIncome) {
-        frequentIncomes.addFrequentIncome(frequentIncome);
+        frequentIncomes.add(frequentIncome);
     }
 
     /**
@@ -168,6 +171,12 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     public ObservableList<FrequentExpense> getFrequentExpenseList() {
         return frequentExpenses.asUnmodifiableObservableList();
     }
+
+    @Override
+    public ObservableList<FrequentIncome> getFrequentIncomeList() {
+        return frequentIncomes.asUnmodifiableObservableList();
+    }
+
 
     @Override
     public boolean equals(Object other) {
