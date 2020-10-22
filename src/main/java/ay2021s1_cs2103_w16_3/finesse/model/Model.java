@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -90,6 +91,11 @@ public interface Model {
      * Adds the given frequent expense.
      */
     void addFrequentExpense(FrequentExpense frequentExpense);
+
+    /**
+     * Adds the given frequent income/
+     */
+    void addFrequentIncome(FrequentIncome frequentIncome);
 
     /**
      * Replaces the given transaction {@code target} with {@code editedTransaction}.

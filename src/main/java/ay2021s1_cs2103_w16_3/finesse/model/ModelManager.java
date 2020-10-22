@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -123,11 +124,16 @@ public class ModelManager implements Model {
         financeTracker.setTransaction(target, editedTransaction);
     }
 
-    //=========== Frequent Expense ================================================================================
+    //=========== Frequent Transaction ================================================================================
 
     @Override
     public void addFrequentExpense(FrequentExpense frequentExpense) {
         financeTracker.addFrequentExpense(frequentExpense);
+    }
+
+    @Override
+    public void addFrequentIncome(FrequentIncome frequentIncome) {
+        financeTracker.addFrequentIncome(frequentIncome);
     }
 
     @Override

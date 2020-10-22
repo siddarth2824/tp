@@ -10,13 +10,13 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentExpenseException;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
 
 public class AddFrequentExpenseCommand extends Command {
     public static final String COMMAND_WORD = "add-frequent-expense";
     public static final String COMMAND_ALIAS = "addfe";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an expense to the finance tracker. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a frequent expense to the finance tracker. "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_AMOUNT + "AMOUNT "
@@ -44,7 +44,7 @@ public class AddFrequentExpenseCommand extends Command {
 
         try {
             model.addFrequentExpense(toAdd);
-        } catch (DuplicateFrequentExpenseException e) {
+        } catch (DuplicateFrequentTransactionException e) {
             throw new CommandException(e.getMessage());
         }
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

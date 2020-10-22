@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentExpenseException;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.FrequentExpenseNotFoundException;
 import ay2021s1_cs2103_w16_3.finesse.testutil.FrequentTransactionBuilder;
 
@@ -32,7 +32,7 @@ public class FrequentExpenseListTest {
 
         FrequentExpense frequentExpenseCopy = new FrequentTransactionBuilder(frequentExpense).buildFrequentExpense();
 
-        assertThrows(DuplicateFrequentExpenseException.class, () -> frequentExpenseList.add(frequentExpenseCopy));
+        assertThrows(DuplicateFrequentTransactionException.class, () -> frequentExpenseList.add(frequentExpenseCopy));
     }
 
     @Test
