@@ -190,8 +190,8 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code FrequentExpense} backed by the internal transaction list of
-     * {@code versionedFinanceTracker}.
+     * Returns an unmodifiable view of the list of {@code FrequentExpense} backed by the internal frequent expense
+     * list of {@code versionedFinanceTracker}.
      */
     @Override
     public ObservableList<FrequentExpense> getFilteredFrequentExpenseList() {
@@ -199,7 +199,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code FrequentIncome} backed by the internal transaction list of
+     * Returns an unmodifiable view of the list of {@code FrequentIncome} backed by the internal frequent income list of
      * {@code versionedFinanceTracker}.
      */
     @Override

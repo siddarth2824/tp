@@ -30,7 +30,7 @@ public class JsonAdaptedFrequentExpense {
      */
     @JsonCreator
     public JsonAdaptedFrequentExpense(@JsonProperty("title") String title, @JsonProperty("amount") String amount,
-                                          @JsonProperty("categories") List<JsonAdaptedCategory> categories) {
+                                           @JsonProperty("categories") List<JsonAdaptedCategory> categories) {
         this.title = title;
         this.amount = amount;
         if (categories != null) {

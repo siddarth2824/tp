@@ -61,17 +61,17 @@ public class SampleDataUtil {
 
     public static ReadOnlyFinanceTracker getSampleFinanceTracker() {
         logger.info("Populating Fine$$e with sample data...");
-        FinanceTracker sampleAb = new FinanceTracker();
+        FinanceTracker sampleFt = new FinanceTracker();
         for (Transaction sampleTransaction : getSampleTransactions()) {
-            sampleAb.addTransaction(sampleTransaction);
+            sampleFt.addTransaction(sampleTransaction);
         }
         for (FrequentExpense frequentExpense : getFrequentExpenses()) {
-            sampleAb.addFrequentExpense(frequentExpense);
+            sampleFt.addFrequentExpense(frequentExpense);
         }
         for (FrequentIncome frequentIncome : getFrequentIncome()) {
-            sampleAb.addFrequentIncome(frequentIncome);
+            sampleFt.addFrequentIncome(frequentIncome);
         }
-        return sampleAb;
+        return sampleFt;
     }
 
     /**

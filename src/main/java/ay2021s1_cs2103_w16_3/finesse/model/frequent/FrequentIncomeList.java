@@ -69,7 +69,7 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
 
     @Override
     public Iterator<FrequentIncome> iterator() {
-        return this.iterator();
+        return internalFrequentIncomeList.iterator();
     }
 
 }

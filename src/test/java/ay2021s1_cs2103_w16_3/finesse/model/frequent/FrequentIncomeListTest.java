@@ -2,7 +2,9 @@ package ay2021s1_cs2103_w16_3.finesse.model.frequent;
 
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_CATEGORY_WORK;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.Assert.assertThrows;
-import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.*;
+import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.INVESTING;
+import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.PART_TIME;
+import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.getTypicalFrequentIncome;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 

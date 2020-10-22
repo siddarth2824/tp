@@ -32,10 +32,10 @@ class JsonSerializableFinanceTracker {
      */
     @JsonCreator
     public JsonSerializableFinanceTracker(@JsonProperty("expenses") List<JsonAdaptedExpense> expenses,
-                                          @JsonProperty("incomes") List<JsonAdaptedIncome> incomes,
-                                          @JsonProperty("frequentExpenses") List<JsonAdaptedFrequentExpense>
+                                               @JsonProperty("incomes") List<JsonAdaptedIncome> incomes,
+                                               @JsonProperty("frequentExpenses") List<JsonAdaptedFrequentExpense>
                                                       frequentExpenses,
-                                          @JsonProperty("frequentIncomes") List<JsonAdaptedFrequentIncome>
+                                               @JsonProperty("frequentIncomes") List<JsonAdaptedFrequentIncome>
                                                       frequentIncomes) {
         this.expenses.addAll(expenses);
         this.incomes.addAll(incomes);
