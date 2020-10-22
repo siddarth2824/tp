@@ -2,9 +2,9 @@ package ay2021s1_cs2103_w16_3.finesse.model.frequent;
 
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_CATEGORY_UTILITIES;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.Assert.assertThrows;
-import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.PHONE_BILL;
-import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.SPOTIFY_SUBSCRIPTION;
+import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 import java.util.Collections;
 import java.util.List;
@@ -136,4 +136,31 @@ public class FrequentExpenseListTest {
         assertThrows(UnsupportedOperationException.class, ()
             -> frequentExpenseList.asUnmodifiableObservableList().remove(0));
     }
+
+    @Test
+    public void equals_distinctFrequentExpenseListsWithSameAttributes_returnsTrue() {
+        List<FrequentExpense> frequentExpenses = getTypicalFrequentExpenses();
+        FrequentExpenseList firstTransactionList = new FrequentExpenseList();
+        FrequentExpenseList secondTransactionList = new FrequentExpenseList();
+
+        firstTransactionList.setFrequentExpenses(frequentExpenses);
+        secondTransactionList.setFrequentExpenses(frequentExpenses);
+
+        assertNotSame(firstTransactionList, secondTransactionList);
+        assertEquals(firstTransactionList, secondTransactionList);
+    }
+
+    @Test
+    public void hashCode_distinctFrequentExpenseListsWithSameAttributes_returnsTrue() {
+        List<FrequentExpense> frequentExpenses = getTypicalFrequentExpenses();
+        FrequentExpenseList firstTransactionList = new FrequentExpenseList();
+        FrequentExpenseList secondTransactionList = new FrequentExpenseList();
+
+        firstTransactionList.setFrequentExpenses(frequentExpenses);
+        secondTransactionList.setFrequentExpenses(frequentExpenses);
+
+        assertNotSame(firstTransactionList, secondTransactionList);
+        assertEquals(firstTransactionList.hashCode(), secondTransactionList.hashCode());
+    }
+
 }

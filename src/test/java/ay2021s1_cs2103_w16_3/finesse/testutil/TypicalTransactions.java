@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -68,6 +69,12 @@ public class TypicalTransactions {
     public static final FrequentExpense TIMES_MAGAZINE_SUBSCRIPTION = new FrequentTransactionBuilder()
             .withTitle("Times Magazine Subscription").withAmount("12").buildFrequentExpense();
 
+    // Frequent Incomes
+    public static final FrequentIncome PART_TIME = new FrequentTransactionBuilder().withTitle("Part Time")
+            .withAmount("450").withCategories("Work").buildFrequentIncome();
+    public static final FrequentIncome INVESTING = new FrequentTransactionBuilder().withTitle("Investing")
+            .withAmount("50").buildFrequentIncome();
+
     // Manually added
     public static final Expense TUITION_FEES_2 = new TransactionBuilder().withTitle("Tuition Fees")
             .withDate("05/10/2020").withAmount("4221").withCategories("NUS", "GIRO").buildExpense();
@@ -92,6 +99,7 @@ public class TypicalTransactions {
         getTypicalExpenses().forEach(ft::addTransaction);
         getTypicalIncomes().forEach(ft::addTransaction);
         getTypicalFrequentExpenses().forEach(ft::addFrequentExpense);
+        getTypicalFrequentIncome().forEach(ft::addFrequentIncome);
         return ft;
     }
 
@@ -114,4 +122,9 @@ public class TypicalTransactions {
         return new ArrayList<>(Arrays.asList(PHONE_BILL, SPOTIFY_SUBSCRIPTION, NETFLIX_SUBSCRIPTION,
                 TIMES_MAGAZINE_SUBSCRIPTION));
     }
+
+    public static List<FrequentIncome> getTypicalFrequentIncome() {
+        return new ArrayList<>(Arrays.asList(PART_TIME, INVESTING));
+    }
+
 }

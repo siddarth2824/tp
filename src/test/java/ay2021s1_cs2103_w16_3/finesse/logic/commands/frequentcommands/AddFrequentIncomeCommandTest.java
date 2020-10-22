@@ -1,6 +1,7 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
 
 import static ay2021s1_cs2103_w16_3.finesse.testutil.Assert.assertThrows;
+import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.getTypicalFinanceTracker;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,11 +16,13 @@ import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
+import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyUserPrefs;
+import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
@@ -28,37 +31,38 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.testutil.FrequentTransactionBuilder;
 import javafx.collections.ObservableList;
 
-public class AddFrequentExpenseCommandTest {
+public class AddFrequentIncomeCommandTest {
+    private Model model = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
 
     @Test
-    public void constructor_nullFrequentExpense_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddFrequentExpenseCommand(null));
+    public void constructor_nullFrequentIncome_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddFrequentIncomeCommand(null));
     }
 
     @Test
-    public void execute_frequentExpenseAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingFrequentExpenseAdded modelStub = new ModelStubAcceptingFrequentExpenseAdded();
-        FrequentExpense validFrequentExpense = new FrequentTransactionBuilder().buildFrequentExpense();
+    public void execute_frequentIncomeAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingFrequentIncomeAdded modelStub = new ModelStubAcceptingFrequentIncomeAdded();
+        FrequentIncome validFrequentIncome = new FrequentTransactionBuilder().buildFrequentIncome();
 
-        CommandResult commandResult = new AddFrequentExpenseCommand(validFrequentExpense).execute(modelStub);
+        CommandResult commandResult = new AddFrequentIncomeCommand(validFrequentIncome).execute(modelStub);
 
-        assertEquals(String.format(AddFrequentExpenseCommand.MESSAGE_SUCCESS, validFrequentExpense),
+        assertEquals(String.format(AddFrequentIncomeCommand.MESSAGE_SUCCESS, validFrequentIncome),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validFrequentExpense), modelStub.frequentExpensesAdded);
+        assertEquals(Arrays.asList(validFrequentIncome), modelStub.frequentIncomesAdded);
     }
 
     @Test
     public void equals() {
-        FrequentExpense bubbleTea = new FrequentTransactionBuilder().withTitle("Bubble Tea").buildFrequentExpense();
-        FrequentExpense tuitionFees = new FrequentTransactionBuilder().withTitle("Tuition Fees").buildFrequentExpense();
-        AddFrequentExpenseCommand addBubbleTeaCommand = new AddFrequentExpenseCommand(bubbleTea);
-        AddFrequentExpenseCommand addTuitionFeesCommand = new AddFrequentExpenseCommand(tuitionFees);
+        FrequentIncome bubbleTea = new FrequentTransactionBuilder().withTitle("Bubble Tea").buildFrequentIncome();
+        FrequentIncome tuitionFees = new FrequentTransactionBuilder().withTitle("Tuition Fees").buildFrequentIncome();
+        AddFrequentIncomeCommand addBubbleTeaCommand = new AddFrequentIncomeCommand(bubbleTea);
+        AddFrequentIncomeCommand addTuitionFeesCommand = new AddFrequentIncomeCommand(tuitionFees);
 
         // same object -> returns true
         assertTrue(addBubbleTeaCommand.equals(addBubbleTeaCommand));
 
         // same values -> returns true
-        AddFrequentExpenseCommand addBubbleTeaCommandCopy = new AddFrequentExpenseCommand(bubbleTea);
+        AddFrequentIncomeCommand addBubbleTeaCommandCopy = new AddFrequentIncomeCommand(bubbleTea);
         assertTrue(addBubbleTeaCommand.equals(addBubbleTeaCommandCopy));
 
         // different types -> returns false
@@ -70,7 +74,6 @@ public class AddFrequentExpenseCommandTest {
         // different transaction -> returns false
         assertFalse(addBubbleTeaCommand.equals(addTuitionFeesCommand));
     }
-
 
     /**
      * A default model stub that have all of the methods failing.
@@ -205,13 +208,13 @@ public class AddFrequentExpenseCommandTest {
     /**
      * A Model stub that always accept the frequent expense being added.
      */
-    private class ModelStubAcceptingFrequentExpenseAdded extends ModelStub {
-        final ArrayList<FrequentExpense> frequentExpensesAdded = new ArrayList<>();
+    private class ModelStubAcceptingFrequentIncomeAdded extends ModelStub {
+        final ArrayList<FrequentIncome> frequentIncomesAdded = new ArrayList<>();
 
         @Override
-        public void addFrequentExpense(FrequentExpense expense) {
-            requireNonNull(expense);
-            frequentExpensesAdded.add(expense);
+        public void addFrequentIncome(FrequentIncome frequentIncome) {
+            requireNonNull(frequentIncome);
+            frequentIncomesAdded.add(frequentIncome);
         }
 
         @Override

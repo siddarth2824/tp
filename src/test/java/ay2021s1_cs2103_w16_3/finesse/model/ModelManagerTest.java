@@ -89,6 +89,19 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void getFilteredFrequentExpenseList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, ()
+            -> modelManager.getFilteredFrequentExpenseList().remove(0));
+    }
+
+    @Test
+    public void getFilteredFrequentIncomeList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, ()
+            -> modelManager.getFilteredFrequentIncomeList().remove(0));
+    }
+
+
+    @Test
     public void equals() {
         FinanceTracker financeTracker = new FinanceTrackerBuilder()
                 .withTransaction(BUBBLE_TEA).withTransaction(TUITION_FEES)

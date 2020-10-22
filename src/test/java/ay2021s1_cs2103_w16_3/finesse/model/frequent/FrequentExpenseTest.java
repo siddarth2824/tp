@@ -46,4 +46,5 @@ public class FrequentExpenseTest {
                 .buildFrequentExpense();
         assertFalse(PHONE_BILL.equals(editedPhoneBill));
     }
+
 }

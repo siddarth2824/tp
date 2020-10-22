@@ -17,6 +17,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpense
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -32,10 +33,12 @@ public class CommandTestUtil {
     public static final String VALID_TITLE_INTERNSHIP = "Internship";
     public static final String VALID_TITLE_SPOTIFY_SUBSCRIPTION = "Spotify Subscription";
     public static final String VALID_TITLE_PHONE_BILL = "Phone Bill";
+    public static final String VALID_TITLE_PART_TIME = "Part Time";
     public static final String VALID_AMOUNT_BUBBLE_TEA = "$4.80";
     public static final String VALID_AMOUNT_INTERNSHIP = "$560";
-    public static final String VALID_AMOUNT_SPOTIFY_SUBSCRIPTION = "9.90";
-    public static final String VALID_AMOUNT_PHONE_BILL = "60";
+    public static final String VALID_AMOUNT_SPOTIFY_SUBSCRIPTION = "$9.90";
+    public static final String VALID_AMOUNT_PHONE_BILL = "$60";
+    public static final String VALID_AMOUNT_PART_TIME = "$450";
     public static final String VALID_DATE_BUBBLE_TEA = "14/10/2020";
     public static final String VALID_DATE_INTERNSHIP = "06/10/2020";
     public static final String VALID_DATE_SPOTIFY_SUBSCRIPTION = "08/10/2020";
@@ -48,11 +51,13 @@ public class CommandTestUtil {
     public static final String TITLE_DESC_INTERNSHIP = " " + PREFIX_TITLE + VALID_TITLE_INTERNSHIP;
     public static final String TITLE_DESC_PHONE_BILL = " " + PREFIX_TITLE + VALID_TITLE_PHONE_BILL;
     public static final String TITLE_DESC_SPOTIFY_SUBSCRIPTION = " " + PREFIX_TITLE + VALID_TITLE_SPOTIFY_SUBSCRIPTION;
+    public static final String TITLE_DESC_PART_TIME = " " + PREFIX_TITLE + VALID_TITLE_PART_TIME;
     public static final String AMOUNT_DESC_BUBBLE_TEA = " " + PREFIX_AMOUNT + VALID_AMOUNT_BUBBLE_TEA;
     public static final String AMOUNT_DESC_INTERNSHIP = " " + PREFIX_AMOUNT + VALID_AMOUNT_INTERNSHIP;
     public static final String AMOUNT_DESC_PHONE_BILL = " " + PREFIX_AMOUNT + VALID_AMOUNT_PHONE_BILL;
     public static final String AMOUNT_DESC_SPOTIFY_SUBSCRIPTION = " " + PREFIX_AMOUNT
             + VALID_AMOUNT_SPOTIFY_SUBSCRIPTION;
+    public static final String AMOUNT_DESC_PART_TIME = " " + PREFIX_AMOUNT + VALID_AMOUNT_PART_TIME;
     public static final String DATE_DESC_BUBBLE_TEA = " " + PREFIX_DATE + VALID_DATE_BUBBLE_TEA;
     public static final String DATE_DESC_INTERNSHIP = " " + PREFIX_DATE + VALID_DATE_INTERNSHIP;
     public static final String DATE_DESC_SPOTIFY_SUBSCRIPTION = " " + PREFIX_DATE + VALID_DATE_SPOTIFY_SUBSCRIPTION;
@@ -131,6 +136,8 @@ public class CommandTestUtil {
         List<Transaction> expectedFilteredList = new ArrayList<>(actualModel.getFilteredTransactionList());
         List<FrequentExpense> expectedFilteredFrequentExpenseList =
                 new ArrayList<>(actualModel.getFilteredFrequentExpenseList());
+        List<FrequentIncome> expectedFilteredFrequentIncomeList =
+                new ArrayList<>(actualModel.getFilteredFrequentIncomeList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedFinanceTracker, actualModel.getFinanceTracker());

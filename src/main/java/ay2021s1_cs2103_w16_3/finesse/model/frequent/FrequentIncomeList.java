@@ -58,7 +58,7 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     @Override
     public boolean equals(Object other) {
         return other == this
-                || (other instanceof FrequentExpenseList)
+                || (other instanceof FrequentIncomeList)
                 && internalFrequentIncomeList.equals(((FrequentIncomeList) other).internalFrequentIncomeList);
     }
 
