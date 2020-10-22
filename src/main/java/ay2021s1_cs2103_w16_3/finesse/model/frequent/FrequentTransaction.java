@@ -32,6 +32,10 @@ public abstract class FrequentTransaction<T extends Transaction> {
         return this.amount;
     }
 
+    /**
+     * Returns an immutable category set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
     public Set<Category> getCategories() {
         return Collections.unmodifiableSet(categories);
     }

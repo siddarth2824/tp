@@ -23,6 +23,10 @@ public class FrequentIncome extends FrequentTransaction<Income> {
         return new Income(title, amount, date, categories);
     }
 
+    /**
+     * Returns true if both frequent incomes have the same identity and data fields.
+     * This defines a stronger notion of equality between two frequent incomes.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {

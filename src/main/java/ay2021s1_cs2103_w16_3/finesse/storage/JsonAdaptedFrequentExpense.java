@@ -79,4 +79,5 @@ public class JsonAdaptedFrequentExpense {
         final Set<Category> modelCategories = new HashSet<>(transactionCategories);
         return new FrequentExpense(modelTitle, modelAmount, modelCategories);
     }
+
 }

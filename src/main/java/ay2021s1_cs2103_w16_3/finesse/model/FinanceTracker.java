@@ -57,10 +57,17 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     }
 
     /**
-     * Replaces the contents of the transaction list with {@code frequentExpenses}.
+     * Replaces the contents of the frequent expense list with {@code frequentExpenses}.
      */
     public void setFrequentExpenses(List<FrequentExpense> frequentExpenses) {
         this.frequentExpenses.setFrequentExpenses(frequentExpenses);
+    }
+
+    /**
+     * Replaces the contents of the frequent incomes list with {@code frequentIncomes}.
+     */
+    public void setFrequentIncomes(List<FrequentIncome> frequentIncomes) {
+        this.frequentIncomes.setFrequentIncomes(frequentIncomes);
     }
 
     /**
@@ -71,6 +78,7 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
 
         setTransactions(newData.getTransactionList());
         setFrequentExpenses(newData.getFrequentExpenseList());
+        setFrequentIncomes(newData.getFrequentIncomeList());
     }
 
     //// transaction-level operations
@@ -189,4 +197,5 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     public int hashCode() {
         return transactions.hashCode();
     }
+
 }

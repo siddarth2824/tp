@@ -23,6 +23,10 @@ public class FrequentExpense extends FrequentTransaction<Expense> {
         return new Expense(title, amount, expenseDate, categories);
     }
 
+    /**
+     * Returns true if both frequent expenses have the same identity and data fields.
+     * This defines a stronger notion of equality between two frequent expenses.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {

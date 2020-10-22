@@ -1,13 +1,20 @@
 package ay2021s1_cs2103_w16_3.finesse.model.frequent;
 
+import static ay2021s1_cs2103_w16_3.finesse.commons.util.CollectionUtil.requireAllNonNull;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Iterator;
+import java.util.List;
 
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * A list of frequent incomes that does not allow nulls.
+ *
+ * Supports a minimal set of list operations.
+ */
 public class FrequentIncomeList implements Iterable<FrequentIncome> {
     private final ObservableList<FrequentIncome> internalFrequentIncomeList = FXCollections.observableArrayList();
     private final ObservableList<FrequentIncome> internalUnmodifiableFrequentIncomeList =
@@ -33,6 +40,15 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     }
 
     /**
+     * Replaces the contents of this list with {@code frequentIncomes}.
+     */
+    public void setFrequentIncomes(List<FrequentIncome> frequentIncomes) {
+        requireAllNonNull(frequentIncomes);
+
+        internalFrequentIncomeList.setAll(frequentIncomes);
+    }
+
+    /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<FrequentIncome> asUnmodifiableObservableList() {
@@ -55,4 +71,5 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     public Iterator<FrequentIncome> iterator() {
         return this.iterator();
     }
+
 }

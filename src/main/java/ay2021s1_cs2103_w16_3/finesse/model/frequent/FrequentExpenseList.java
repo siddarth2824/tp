@@ -107,4 +107,5 @@ public class FrequentExpenseList implements Iterable<FrequentExpense> {
     public Iterator<FrequentExpense> iterator() {
         return internalFrequentExpenseList.iterator();
     }
+
 }

@@ -189,11 +189,19 @@ public class ModelManager implements Model {
         return FXCollections.unmodifiableObservableList(newFilteredIncomes);
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code FrequentExpense} backed by the internal transaction list of
+     * {@code versionedFinanceTracker}.
+     */
     @Override
     public ObservableList<FrequentExpense> getFilteredFrequentExpenseList() {
         return filteredFrequentExpenses;
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code FrequentIncome} backed by the internal transaction list of
+     * {@code versionedFinanceTracker}.
+     */
     @Override
     public ObservableList<FrequentIncome> getFilteredFrequentIncomeList() {
         return filteredFrequentIncomes;

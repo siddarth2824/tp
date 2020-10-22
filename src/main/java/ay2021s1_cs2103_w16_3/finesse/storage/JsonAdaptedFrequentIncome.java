@@ -79,4 +79,5 @@ public class JsonAdaptedFrequentIncome {
         final Set<Category> modelCategories = new HashSet<>(transactionCategories);
         return new FrequentIncome(modelTitle, modelAmount, modelCategories);
     }
+
 }

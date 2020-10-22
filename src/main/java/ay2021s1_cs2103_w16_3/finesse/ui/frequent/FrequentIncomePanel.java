@@ -26,18 +26,19 @@ public class FrequentIncomePanel extends UiPart<Region> {
 
     class FrequentIncomeListViewCell extends ListCell<FrequentIncome> {
         @Override
-        protected void updateItem(FrequentIncome frequentExpense, boolean empty) {
-            super.updateItem(frequentExpense, empty);
+        protected void updateItem(FrequentIncome frequentIncome, boolean empty) {
+            super.updateItem(frequentIncome, empty);
 
-            if (empty || frequentExpense == null) {
+            if (empty || frequentIncome == null) {
                 setGraphic(null);
                 setText(null);
                 setStyle("-fx-background-color: #2E2E36");
             } else {
                 FrequentTransactionCard<Income> frequentTransactionCard =
-                        new FrequentTransactionCard<>(frequentExpense, getIndex() + 1, 12);
+                        new FrequentTransactionCard<>(frequentIncome, getIndex() + 1, 12);
                 setGraphic(frequentTransactionCard.getRoot());
             }
         }
     }
+
 }

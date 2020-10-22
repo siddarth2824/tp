@@ -95,7 +95,7 @@ public interface Model {
     void addFrequentExpense(FrequentExpense frequentExpense);
 
     /**
-     * Adds the given frequent income/
+     * Adds the given frequent income.
      */
     void addFrequentIncome(FrequentIncome frequentIncome);
 
