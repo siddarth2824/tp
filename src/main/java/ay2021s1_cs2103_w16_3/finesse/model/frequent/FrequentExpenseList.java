@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.FrequentExpenseNotFoundException;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.FrequentTransactionNotFoundException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -53,7 +53,7 @@ public class FrequentExpenseList implements Iterable<FrequentExpense> {
 
         int index = internalFrequentExpenseList.indexOf(target);
         if (index == -1) {
-            throw new FrequentExpenseNotFoundException();
+            throw new FrequentTransactionNotFoundException();
         }
 
         internalFrequentExpenseList.set(index, editedFrequentExpense);
@@ -66,7 +66,7 @@ public class FrequentExpenseList implements Iterable<FrequentExpense> {
     public void remove(FrequentExpense toRemove) {
         requireNonNull(toRemove);
         if (!(internalFrequentExpenseList.remove(toRemove))) {
-            throw new FrequentExpenseNotFoundException();
+            throw new FrequentTransactionNotFoundException();
         }
     }
 

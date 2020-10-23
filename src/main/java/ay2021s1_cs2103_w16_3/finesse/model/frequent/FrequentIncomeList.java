@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.FrequentTransactionNotFoundException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -46,6 +47,23 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
         requireAllNonNull(frequentIncomes);
 
         internalFrequentIncomeList.setAll(frequentIncomes);
+    }
+
+    /**
+     * Replaces the frequent income {@code target} in the list with {@code editedFrequentIncome}.
+     * {@code target} must exist in the list.
+     * The frequent income identity of {@code editedFrequentIncome} must not be the same as another existing
+     * frequent income in the list.
+     */
+    public void setFrequentIncome(FrequentIncome target, FrequentIncome editedFrequentIncome) {
+        requireAllNonNull(target, editedFrequentIncome);
+
+        int index = internalFrequentIncomeList.indexOf(target);
+        if (index == -1) {
+            throw new FrequentTransactionNotFoundException();
+        }
+
+        internalFrequentIncomeList.set(index, editedFrequentIncome);
     }
 
     /**

@@ -130,6 +130,16 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     }
 
     /**
+     * Replaces the given frequent income {@code target} in the list with {@code editedFrequentIncome}.
+     * {@code target} must exist in the frequent income list.
+     */
+    public void setFrequentIncome(FrequentIncome target, FrequentIncome editedFrequentIncome) {
+        requireNonNull(editedFrequentIncome);
+
+        frequentIncomes.setFrequentIncome(target, editedFrequentIncome);
+    }
+
+    /**
      * Removes {@code key} from this {@code FinanceTracker}.
      * {@code key} must exist in the finance tracker.
      */
