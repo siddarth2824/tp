@@ -67,6 +67,17 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     }
 
     /**
+     * Removes the equivalent frequent income from the list.
+     * The frequent income must exist in the list.
+     */
+    public void remove(FrequentIncome toRemove) {
+        requireNonNull(toRemove);
+        if (!(internalFrequentIncomeList.remove(toRemove))) {
+            throw new FrequentTransactionNotFoundException();
+        }
+    }
+
+    /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<FrequentIncome> asUnmodifiableObservableList() {

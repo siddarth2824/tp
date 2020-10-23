@@ -1,5 +1,18 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent;
 
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_AMOUNT;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGORY;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
+import static ay2021s1_cs2103_w16_3.finesse.model.Model.PREDICATE_SHOW_ALL_FREQUENT_INCOMES;
+import static java.util.Objects.requireNonNull;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.commons.util.CollectionUtil;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
@@ -10,13 +23,6 @@ import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
-
-import java.util.*;
-
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX;
-import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.*;
-import static ay2021s1_cs2103_w16_3.finesse.model.Model.PREDICATE_SHOW_ALL_FREQUENT_INCOMES;
-import static java.util.Objects.requireNonNull;
 
 /**
  * Edits the details of an existing frequent income using its displayed index from the frequent income list
@@ -162,9 +168,5 @@ public class EditFrequentIncomeCommand extends Command {
                     && getAmount().equals(otherEditFrequentIncomeDescriptor.getAmount())
                     && getCategories().equals(otherEditFrequentIncomeDescriptor.getCategories());
         }
-
-
-
-
     }
 }

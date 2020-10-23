@@ -128,6 +128,11 @@ public class AddFrequentIncomeCommandTest {
         }
 
         @Override
+        public void deleteFrequentIncome(FrequentIncome target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addExpense(Expense expense) {
             throw new AssertionError("This method should not be called.");
         }
@@ -154,6 +159,11 @@ public class AddFrequentIncomeCommandTest {
 
         @Override
         public void setFrequentExpense(FrequentExpense target, FrequentExpense editedFrequentExpense) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setFrequentIncome(FrequentIncome target, FrequentIncome editedFrequentIncome) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -214,6 +224,11 @@ public class AddFrequentIncomeCommandTest {
 
         @Override
         public void updateFilteredFrequentExpenseList(Predicate<FrequentExpense> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredFrequentIncomeList(Predicate<FrequentIncome> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }

@@ -77,9 +77,15 @@ public interface Model {
 
     /**
      * Deletes the given frequent expense.
-     * The transaction must exist in the finance tracker.
+     * The frequent expense must exist in the finance tracker.
      */
     void deleteFrequentExpense(FrequentExpense target);
+
+    /**
+     * Deletes the given frequent income.
+     * The frequent income must exist in the finance tracker.
+     */
+    void deleteFrequentIncome(FrequentIncome target);
 
     /**
      * Adds the given expense.

@@ -155,6 +155,14 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
         frequentExpenses.remove(key);
     }
 
+    /**
+     * Removes {@code key} from this {@code FinanceTracker}.
+     * {@code key} must exist in the finance tracker.
+     */
+    public void removeFrequentIncome(FrequentIncome key) {
+        frequentIncomes.remove(key);
+    }
+
     //// budget-level operations
 
     public void setExpenseLimit(Amount limit) {

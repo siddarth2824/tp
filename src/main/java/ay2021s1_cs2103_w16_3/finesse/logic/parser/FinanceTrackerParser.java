@@ -38,6 +38,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentExpenseC
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.ConvertFrequentExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.DeleteFrequentExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.DeleteFrequentIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetExpenseLimitCommandParser;
@@ -47,6 +48,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentExp
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.ConvertFrequentExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState;
@@ -150,6 +152,9 @@ public class FinanceTrackerParser {
 
         case DeleteFrequentExpenseCommand.COMMAND_WORD:
             return new DeleteFrequentExpenseCommandParser().parse(arguments);
+
+        case DeleteFrequentIncomeCommand.COMMAND_WORD:
+            return new DeleteFrequentIncomeCommandParser().parse(arguments);
 
         case ConvertFrequentExpenseCommand.COMMAND_WORD:
         case ConvertFrequentExpenseCommand.COMMAND_ALIAS:

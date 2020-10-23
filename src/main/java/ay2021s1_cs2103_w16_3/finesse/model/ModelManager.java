@@ -147,6 +147,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteFrequentIncome(FrequentIncome frequentIncome) {
+        financeTracker.removeFrequentIncome(frequentIncome);
+    }
+
+    @Override
     public void setFrequentExpense(FrequentExpense target, FrequentExpense editedFrequentExpense) {
         requireAllNonNull(target, editedFrequentExpense);
 
