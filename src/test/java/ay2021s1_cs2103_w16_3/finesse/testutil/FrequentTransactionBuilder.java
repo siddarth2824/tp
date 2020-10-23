@@ -6,8 +6,10 @@ import java.util.Set;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
+import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentTransaction;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.model.util.SampleDataUtil;
 
 /**
@@ -31,21 +33,12 @@ public class FrequentTransactionBuilder {
     }
 
     /**
-     * Initializes the FrequentTransactionBuilder with the data of {@code frequentExpenseToCopy}.
+     * Initializes the FrequentTransactionBuilder with the data of {@code frequentTransactionToCopy}.
      */
-    public FrequentTransactionBuilder(FrequentExpense frequentExpenseToCopy) {
-        title = frequentExpenseToCopy.getTitle();
-        amount = frequentExpenseToCopy.getAmount();
-        categories = new HashSet<>(frequentExpenseToCopy.getCategories());
-    }
-
-    /**
-     * Initializes the FrequentTransactionBuilder with the data of {@code frequentIncomeToCopy}.
-     */
-    public FrequentTransactionBuilder(FrequentIncome frequentIncomeToCopy) {
-        title = frequentIncomeToCopy.getTitle();
-        amount = frequentIncomeToCopy.getAmount();
-        categories = new HashSet<>(frequentIncomeToCopy.getCategories());
+    public <T extends Transaction> FrequentTransactionBuilder(FrequentTransaction<T> frequentTransactionToCopy) {
+        title = frequentTransactionToCopy.getTitle();
+        amount = frequentTransactionToCopy.getAmount();
+        categories = new HashSet<>(frequentTransactionToCopy.getCategories());
     }
 
     /**
