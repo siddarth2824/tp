@@ -37,6 +37,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetSavingsGoalCommand
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.ConvertFrequentExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.ConvertFrequentIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.DeleteFrequentExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.DeleteFrequentIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand;
@@ -44,13 +45,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentIncomeC
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetExpenseLimitCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetSavingsGoalCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentIncomeCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.ConvertFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentIncomeCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.*;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
@@ -159,6 +154,10 @@ public class FinanceTrackerParser {
         case ConvertFrequentExpenseCommand.COMMAND_WORD:
         case ConvertFrequentExpenseCommand.COMMAND_ALIAS:
             return new ConvertFrequentExpenseCommandParser().parse(arguments);
+
+        case ConvertFrequentIncomeCommand.COMMAND_WORD:
+        case ConvertFrequentIncomeCommand.COMMAND_ALIAS:
+            return new ConvertFrequentIncomeCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
