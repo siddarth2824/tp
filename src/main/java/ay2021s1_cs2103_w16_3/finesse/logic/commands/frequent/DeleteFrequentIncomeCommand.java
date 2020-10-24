@@ -42,4 +42,11 @@ public class DeleteFrequentIncomeCommand extends Command {
         model.deleteFrequentIncome(frequentIncomeToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_FREQUENT_INCOME_SUCCESS, frequentIncomeToDelete));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof DeleteFrequentIncomeCommand // instanceof handles nulls
+                && targetIndex.equals(((DeleteFrequentIncomeCommand) other).targetIndex)); // state check
+    }
 }

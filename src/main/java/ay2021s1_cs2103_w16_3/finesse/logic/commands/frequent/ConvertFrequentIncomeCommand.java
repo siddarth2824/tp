@@ -6,7 +6,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;

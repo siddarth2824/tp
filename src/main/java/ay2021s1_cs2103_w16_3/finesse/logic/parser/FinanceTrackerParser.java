@@ -45,7 +45,14 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentIncomeC
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetExpenseLimitCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetSavingsGoalCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.*;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.ConvertFrequentExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.ConvertFrequentIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 

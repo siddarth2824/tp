@@ -94,6 +94,23 @@ public class EditFrequentIncomeCommand extends Command {
         return new FrequentIncome(updatedTitle, updatedAmount, updatedCategories);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof EditFrequentIncomeCommand)) {
+            return false;
+        }
+
+        // state check
+        EditFrequentIncomeCommand otherEditFrequentIncomeCommand = (EditFrequentIncomeCommand) other;
+        return targetIndex.equals(otherEditFrequentIncomeCommand.targetIndex)
+                && editFrequentIncomeDescriptor.equals(otherEditFrequentIncomeCommand.editFrequentIncomeDescriptor);
+    }
 
     public static class EditFrequentIncomeDescriptor {
         private Title title;
@@ -169,4 +186,5 @@ public class EditFrequentIncomeCommand extends Command {
                     && getCategories().equals(otherEditFrequentIncomeDescriptor.getCategories());
         }
     }
+
 }
