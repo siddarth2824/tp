@@ -86,8 +86,8 @@ public class EditFrequentExpenseCommandTest {
 
 
     /**
-     * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * Edit filtered expense list where index is larger than size of filtered expense list,
+     * but smaller than size of finance tracker
      */
     @Test
     public void execute_invalidFrequentExpenseIndexFilteredList_failure() {
@@ -129,4 +129,5 @@ public class EditFrequentExpenseCommandTest {
         assertFalse(standardCommand
                 .equals(new EditFrequentExpenseCommand(INDEX_FIRST, DESC_PHONE_BILL)));
     }
+
 }

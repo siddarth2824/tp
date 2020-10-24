@@ -187,6 +187,20 @@ public class CommandTestUtil {
     }
 
     /**
+     * Updates {@code model}'s filtered list to show only the frequent income at the given {@code targetIndex} in the
+     * {@code model}'s finance tracker.
+     */
+    public static void showFrequentIncomeAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredFrequentIncomeList().size());
+
+        FrequentIncome frequentIncome = model.getFilteredFrequentIncomeList().get(targetIndex.getZeroBased());
+        final String[] splitTitle = frequentIncome.getTitle().fullTitle.split("\\s+");
+        model.updateFilteredFrequentIncomeList(e -> e == frequentIncome);
+
+        assertEquals(1, model.getFilteredFrequentIncomeList().size());
+    }
+
+    /**
      * Updates {@code model}'s filtered list to show only the income at the given {@code targetIndex} in the
      * {@code model}'s finance tracker.
      */
