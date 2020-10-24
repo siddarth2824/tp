@@ -3,22 +3,20 @@ layout: page
 title: User Guide
 ---
 
-Fine\$\$e is a **desktop finance tracker optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fine\$\$e can help you track your transactions (expenses/incomes) and cultivate good financial habits faster than traditional GUI apps.
-
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 ## 1. Introduction
 
-### 1.1 About Fine\$\$e
-Welcome to Fine\$\$e!
+### 1.1 About Fine$$e
+Welcome to Fine$$e!
 
 Looking for an all-in-one solution to help you develop good financial habits? Look no further!
 
-Fine\$\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine\$\$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine\$\$e allows you to set expense limits and savings goals.
+Fine$$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine$$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine$$e allows you to set expense limits and savings goals.
 
-All your important information will be displayed on our sleek Graphical User Interface (GUI). Fine\$\$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI).
+All your important information will be displayed on our sleek Graphical User Interface (GUI). Fine$$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI).
 
 If you want to better manage your finances and at the same time increase your savings by cultivating good financial habits, then look no further as Fine\$\$e is definitely for you.
 
@@ -31,7 +29,7 @@ If you require help on setting up Fine$$e, you can go to the [Section 2. "Quick 
 
 If you want to find out more about the various features that Fine$$s boasts, you can go to [Section 4. "Features"](#4-features) section.
 
-If you want to have a overview of Fine$$e's commands, you can visit the [Section 4. "Command Summary](#5-command-summary) section.
+If you want to have a overview of Fine$$e's commands, you can visit the [Section 5. "Command Summary"](#5-command-summary) section.
 
 Do take note of the following symbols and formatting used throughout this document:
 
@@ -70,6 +68,7 @@ This section will show you the various components that make up Fine$$e's user in
 1. Refer to the [Features](#features) below for the details of each command.
 
 > :bulb: If you have any questions, you can check out our [Section 7. FAQ](#7-faq).
+
 --------------------------------------------------------------------------------------------------------------------
 ## 3. Overview of Features
 [To be added]
