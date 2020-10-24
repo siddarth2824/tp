@@ -41,7 +41,7 @@ public class FrequentExpenseListTest {
     @Test
     public void setFrequentExpense_nullTargetFrequentExpense_throwsNullPointerException() {
         assertThrows(NullPointerException.class, ()
-                -> frequentExpenseList.setFrequentExpense(null, PHONE_BILL));
+            -> frequentExpenseList.setFrequentExpense(null, PHONE_BILL));
     }
 
     @Test
