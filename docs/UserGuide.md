@@ -9,8 +9,43 @@ Fine\$\$e is a **desktop finance tracker optimized for use via a Command Line In
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+## 1. Introduction 
 
-## Quick start
+### 1.1 About Fine\$\$e
+Welcome to Fine\$\$e!  
+
+Looking for an all-in-one solution to help you develop good financial habits? Look no further!
+
+Fine\$\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine\$\$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine\$\$e allows you to set expense limits and savings goals.  
+
+All your important information will be displayed on our sleek Graphical User Interface (GUI). Fine\$\$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI). 
+
+If you want to better manage your finances and at the same time increase your savings by cultivating good financial habits, then look no further as Fine\$\$e is definitely for you.
+
+Explore our User Guide to find out more about Fine\$\$e’s amazing features.  
+
+### 1.2 Navigating the User Guide
+The aim of the User Guide is to provide you with all of the necessary information required for you to utilize Fine$$e. We understand that a Command Line Interface (CLI) might not be the easiest to use, hence we have ensured that the information provided is concise and easily readable.
+
+If you require help on setting up Fine$$e, you can go to the [Section 2. "Quick Start"](#2-quick-start) section.
+
+If you want to find out more about the various features that Fine$$s boasts, you can go to [Section 4. "Features"](#4-features) section.
+
+If you want to have a overview of Fine$$e's commands, you can visit the [Section 4. "Command Summary](#5-command-summary) section.
+
+Do take note of the following symbols and formatting used throughout this document:
+
+[Table showing the various symbol/formats that we will be using]
+ 
+--------------------------------------------------------------------------------------------------------------------
+## 2. Quick start
+This section will show you the various components that make up Fine$$e's user interface. You can also follow our step-by-step guide on how to install Fine$$e and get it to work on your computer. Let's get started!
+
+### 2.1 Layout of Fine$$e's Interface
+
+[To be added]
+
+### 2.2 Installation
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -34,9 +69,14 @@ Fine\$\$e is a **desktop finance tracker optimized for use via a Command Line In
 
 1. Refer to the [Features](#features) below for the details of each command.
 
+> :<bulb>: If you have any questions, you can check out our [Section 7. FAQ](#7-faq).
+>
 --------------------------------------------------------------------------------------------------------------------
+## 3. Overview of Features
 
-## Features
+--------------------------------------------------------------------------------------------------------------------
+## 4. Features
+This section aims to provide you with in-depth details on Fine$$e's unique features and also give you example usages of the features.
 
 <div markdown="block" class="alert alert-info">
 
@@ -174,15 +214,7 @@ Format: `exit`
 Fine$$e data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
-
-## FAQ
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Fine$$e finance tracker in the home folder.
-
---------------------------------------------------------------------------------------------------------------------
-
-## Command Summary
+## 5. Command Summary
 
 Action | Format | Examples
 ------|------|--------
@@ -195,3 +227,12 @@ Delete | `delete INDEX` | `delete 1`
 Tab | `tab INDEX` | `tab 2`
 Help | `help`
 Exit | `exit`
+
+--------------------------------------------------------------------------------------------------------------------
+## 6. Glossary
+
+--------------------------------------------------------------------------------------------------------------------
+## 7. FAQ
+
+**Q**: How do I transfer my data to another Computer?<br>
+**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Fine$$e finance tracker in the home folder.
