@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/tp/assets/css/style.css">
+
+    <title>Developer Guide</title>
+  
+
+</head>
+<body>
+<header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/tp/">Fine$$e</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tp/GanttChart.html">Gantt Chart</a><a class="page-link" href="/tp/Minutes.html">Meeting Minutes</a><a class="page-link" href="/tp/UserGuide.html">User Guide</a><a class="page-link" href="/tp/DeveloperGuide.html">Developer Guide</a><a class="page-link" href="/tp/AboutUs.html">About Us</a><a class="page-link no-hover" href="https://github.com/AY2021S1-CS2103T-W16-3/tp">
+            <img src="/tp/images/github-icon.png" class="icon" alt="View on GitHub">
+          </a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Developer Guide</h1>
+  </header>
+
+  <div class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#setting-up-getting-started" id="markdown-toc-setting-up-getting-started"><strong>Setting up, getting started</strong></a></li>
+  <li>
+<a href="#design" id="markdown-toc-design"><strong>Design</strong></a>    <ul>
+      <li><a href="#architecture" id="markdown-toc-architecture">Architecture</a></li>
+      <li><a href="#ui-component" id="markdown-toc-ui-component">UI component</a></li>
+      <li><a href="#logic-component" id="markdown-toc-logic-component">Logic component</a></li>
+      <li><a href="#model-component" id="markdown-toc-model-component">Model component</a></li>
+      <li><a href="#storage-component" id="markdown-toc-storage-component">Storage component</a></li>
+      <li><a href="#common-classes" id="markdown-toc-common-classes">Common classes</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#implementation" id="markdown-toc-implementation"><strong>Implementation</strong></a>    <ul>
+      <li><a href="#find-transactions" id="markdown-toc-find-transactions">Find transactions</a></li>
+      <li><a href="#programmatically-switch-selected-tab" id="markdown-toc-programmatically-switch-selected-tab">Programmatically switch selected tab</a></li>
+      <li><a href="#set-monthly-spending-limit" id="markdown-toc-set-monthly-spending-limit">Set monthly spending limit</a></li>
+      <li><a href="#set-monthly-savings-goal" id="markdown-toc-set-monthly-savings-goal">Set monthly savings goal</a></li>
+      <li>
+<a href="#proposed-frequent-expense-feature" id="markdown-toc-proposed-frequent-expense-feature">[Proposed] Frequent Expense Feature</a>        <ul>
+          <li><a href="#proposed-implementation" id="markdown-toc-proposed-implementation">Proposed Implementation</a></li>
+          <li><a href="#convert-frequent-expense-to-expense-feature" id="markdown-toc-convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#documentation-logging-testing-configuration-dev-ops" id="markdown-toc-documentation-logging-testing-configuration-dev-ops"><strong>Documentation, logging, testing, configuration, dev-ops</strong></a></li>
+  <li>
+<a href="#appendix-requirements" id="markdown-toc-appendix-requirements"><strong>Appendix: Requirements</strong></a>    <ul>
+      <li><a href="#product-scope" id="markdown-toc-product-scope">Product scope</a></li>
+      <li><a href="#user-stories" id="markdown-toc-user-stories">User stories</a></li>
+      <li><a href="#use-cases" id="markdown-toc-use-cases">Use cases</a></li>
+      <li><a href="#non-functional-requirements" id="markdown-toc-non-functional-requirements">Non-Functional Requirements</a></li>
+      <li><a href="#glossary" id="markdown-toc-glossary">Glossary</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#appendix-instructions-for-manual-testing" id="markdown-toc-appendix-instructions-for-manual-testing"><strong>Appendix: Instructions for manual testing</strong></a>    <ul>
+      <li><a href="#launch-and-shutdown" id="markdown-toc-launch-and-shutdown">Launch and shutdown</a></li>
+      <li><a href="#deleting-a-transaction" id="markdown-toc-deleting-a-transaction">Deleting a transaction</a></li>
+      <li><a href="#saving-data" id="markdown-toc-saving-data">Saving data</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h2 id="setting-up-getting-started"><strong>Setting up, getting started</strong></h2>
+
+<p>Refer to the guide <a href="/tp/SettingUp.html"><em>Setting up and getting started</em></a>.</p>
+
+<hr>
+
+<h2 id="design"><strong>Design</strong></h2>
+
+<h3 id="architecture">Architecture</h3>
+
+<p><img src="images/ArchitectureDiagram.png" width="450"></p>
+
+<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+
+<p><strong><code class="highlighter-rouge">Main</code></strong> has two classes called <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/Main.java"><code class="highlighter-rouge">Main</code></a> and <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/MainApp.java"><code class="highlighter-rouge">MainApp</code></a>. It is responsible for:</p>
+<ul>
+  <li>on app launch - initializing the components in the correct sequence, and connecting them to each other.</li>
+  <li>on shut down - shutting down the components and invoking cleanup methods where necessary.</li>
+</ul>
+
+<p><a href="#common-classes"><strong><code class="highlighter-rouge">Commons</code></strong></a> represents a collection of classes used by multiple other components.</p>
+
+<p>The rest of the App consists of four components.</p>
+
+<ul>
+  <li>
+<a href="#ui-component"><strong><code class="highlighter-rouge">UI</code></strong></a>: The App’s User Interface.</li>
+  <li>
+<a href="#logic-component"><strong><code class="highlighter-rouge">Logic</code></strong></a>: The command executor.</li>
+  <li>
+<a href="#model-component"><strong><code class="highlighter-rouge">Model</code></strong></a>: Holds the data of the App in memory.</li>
+  <li>
+<a href="#storage-component"><strong><code class="highlighter-rouge">Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</li>
+</ul>
+
+<p>Each of the four components:</p>
+
+<ul>
+  <li>defines its <em>API</em> in an <code class="highlighter-rouge">interface</code> with the same name as the Component.</li>
+  <li>exposes its functionality using a concrete <code class="highlighter-rouge">{Component Name}Manager</code> class (which implements the corresponding API <code class="highlighter-rouge">interface</code> mentioned in the previous point.</li>
+</ul>
+
+<p>For example, the <code class="highlighter-rouge">Logic</code> component (see the class diagram given below) defines its API in the <code class="highlighter-rouge">Logic.java</code> interface and exposes its functionality using the <code class="highlighter-rouge">LogicManager.java</code> class which implements the <code class="highlighter-rouge">Logic</code> interface.</p>
+
+<p><img src="/tp/images/LogicClassDiagram.png" alt="Class Diagram of the Logic Component"></p>
+
+<p><strong>How the architecture components interact with each other</strong></p>
+
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code class="highlighter-rouge">delete 1</code>.</p>
+
+<p><img src="images/ArchitectureSequenceDiagram.png" width="574"></p>
+
+<p>The sections below give more details of each component.</p>
+
+<h3 id="ui-component">UI component</h3>
+
+<p><img src="/tp/images/UiClassDiagram.png" alt="Structure of the UI Component"></p>
+
+<p><strong>API</strong> :
+<a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/ui/Ui.java"><code class="highlighter-rouge">Ui.java</code></a></p>
+
+<p>The UI consists of a <code class="highlighter-rouge">MainWindow</code> that is made up of parts e.g.<code class="highlighter-rouge">CommandBox</code>, <code class="highlighter-rouge">ResultDisplay</code>, <code class="highlighter-rouge">TransactionListPanel</code>, <code class="highlighter-rouge">StatusBarFooter</code> etc. All of these, including <code class="highlighter-rouge">MainWindow</code>, inherit from the abstract <code class="highlighter-rouge">UiPart</code> class.</p>
+
+<p>The <code class="highlighter-rouge">UI</code> component uses the JavaFx UI framework. The layout of these UI parts is defined in matching <code class="highlighter-rouge">.fxml</code> files that are in the <code class="highlighter-rouge">src/main/resources/view</code> folder. For example, the layout of <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/ui/MainWindow.java"><code class="highlighter-rouge">MainWindow</code></a> is specified in <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/resources/view/MainWindow.fxml"><code class="highlighter-rouge">MainWindow.fxml</code></a>.</p>
+
+<p>The <code class="highlighter-rouge">UI</code> component:</p>
+
+<ul>
+  <li>executes user commands using the <code class="highlighter-rouge">Logic</code> component.</li>
+  <li>listens for changes to <code class="highlighter-rouge">Model</code> data so that the UI can be updated with the modified data.</li>
+</ul>
+
+<h3 id="logic-component">Logic component</h3>
+
+<p><img src="/tp/images/LogicClassDiagram.png" alt="Structure of the Logic Component"></p>
+
+<p><strong>API</strong> :
+<a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/logic/Logic.java"><code class="highlighter-rouge">Logic.java</code></a></p>
+
+<ol>
+  <li>
+<code class="highlighter-rouge">Logic</code> uses the <code class="highlighter-rouge">FinanceTrackerParser</code> class to parse the user command.</li>
+  <li>This results in a <code class="highlighter-rouge">Command</code> object which is executed by <code class="highlighter-rouge">LogicManager</code>.</li>
+  <li>The command execution can affect <code class="highlighter-rouge">Model</code> (e.g. adding a transaction).</li>
+  <li>The result of the command execution is encapsulated as a <code class="highlighter-rouge">CommandResult</code> object which is passed back to <code class="highlighter-rouge">Ui</code>.</li>
+  <li>In addition, the <code class="highlighter-rouge">CommandResult</code> object can also instruct <code class="highlighter-rouge">Ui</code> to perform certain actions, such as displaying the help message to the user.</li>
+</ol>
+
+<p>Below is the Sequence Diagram for interactions within the <code class="highlighter-rouge">Logic</code> component for the <code class="highlighter-rouge">execute("delete 1")</code> API call.</p>
+
+<p><img src="/tp/images/DeleteSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `delete 1` Command"></p>
+
+<div class="alert alert-info">
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> The lifeline for <code class="highlighter-rouge">DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
+
+<h3 id="model-component">Model component</h3>
+
+<p><img src="/tp/images/ModelClassDiagram.png" alt="Structure of the Model Component"></p>
+
+<p><strong>API</strong> : <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/model/Model.java"><code class="highlighter-rouge">Model.java</code></a></p>
+
+<p>The <code class="highlighter-rouge">Model</code>:</p>
+
+<ul>
+  <li>stores a <code class="highlighter-rouge">UserPref</code> object that represents the user’s preferences.</li>
+  <li>stores the finance tracker data in a <code class="highlighter-rouge">TransactionList</code> containing <code class="highlighter-rouge">Transaction</code>s.</li>
+  <li>exposes <code class="highlighter-rouge">MonthlySavings</code> and <code class="highlighter-rouge">MonthlyBudget</code>, which can be ‘observed’ e.g. the UI can be bound to the values in these classes so that the UI automatically updates when the values in the classes change.</li>
+  <li>exposes an unmodifiable <code class="highlighter-rouge">ObservableList&lt;Transaction&gt;</code> which can be ‘observed’ e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list changes.</li>
+  <li>does not depend on any of the other three components (<code class="highlighter-rouge">UI</code>, <code class="highlighter-rouge">Logic</code>, <code class="highlighter-rouge">Storage</code>).</li>
+</ul>
+
+<p>A <code class="highlighter-rouge">Transaction</code>:</p>
+<ul>
+  <li>represents a unit of user data within the finance tracker.</li>
+  <li>is either an <code class="highlighter-rouge">Expense</code> or an <code class="highlighter-rouge">Income</code>.</li>
+  <li>is composed of a <code class="highlighter-rouge">Title</code>, an <code class="highlighter-rouge">Amount</code>, a <code class="highlighter-rouge">Date</code>, and any number of <code class="highlighter-rouge">Category</code>s. These are known as <em>data fields</em>.</li>
+</ul>
+
+<p>The <em>data fields</em> <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code>, <code class="highlighter-rouge">Date</code>, and <code class="highlighter-rouge">Category</code> are encapsulations of an underlying Java data type.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Field</th>
+      <th>Underlying Java Data Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">Title</code></td>
+      <td><code class="highlighter-rouge">java.lang.String</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Amount</code></td>
+      <td><code class="highlighter-rouge">java.math.BigDecimal</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Date</code></td>
+      <td><code class="highlighter-rouge">java.time.LocalDate</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Category</code></td>
+      <td><code class="highlighter-rouge">java.lang.String</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The underlying Java data types allow more operations to be done on <code class="highlighter-rouge">Transaction</code> objects, such as filtering <code class="highlighter-rouge">Transaction</code>s by <code class="highlighter-rouge">Date</code>, or aggregating the <code class="highlighter-rouge">Amount</code>s of <code class="highlighter-rouge">Expense</code>s and <code class="highlighter-rouge">Income</code>s.</p>
+
+<div class="alert alert-info">
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> All data fields take in a <code class="highlighter-rouge">String</code> in their constructor, regardless of the underlying Java data type.
+Within the constructor, data validation takes place to ensure that the <code class="highlighter-rouge">String</code> correctly represents a valid data field.
+If the <code class="highlighter-rouge">String</code> given is not valid, an <code class="highlighter-rouge">IllegalArgumentException</code> will be thrown.
+Otherwise, the <code class="highlighter-rouge">String</code> is parsed into the underlying Java data type.<br><br>
+The reason for this is that when a data field object needs to be created, it is generally from a <code class="highlighter-rouge">String</code>
+(such as when a user command parsed from the <code class="highlighter-rouge">Logic</code> component, or when a transaction is loaded from the <code class="highlighter-rouge">Storage</code> component).
+This abstraction is maintained so that the implementation of other components (<code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Storage</code>) is independent of
+the underlying Java data type choices in the <code class="highlighter-rouge">Model</code> component.
+</div>
+
+<p>The <code class="highlighter-rouge">FinanceTracker</code> has a <code class="highlighter-rouge">TransactionList</code> field which stores all <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code> objects together.</p>
+
+<p>The <code class="highlighter-rouge">ModelManager</code> has three <code class="highlighter-rouge">FilteredList</code> fields which point to the same <code class="highlighter-rouge">ObservableList</code> obtained from <code class="highlighter-rouge">FinanceTracker::getTransactionList</code>.
+The <code class="highlighter-rouge">Predicate</code> fields in the three <code class="highlighter-rouge">FilteredList</code> fields are set such that:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">filteredTransactions</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects</li>
+  <li>
+<code class="highlighter-rouge">filteredExpenses</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Expense</code>
+</li>
+  <li>
+<code class="highlighter-rouge">filteredIncomes</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Income</code>
+</li>
+</ul>
+
+<p>The motivation behind having three lists is due to the fact that there are three tabs in the user interface, each having its own list while at the same time retrieving data from the same transaction list.</p>
+
+<h3 id="storage-component">Storage component</h3>
+
+<p><img src="/tp/images/StorageClassDiagram.png" alt="Structure of the Storage Component"></p>
+
+<p><strong>API</strong> : <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/storage/Storage.java"><code class="highlighter-rouge">Storage.java</code></a></p>
+
+<p>The <code class="highlighter-rouge">Storage</code> component:</p>
+
+<ul>
+  <li>can save <code class="highlighter-rouge">UserPref</code> objects in <code class="highlighter-rouge">JSON</code> format and read it back.</li>
+  <li>can save the finance tracker data in <code class="highlighter-rouge">JSON</code> format and read it back.</li>
+</ul>
+
+<p><code class="highlighter-rouge">JsonAdaptedExpense</code> and <code class="highlighter-rouge">JsonAdaptedIncome</code> are <code class="highlighter-rouge">JSON</code>-friendly adaptations of <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code> respectively.
+However, unlike <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code>, all the fields in <code class="highlighter-rouge">JsonAdaptedExpense</code> and <code class="highlighter-rouge">JsonAdaptedIncome</code> are <code class="highlighter-rouge">String</code> objects.
+This is so that the fields are compatible with the <code class="highlighter-rouge">JSON</code> format.</p>
+
+<p><code class="highlighter-rouge">JsonSerializableFinanceTracker</code> contains two <code class="highlighter-rouge">List</code> fields, one containing all <code class="highlighter-rouge">JsonAdaptedExpense</code> objects and the other containing all <code class="highlighter-rouge">JsonAdaptedIncome</code> objects.
+Despite the similarities between <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code>, and despite the fact that objects of both types are put into the same list in <code class="highlighter-rouge">FinanceTracker</code>,
+the motivation behind keeping them separately is to ensure that they are separately listed in the <code class="highlighter-rouge">JSON</code> data file.</p>
+
+<h3 id="common-classes">Common classes</h3>
+
+<p>Classes used by multiple components are in the <code class="highlighter-rouge">ay2021s1_cs2103_w16_3.finesse.commons</code> package.</p>
+
+<hr>
+
+<h2 id="implementation"><strong>Implementation</strong></h2>
+
+<p>This section describes some noteworthy details on how certain features are implemented.</p>
+
+<h3 id="find-transactions">Find transactions</h3>
+
+<p>The find transactions feature is implemented via <code class="highlighter-rouge">FindCommandParser</code>, as well as the following commands:</p>
+
+<ul>
+  <li>
+<code class="highlighter-rouge">FindCommand</code>, the base command that is returned when the command is parsed</li>
+  <li>
+<code class="highlighter-rouge">FindTransactionCommand</code>, to be executed when the user inputs the command on the Overview tab</li>
+  <li>
+<code class="highlighter-rouge">FindExpenseCommand</code>, to be executed when the user inputs the command on the Expenses tab</li>
+  <li>
+<code class="highlighter-rouge">FindIncomeCommand</code>, to be executed when the user inputs the command on the Incomes tab</li>
+</ul>
+
+<p><code class="highlighter-rouge">FindCommandParser</code> takes in the command arguments and parses them to return a <code class="highlighter-rouge">FindCommand</code> containing the correct predicate for finding the transactions.
+Depending on the UI tab the user inputted the command in, a <code class="highlighter-rouge">FindXXXCommand</code> (<code class="highlighter-rouge">FindTransactionCommand</code>, <code class="highlighter-rouge">FindExpenseCommand</code> or <code class="highlighter-rouge">FindIncomeCommand</code>) will be created from the base <code class="highlighter-rouge">FindCommand</code>.
+When executed, the <code class="highlighter-rouge">FindXXXCommand</code> will set the predicate of the respective <code class="highlighter-rouge">FilteredList</code> in <code class="highlighter-rouge">ModelManager</code> so that only the transactions matching the keywords will be displayed in the list.</p>
+
+<p>Below is the Sequence Diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">"find tea"</code> command while on the Overview tab.</p>
+
+<p><img src="/tp/images/FindSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `find tea` Command on the Overview tab"></p>
+
+<p>Alternatives considered:</p>
+
+<ul>
+  <li>Having separate command parsers for each tab in which the find command can be input, e.g. <code class="highlighter-rouge">FindTransactionCommandParser</code>, <code class="highlighter-rouge">FindExpenseCommandParser</code> and <code class="highlighter-rouge">FindIncomeCommandParser</code>.</li>
+</ul>
+
+<h3 id="programmatically-switch-selected-tab">Programmatically switch selected tab</h3>
+
+<p>Several of the expense/income-specific commands update the list of transactions displayed in a particular tab.
+Examples of these include the <code class="highlighter-rouge">add-expense</code> and <code class="highlighter-rouge">add-income</code> commands.
+As such, on the execution of such commands, the UI has to switch to the affected tab to display the result of the command execution.</p>
+
+<p>The ability to programmatically update the selected tab is implemented via <code class="highlighter-rouge">CommandResult</code>.
+Upon the successful execution of a command, a <code class="highlighter-rouge">CommandResult</code> is generated and passed back to <code class="highlighter-rouge">MainWindow</code>.
+This <code class="highlighter-rouge">CommandResult</code> contains the necessary information which the <code class="highlighter-rouge">MainWindow</code> needs to update the user interface, such as:</p>
+<ul>
+  <li>The feedback to be displayed to the user;</li>
+  <li>Whether to exit the application; and</li>
+  <li>Whether to programmatically switch to a different tab in the user interface.</li>
+</ul>
+
+<p><img src="/tp/images/CommandResultSequenceDiagram.png" alt="Interactions inside the Logic Component when executing commands"></p>
+
+<p>Alternatives considered:</p>
+
+<ul>
+  <li>Add a method in <code class="highlighter-rouge">MainWindow</code> which can be called to programmatically switch tabs in the user interface upon execution of the command.
+This was decided against as it would result in a much tighter coupling of <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">UI</code> components.</li>
+</ul>
+
+<h3 id="set-monthly-spending-limit">Set monthly spending limit</h3>
+
+<p>The monthly budgeting feature is implemented via <code class="highlighter-rouge">SetExpenseLimitCommand</code> as well as <code class="highlighter-rouge">MonthlyExpenseLimit</code>.</p>
+
+<p>[Coming soon]</p>
+
+<h3 id="set-monthly-savings-goal">Set monthly savings goal</h3>
+
+<p>The monthly budgeting feature is implemented via <code class="highlighter-rouge">SetSavingsGoalCommand</code> as well as <code class="highlighter-rouge">MonthlySavingsGoal</code>.</p>
+
+<p>[Coming soon]</p>
+
+<h3 id="proposed-frequent-expense-feature">[Proposed] Frequent Expense Feature</h3>
+
+<h4 id="proposed-implementation">Proposed Implementation</h4>
+<p>The Frequent Expense feature consists of <code class="highlighter-rouge">add-frequent-expense</code>, <code class="highlighter-rouge">edit-frequent-expense</code>, <code class="highlighter-rouge">delete-frequent-expense</code>,
+<code class="highlighter-rouge">convert-frequent-expense</code>.</p>
+
+<p>Frequent expenses are expenses that the user have identified to be occurring regularly or with high frequency.
+Examples of such expenses can be phone bill, music subscription or buying bubble tea on a weekly basis.</p>
+
+<p>This feature allows users to add frequent expenses to the finance tracker. The user can then choose to convert a
+frequent expense to an expense that the user wants to add to the transaction list in the finance tracker. This is done by
+calling <code class="highlighter-rouge">Logic#execute</code> which creates an  <code class="highlighter-rouge">AddFrequentExpenseCommand</code>. This command then calls
+<code class="highlighter-rouge">ModelManager#addFrequentExpense</code>, adding the specified frequent expense into the frequent expense list.</p>
+
+<p>This feature also simplifies the deletion and editing of frequent expenses, and they work in a similar manner.</p>
+
+<h4 id="convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</h4>
+
+<p>The purpose of this feature is to allow users to add expenses, that they add to the transaction list in the finance
+tracker on a frequent basis in a convenient manner. After adding a frequent expense into the frequent expense list in
+the finance tracker, the user can call convert-frequent-expense to the respective frequent expense to make the
+conversion.</p>
+
+<p>Given below is the proposed UML sequence diagram and explanation of an example usage scenario for
+convert-frequent-expense</p>
+
+<p><img src="/tp/images/ConvertFrequentExpenseSequenceDiagram.png" alt="Sequence Diagram of the Convert Frequent Expense To Expense Feature"></p>
+
+<ol>
+  <li>User enters the command <code class="highlighter-rouge">convert-frequent-expense 1 d/05/05/2020</code>, where <code class="highlighter-rouge">1</code> is the index of the respective frequent
+expense in the frequent expense list and <code class="highlighter-rouge">d/05/05/20</code> is the date on which the user wants to carry out the conversion,
+to add the selected frequent expense into the expense list. This command is executed by <code class="highlighter-rouge">LogicManager</code>, which will then
+call <code class="highlighter-rouge">FinanceTrackerParser#parseCommand(“convert-frequent-expense 1 d/05/05/2020”)</code>. This will create a
+<code class="highlighter-rouge">ConvertFrequentExpenseCommand</code> object and return it to the <code class="highlighter-rouge">LogicManager</code>.</li>
+  <li>The <code class="highlighter-rouge">LogicManager</code> will then call <code class="highlighter-rouge">ConvertFrequentExpenseCommand#execute</code>, which will call
+<code class="highlighter-rouge">Model#getFilteredFrequentExpenseList()</code> to retrieve the list of frequent expenses in the finance tracker.</li>
+  <li>The program will then retrieve the specified frequent expense from the list of frequent expenses. It will
+then call <code class="highlighter-rouge">FrequentExpense#convert</code> on the frequent expense together with the date the user has inputted and convert
+it to an <code class="highlighter-rouge">Expense</code> object.</li>
+  <li>After converting the <code class="highlighter-rouge">FrequentExpense</code> object to an <code class="highlighter-rouge">Expense</code> object, it will call <code class="highlighter-rouge">Model#addExpense</code> to add the
+<code class="highlighter-rouge">Expense</code> object to the expense list in the finance tracker.
+——————————————————————————————————————–</li>
+</ol>
+
+<h2 id="documentation-logging-testing-configuration-dev-ops"><strong>Documentation, logging, testing, configuration, dev-ops</strong></h2>
+
+<ul>
+  <li><a href="/tp/Documentation.html">Documentation guide</a></li>
+  <li><a href="/tp/Testing.html">Testing guide</a></li>
+  <li><a href="/tp/Logging.html">Logging guide</a></li>
+  <li><a href="/tp/Configuration.html">Configuration guide</a></li>
+  <li><a href="/tp/DevOps.html">DevOps guide</a></li>
+</ul>
+
+<hr>
+
+<h2 id="appendix-requirements"><strong>Appendix: Requirements</strong></h2>
+
+<h3 id="product-scope">Product scope</h3>
+
+<p><strong>Target user profile</strong>:</p>
+
+<ul>
+  <li>Tertiary student</li>
+  <li>Has a need to track everyday expenses/incomes</li>
+  <li>Wishes to cultivate good saving habits</li>
+  <li>Prefers desktop apps</li>
+  <li>Prefers typing to mouse interactions</li>
+</ul>
+
+<p><strong>Value proposition</strong>: Manage finances and cultivate good financial habits (such as saving) efficiently by typing in CLI commands</p>
+
+<h3 id="user-stories">User stories</h3>
+
+<p>Priorities: High (must have) - <code class="highlighter-rouge">* * *</code>, Medium (nice to have) - <code class="highlighter-rouge">* *</code>, Low (unlikely to have) - <code class="highlighter-rouge">*</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Priority</th>
+      <th>As a …​</th>
+      <th>I want to …​</th>
+      <th>So that I can…​</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>new user</td>
+      <td>see usage instructions</td>
+      <td>refer to instructions when I forget how to use the app</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>add an expense</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>add an income</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>view a list of past transactions</td>
+      <td>keep track of my past expenses/incomes</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>edit a transaction</td>
+      <td>update expenses/incomes that were entered wrongly</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>delete a transaction</td>
+      <td>remove expenses/incomes that were entered wrongly</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>group transactions by categories</td>
+      <td>keep track of my past expenses/incomes across various categories</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>search for transactions</td>
+      <td>easily find related expenses/incomes</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* *</code></td>
+      <td>user</td>
+      <td>set a monthly spending limit</td>
+      <td>track how much I have left to spend for the month</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* *</code></td>
+      <td>user</td>
+      <td>set a monthly saving goal</td>
+      <td>cultivate good saving habits</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* *</code></td>
+      <td>user</td>
+      <td>view my saving trends</td>
+      <td>better manage my future expenses</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>{More to be added}</em></p>
+
+<h3 id="use-cases">Use cases</h3>
+
+<p>(For all use cases below, the <strong>System</strong> is <code class="highlighter-rouge">Fine$$e</code> and the <strong>Actor</strong> is the <code class="highlighter-rouge">user</code>, unless specified otherwise)</p>
+
+<p><strong>Use case: Delete an expense</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to list expenses</li>
+  <li>Fine$$e shows a list of expenses</li>
+  <li>User requests to delete a specific expense</li>
+  <li>
+    <p>Fine$$e deletes the expense</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>2a. The list is empty.</p>
+
+    <p>Use case ends.</p>
+  </li>
+  <li>
+    <p>3a. The given index is invalid.</p>
+
+    <ul>
+      <li>
+        <p>3a1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><em>{More to be added}</em></p>
+
+<h3 id="non-functional-requirements">Non-Functional Requirements</h3>
+
+<ol>
+  <li>Should work on any mainstream OS as long as it has Java <code class="highlighter-rouge">11</code> or above installed.</li>
+  <li>Should be able to hold up to 1000 expenses/incomes without a noticeable sluggishness in performance for typical usage.</li>
+  <li>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</li>
+  <li>The data should be stored locally and should be in a human-editable text file.</li>
+  <li>The data should not be stored in a Database Management System (DBMS).</li>
+  <li>Should not require an installer.</li>
+  <li>Should not depend on any remote server.</li>
+</ol>
+
+<p><em>{More to be added}</em></p>
+
+<h3 id="glossary">Glossary</h3>
+
+<ul>
+  <li>
+<strong>Expense</strong>: A single transaction that results in a decrease in cash</li>
+  <li>
+<strong>Income</strong>: A single transaction that results in an increase in cash</li>
+  <li>
+<strong>Mainstream OS</strong>: Windows, Linux, Unix, OS-X</li>
+  <li>
+<strong>Savings</strong>: Net gain (positive) or loss (negative) in cash over a set period of time</li>
+</ul>
+
+<hr>
+
+<h2 id="appendix-instructions-for-manual-testing"><strong>Appendix: Instructions for manual testing</strong></h2>
+
+<p>Given below are instructions to test the app manually.</p>
+
+<div class="alert alert-info">
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> These instructions only provide a starting point for testers to work on;
+testers are expected to do more <em>exploratory</em> testing.
+
+</div>
+
+<h3 id="launch-and-shutdown">Launch and shutdown</h3>
+
+<ol>
+  <li>
+    <p>Initial launch</p>
+
+    <ol>
+      <li>
+        <p>Download the jar file and copy into an empty folder</p>
+      </li>
+      <li>
+        <p>Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Saving window preferences</p>
+
+    <ol>
+      <li>
+        <p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+      </li>
+      <li>
+        <p>Re-launch the app by double-clicking the jar file.<br>
+ Expected: The most recent window size and location is retained.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><em>{ more test cases …​ }</em></p>
+  </li>
+</ol>
+
+<h3 id="deleting-a-transaction">Deleting a transaction</h3>
+
+<ol>
+  <li>
+    <p>Deleting a transaction while all transactions are being shown</p>
+
+    <ol>
+      <li>
+        <p>Prerequisites: List all transactions using the <code class="highlighter-rouge">list</code> command. Multiple transactions in the list.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete 1</code><br>
+Expected: First transaction is deleted from the list. Details of the deleted transaction shown in the status message. Timestamp in the status bar is updated.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete 0</code><br>
+Expected: No transaction is deleted. Error details shown in the status message. Status bar remains the same.</p>
+      </li>
+      <li>
+        <p>Other incorrect delete commands to try: <code class="highlighter-rouge">delete</code>, <code class="highlighter-rouge">delete x</code>, <code class="highlighter-rouge">...</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><em>{ more test cases …​ }</em></p>
+  </li>
+</ol>
+
+<h3 id="saving-data">Saving data</h3>
+
+<ol>
+  <li>
+    <p>Dealing with missing/corrupted data files</p>
+
+    <ol>
+      <li><em>{explain how to simulate a missing/corrupted file, and the expected behavior}</em></li>
+    </ol>
+  </li>
+  <li>
+    <p><em>{ more test cases …​ }</em></p>
+  </li>
+</ol>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>

@@ -1,0 +1,75 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+package UI <<Rectangle>>{
+Interface Ui <<Interface>>
+Class "{abstract}\nUiPart" as UiPart
+Class UiManager
+Class MainWindow
+Class ResultDisplay
+Class TransactionListPanel
+Class TransactionCard
+Class StatusBarFooter
+Class CommandBox
+Class SavingsGoalPanel
+Class UiState
+
+package Expense {
+Class ExpensePanel
+}
+package Income {
+Class IncomePanel
+}
+
+}
+
+package Model <<Rectangle>> {
+Class HiddenModel #FFFFFF
+}
+
+package Logic <<Rectangle>> {
+Class HiddenLogic #FFFFFF
+}
+
+Class HiddenOutside #FFFFFF
+HiddenOutside ..> Ui
+
+UiManager .left.|> Ui
+UiManager -down-> MainWindow
+UiManager --> UiState
+MainWindow --> UiState
+MainWindow *-down-> CommandBox
+MainWindow *-down-> ResultDisplay
+MainWindow *-down-> TransactionListPanel
+MainWindow *-down-> StatusBarFooter
+MainWindow *-down-> ExpensePanel
+MainWindow *-down-> IncomePanel
+MainWindow *-down-> SavingsGoalPanel
+
+TransactionListPanel -down-> TransactionCard
+
+MainWindow -left-|> UiPart
+
+ResultDisplay --|> UiPart
+CommandBox --|> UiPart
+TransactionListPanel --|> UiPart
+TransactionCard --|> UiPart
+StatusBarFooter --|> UiPart
+ExpensePanel --|> UiPart
+IncomePanel --|> UiPart
+SavingsGoalPanel --|> UiPart
+
+TransactionCard ..> Model
+UiManager -right-> Logic
+MainWindow -left-> Logic
+
+CommandBox -[hidden]left- ResultDisplay
+ResultDisplay -[hidden]left- StatusBarFooter
+ExpensePanel -[hidden]left- TransactionListPanel
+IncomePanel -[hidden]left- SavingsGoalPanel
+
+MainWindow -[hidden]-|> UiPart
+@enduml
