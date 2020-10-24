@@ -10,15 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand.EditFrequentExpenseDescriptor;
-import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentExpenseDescriptorBuilder;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentTransactionDescriptor;
+import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentTransactionDescriptorBuilder;
 
-public class EditFrequentExpenseDescriptorTest {
+public class EditFrequentTransactionDescriptorTest {
 
     @Test
     public void equals() {
         // same values -> returns true
-        EditFrequentExpenseDescriptor descriptorWithSameValues = new EditFrequentExpenseDescriptor(DESC_PHONE_BILL);
+        EditFrequentTransactionDescriptor descriptorWithSameValues =
+                new EditFrequentTransactionDescriptor(DESC_PHONE_BILL);
         assertTrue(DESC_PHONE_BILL.equals(descriptorWithSameValues));
 
         // same object -> returns true
@@ -34,17 +35,18 @@ public class EditFrequentExpenseDescriptorTest {
         assertFalse(DESC_PHONE_BILL.equals(DESC_SPOTIFY_SUBSCRIPTION));
 
         // different title -> returns false
-        EditFrequentExpenseDescriptor editedFrequentExpense = new EditFrequentExpenseDescriptorBuilder(DESC_PHONE_BILL)
+        EditFrequentTransactionDescriptor editedFrequentExpense =
+                new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build();
         assertFalse(DESC_PHONE_BILL.equals(editedFrequentExpense));
 
         // different amount -> returns false
-        editedFrequentExpense = new EditFrequentExpenseDescriptorBuilder(DESC_PHONE_BILL)
+        editedFrequentExpense = new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
                 .withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION).build();
         assertFalse(DESC_PHONE_BILL.equals(editedFrequentExpense));
 
         // different categories -> returns false
-        editedFrequentExpense = new EditFrequentExpenseDescriptorBuilder(DESC_PHONE_BILL)
+        editedFrequentExpense = new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
                 .withCategories(VALID_CATEGORY_WORK).build();
         assertFalse(DESC_PHONE_BILL.equals(editedFrequentExpense));
     }

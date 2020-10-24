@@ -13,7 +13,7 @@ import java.util.List;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentTransactionDescriptor;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
@@ -21,7 +21,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
-import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentExpenseDescriptorBuilder;
+import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentTransactionDescriptorBuilder;
 import ay2021s1_cs2103_w16_3.finesse.testutil.EditTransactionDescriptorBuilder;
 
 /**
@@ -79,8 +79,8 @@ public class CommandTestUtil {
 
     public static final EditCommand.EditTransactionDescriptor DESC_BUBBLE_TEA;
     public static final EditCommand.EditTransactionDescriptor DESC_INTERNSHIP;
-    public static final EditFrequentExpenseCommand.EditFrequentExpenseDescriptor DESC_SPOTIFY_SUBSCRIPTION;
-    public static final EditFrequentExpenseCommand.EditFrequentExpenseDescriptor DESC_PHONE_BILL;
+    public static final EditFrequentTransactionDescriptor DESC_SPOTIFY_SUBSCRIPTION;
+    public static final EditFrequentTransactionDescriptor DESC_PHONE_BILL;
 
     static {
         DESC_BUBBLE_TEA = new EditTransactionDescriptorBuilder().withTitle(VALID_TITLE_BUBBLE_TEA)
@@ -89,10 +89,10 @@ public class CommandTestUtil {
         DESC_INTERNSHIP = new EditTransactionDescriptorBuilder().withTitle(VALID_TITLE_INTERNSHIP)
                 .withAmount(VALID_AMOUNT_INTERNSHIP).withDate(VALID_DATE_INTERNSHIP)
                 .withCategories(VALID_CATEGORY_WORK, VALID_CATEGORY_FOOD_BEVERAGE).build();
-        DESC_SPOTIFY_SUBSCRIPTION = new EditFrequentExpenseDescriptorBuilder()
+        DESC_SPOTIFY_SUBSCRIPTION = new EditFrequentTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION)
                 .withCategories(VALID_CATEGORY_MISCELLANEOUS).build();
-        DESC_PHONE_BILL = new EditFrequentExpenseDescriptorBuilder().withTitle(VALID_TITLE_PHONE_BILL)
+        DESC_PHONE_BILL = new EditFrequentTransactionDescriptorBuilder().withTitle(VALID_TITLE_PHONE_BILL)
                 .withAmount(VALID_AMOUNT_PHONE_BILL).withCategories(VALID_CATEGORY_UTILITIES).build();
     }
 

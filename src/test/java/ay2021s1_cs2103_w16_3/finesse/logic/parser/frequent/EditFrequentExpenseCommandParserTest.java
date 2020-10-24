@@ -27,11 +27,12 @@ import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentTransactionDescriptor;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
-import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentExpenseDescriptorBuilder;
+import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentTransactionDescriptorBuilder;
 
 public class EditFrequentExpenseCommandParserTest {
 
@@ -101,7 +102,7 @@ public class EditFrequentExpenseCommandParserTest {
         String userInput = targetIndex.getOneBased() + AMOUNT_DESC_PHONE_BILL + CATEGORY_DESC_UTILITIES
                 + TITLE_DESC_SPOTIFY_SUBSCRIPTION + CATEGORY_DESC_MISCELLANEOUS;
 
-        EditFrequentExpenseCommand.EditFrequentExpenseDescriptor descriptor = new EditFrequentExpenseDescriptorBuilder()
+        EditFrequentTransactionDescriptor descriptor = new EditFrequentTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).withAmount(VALID_AMOUNT_PHONE_BILL)
                 .withCategories(VALID_CATEGORY_UTILITIES, VALID_CATEGORY_MISCELLANEOUS).build();
         EditFrequentExpenseCommand expectedCommand = new EditFrequentExpenseCommand(targetIndex, descriptor);
@@ -114,7 +115,7 @@ public class EditFrequentExpenseCommandParserTest {
         Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + AMOUNT_DESC_PHONE_BILL;
 
-        EditFrequentExpenseCommand.EditFrequentExpenseDescriptor descriptor = new EditFrequentExpenseDescriptorBuilder()
+        EditFrequentTransactionDescriptor descriptor = new EditFrequentTransactionDescriptorBuilder()
                 .withAmount(VALID_AMOUNT_PHONE_BILL).build();
         EditFrequentExpenseCommand expectedCommand = new EditFrequentExpenseCommand(targetIndex, descriptor);
 
@@ -126,20 +127,20 @@ public class EditFrequentExpenseCommandParserTest {
         // title
         Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + TITLE_DESC_SPOTIFY_SUBSCRIPTION;
-        EditFrequentExpenseCommand.EditFrequentExpenseDescriptor descriptor = new EditFrequentExpenseDescriptorBuilder()
+        EditFrequentTransactionDescriptor descriptor = new EditFrequentTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build();
         EditFrequentExpenseCommand expectedCommand = new EditFrequentExpenseCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // amounts
         userInput = targetIndex.getOneBased() + AMOUNT_DESC_PHONE_BILL;
-        descriptor = new EditFrequentExpenseDescriptorBuilder().withAmount(VALID_AMOUNT_PHONE_BILL).build();
+        descriptor = new EditFrequentTransactionDescriptorBuilder().withAmount(VALID_AMOUNT_PHONE_BILL).build();
         expectedCommand = new EditFrequentExpenseCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // categories
         userInput = targetIndex.getOneBased() + CATEGORY_DESC_UTILITIES;
-        descriptor = new EditFrequentExpenseDescriptorBuilder().withCategories(VALID_CATEGORY_UTILITIES).build();
+        descriptor = new EditFrequentTransactionDescriptorBuilder().withCategories(VALID_CATEGORY_UTILITIES).build();
         expectedCommand = new EditFrequentExpenseCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -149,8 +150,8 @@ public class EditFrequentExpenseCommandParserTest {
         Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + CATEGORY_EMPTY;
 
-        EditFrequentExpenseCommand.EditFrequentExpenseDescriptor descriptor =
-                new EditFrequentExpenseDescriptorBuilder().withCategories().build();
+        EditFrequentTransactionDescriptor descriptor = new EditFrequentTransactionDescriptorBuilder().withCategories()
+                .build();
         EditFrequentExpenseCommand expectedCommand = new EditFrequentExpenseCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

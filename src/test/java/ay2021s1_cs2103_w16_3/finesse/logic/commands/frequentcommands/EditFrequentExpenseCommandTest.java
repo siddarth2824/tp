@@ -19,13 +19,13 @@ import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand.EditFrequentExpenseDescriptor;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentTransactionDescriptor;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentExpenseDescriptorBuilder;
+import ay2021s1_cs2103_w16_3.finesse.testutil.EditFrequentTransactionDescriptorBuilder;
 import ay2021s1_cs2103_w16_3.finesse.testutil.FrequentTransactionBuilder;
 
 public class EditFrequentExpenseCommandTest {
@@ -35,8 +35,8 @@ public class EditFrequentExpenseCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         FrequentExpense editedFrequentExpense = new FrequentTransactionBuilder().buildFrequentExpense();
-        EditFrequentExpenseDescriptor descriptor =
-                new EditFrequentExpenseDescriptorBuilder(editedFrequentExpense).build();
+        EditFrequentTransactionDescriptor descriptor =
+                new EditFrequentTransactionDescriptorBuilder(editedFrequentExpense).build();
         EditFrequentExpenseCommand editFrequentExpenseCommand =
                 new EditFrequentExpenseCommand(INDEX_FIRST, descriptor);
 
@@ -59,7 +59,7 @@ public class EditFrequentExpenseCommandTest {
                 .withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION)
                 .withCategories(VALID_CATEGORY_MISCELLANEOUS).buildFrequentExpense();
 
-        EditFrequentExpenseDescriptor descriptor = new EditFrequentExpenseDescriptorBuilder()
+        EditFrequentTransactionDescriptor descriptor = new EditFrequentTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION)
                 .withCategories(VALID_CATEGORY_MISCELLANEOUS).build();
         EditFrequentExpenseCommand editFrequentExpenseCommand =
@@ -77,7 +77,7 @@ public class EditFrequentExpenseCommandTest {
     @Test
     public void execute_invalidFrequentExpenseIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredFrequentExpenseList().size() + 1);
-        EditFrequentExpenseDescriptor descriptor = new EditFrequentExpenseDescriptorBuilder()
+        EditFrequentTransactionDescriptor descriptor = new EditFrequentTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build();
         EditFrequentExpenseCommand editExpenseCommand = new EditFrequentExpenseCommand(outOfBoundIndex, descriptor);
 
@@ -98,7 +98,7 @@ public class EditFrequentExpenseCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getFrequentExpenseList().size());
 
         EditFrequentExpenseCommand editFrequentExpenseCommand = new EditFrequentExpenseCommand(outOfBoundIndex,
-                new EditFrequentExpenseDescriptorBuilder().withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build());
+                new EditFrequentTransactionDescriptorBuilder().withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build());
 
         assertCommandFailure(editFrequentExpenseCommand, model, MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
     }
@@ -109,7 +109,8 @@ public class EditFrequentExpenseCommandTest {
                 new EditFrequentExpenseCommand(INDEX_FIRST, DESC_SPOTIFY_SUBSCRIPTION);
 
         // same values -> returns true
-        EditFrequentExpenseDescriptor copyDescriptor = new EditFrequentExpenseDescriptor(DESC_SPOTIFY_SUBSCRIPTION);
+        EditFrequentTransactionDescriptor copyDescriptor =
+                new EditFrequentTransactionDescriptor(DESC_SPOTIFY_SUBSCRIPTION);
         EditFrequentExpenseCommand commandWithSameValues =
                 new EditFrequentExpenseCommand(INDEX_FIRST, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
