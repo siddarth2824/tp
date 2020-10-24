@@ -14,22 +14,26 @@ Welcome to Fine$$e!
 
 Looking for an all-in-one solution to help you develop good financial habits? Look no further!
 
-Fine$$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine$$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine$$e allows you to set expense limits and savings goals.
+Fine$$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively.
+Fine$$e allows you to keep track of your incomes, expenses and savings with a few simple commands.
+Furthermore, to help you cultivate good financial habits Fine$$e allows you to set expense limits and savings goals.
 
-All your important information will be displayed on our sleek Graphical User Interface (GUI). Fine$$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI).
+All your important information will be displayed on our sleek Graphical User Interface (GUI).
+Fine$$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI).
 
 If you want to better manage your finances and at the same time increase your savings by cultivating good financial habits, then look no further as Fine\$\$e is definitely for you.
 
 Explore our User Guide to find out more about Fine\$\$e’s amazing features.
 
 ### 1.2 Navigating the User Guide
-The aim of the User Guide is to provide you with all of the necessary information required for you to utilize Fine$$e. We understand that a Command Line Interface (CLI) might not be the easiest to use, hence we have ensured that the information provided is concise and easily readable.
+The aim of the User Guide is to provide you with all of the necessary information required for you to utilize Fine$$e.
+We understand that a Command Line Interface (CLI) might not be the easiest to use, hence we have ensured that the information provided is concise and easily readable.
 
 If you require help on setting up Fine$$e, you can go to the [Section 2. "Quick Start"](#2-quick-start) section.
 
-If you want to find out more about the various features that Fine$$s boasts, you can go to [Section 4. "Features"](#4-features) section.
+If you want to find out more about the various features that Fine$$s has to offer, you can go to [Section 4. "Features"](#4-features) section.
 
-If you want to have a overview of Fine$$e's commands, you can visit the [Section 5. "Command Summary"](#5-command-summary) section.
+If you want to have an overview of Fine$$e's commands, you can visit the [Section 5. "Command Summary"](#5-command-summary) section.
 
 Do take note of the following symbols and formatting used throughout this document:
 
@@ -37,7 +41,9 @@ Do take note of the following symbols and formatting used throughout this docume
 
 --------------------------------------------------------------------------------------------------------------------
 ## 2. Quick start
-This section will show you the various components that make up Fine$$e's user interface. You can also follow our step-by-step guide on how to install Fine$$e and get it to work on your computer. Let's get started!
+This section will show you the various components that make up Fine$$e's user interface.
+You can also follow our step-by-step guide on how to install Fine$$e and get it to work on your computer.
+Let's get started!
 
 ### 2.1 Layout of Fine$$e's Interface
 
@@ -51,15 +57,17 @@ This section will show you the various components that make up Fine$$e's user in
 
 1. Copy the file to the folder you want to use as the *home folder* for Fine$$e.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds, but without any sample data.<br>
+1. Double-click the file to start the app.
+The GUI similar to the below should appear in a few seconds, but without any sample data.
    ![Ui](images/Ui.png)
 
-1. Type a command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will bring up the help message.<br>
+1. Type a command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will bring up the help message.
    Some example commands you can try:
 
    * `list`: Lists all transactions on the current list.
 
-   * `add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food & Beverage`: Adds an expense with the title `Bubble Tea`, amount `5`, date `03/10/2020` and category `Food & Beverage` to the finance tracker.
+   * `add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food & Beverage`:
+   Adds an expense with the title `Bubble Tea`, amount `5`, date `03/10/2020` and category `Food & Beverage` to the finance tracker.
 
    * `delete 3`: Deletes the 3rd transaction shown in the current list.
 
@@ -75,7 +83,7 @@ This section will show you the various components that make up Fine$$e's user in
 
 --------------------------------------------------------------------------------------------------------------------
 ## 4. Features
-This section aims to provide you with in-depth details on Fine$$e's unique features and also give you example usages of the features.
+This section aims to provide you with in-depth details on Fine\$\$e's unique features and also give you example usages of the features.
 
 <div markdown="block" class="alert alert-info">
 
@@ -472,7 +480,8 @@ Format: `exit`
 
 ### 4.11 Saving the data
 
-Fine$$e data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Fine$$e data is saved in the hard disk automatically after any command that changes the data.
+There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 ## 5. Command Summary
