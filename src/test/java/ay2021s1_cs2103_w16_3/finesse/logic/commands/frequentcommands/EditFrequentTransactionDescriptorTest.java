@@ -35,19 +35,19 @@ public class EditFrequentTransactionDescriptorTest {
         assertFalse(DESC_PHONE_BILL.equals(DESC_SPOTIFY_SUBSCRIPTION));
 
         // different title -> returns false
-        EditFrequentTransactionDescriptor editedFrequentTransaction =
+        EditFrequentTransactionDescriptor editFrequentTransactionDescriptor =
                 new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build();
-        assertFalse(DESC_PHONE_BILL.equals(editedFrequentTransaction));
+        assertFalse(DESC_PHONE_BILL.equals(editFrequentTransactionDescriptor));
 
         // different amount -> returns false
-        editedFrequentTransaction = new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
+        editFrequentTransactionDescriptor = new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
                 .withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION).build();
-        assertFalse(DESC_PHONE_BILL.equals(editedFrequentTransaction));
+        assertFalse(DESC_PHONE_BILL.equals(editFrequentTransactionDescriptor));
 
         // different categories -> returns false
-        editedFrequentTransaction = new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
+        editFrequentTransactionDescriptor = new EditFrequentTransactionDescriptorBuilder(DESC_PHONE_BILL)
                 .withCategories(VALID_CATEGORY_WORK).build();
-        assertFalse(DESC_PHONE_BILL.equals(editedFrequentTransaction));
+        assertFalse(DESC_PHONE_BILL.equals(editFrequentTransactionDescriptor));
     }
 }

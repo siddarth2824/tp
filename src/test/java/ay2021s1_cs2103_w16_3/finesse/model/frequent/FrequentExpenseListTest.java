@@ -18,6 +18,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.FrequentTransacti
 import ay2021s1_cs2103_w16_3.finesse.testutil.FrequentTransactionBuilder;
 
 public class FrequentExpenseListTest {
+
     private final FrequentExpenseList frequentExpenseList = new FrequentExpenseList();
 
     @Test
@@ -26,7 +27,7 @@ public class FrequentExpenseListTest {
     }
 
     @Test
-    public void add_duplicateFrequentExpense_throwsDuplicateFrequentExpenseException() {
+    public void add_duplicateFrequentExpense_throwsDuplicateFrequentTransactionException() {
         FrequentExpense frequentExpense = new FrequentTransactionBuilder(PHONE_BILL)
                 .withCategories(VALID_CATEGORY_UTILITIES).buildFrequentExpense();
 
@@ -40,7 +41,7 @@ public class FrequentExpenseListTest {
     @Test
     public void setFrequentExpense_nullTargetFrequentExpense_throwsNullPointerException() {
         assertThrows(NullPointerException.class, ()
-            -> frequentExpenseList.setFrequentExpense(null, PHONE_BILL));
+                -> frequentExpenseList.setFrequentExpense(null, PHONE_BILL));
     }
 
     @Test

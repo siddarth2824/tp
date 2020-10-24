@@ -39,9 +39,15 @@ public class FrequentIncomeListTest {
     }
 
     @Test
-    public void setFrequentIncome_nullList_throwsNullPointerException() {
+    public void setFrequentIncome_nullTargetFrequentIncome_throwsNullPointerException() {
         assertThrows(NullPointerException.class, ()
-            -> frequentIncomeList.setFrequentIncomes((List<FrequentIncome>) null));
+            -> frequentIncomeList.setFrequentIncome(null, PART_TIME));
+    }
+
+    @Test
+    public void setFrequentIncome_nullEditedTFrequentIncome_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, ()
+            -> frequentIncomeList.setFrequentIncome(PART_TIME, null));
     }
 
     @Test
