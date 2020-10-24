@@ -86,7 +86,7 @@ public class EditFrequentExpenseCommandTest {
 
 
     /**
-     * Edit filtered frequent expense list where index is larger than size of filtered expense list,
+     * Edit filtered frequent expense list where index is larger than size of filtered frequent expense list,
      * but smaller than size of finance tracker
      */
     @Test

@@ -86,7 +86,7 @@ public class EditFrequentIncomeCommandTest {
     }
 
     /**
-     * Edit filtered frequent income list where index is larger than size of filtered income list,
+     * Edit filtered frequent income list where index is larger than size of filtered frequent income list,
      * but smaller than size of finance tracker
      */
     @Test
