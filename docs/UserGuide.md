@@ -9,20 +9,20 @@ Fine\$\$e is a **desktop finance tracker optimized for use via a Command Line In
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
-## 1. Introduction 
+## 1. Introduction
 
 ### 1.1 About Fine\$\$e
-Welcome to Fine\$\$e!  
+Welcome to Fine\$\$e!
 
 Looking for an all-in-one solution to help you develop good financial habits? Look no further!
 
-Fine\$\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine\$\$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine\$\$e allows you to set expense limits and savings goals.  
+Fine\$\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine\$\$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine\$\$e allows you to set expense limits and savings goals. 
 
-All your important information will be displayed on our sleek Graphical User Interface (GUI). Fine\$\$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI). 
+All your important information will be displayed on our sleek Graphical User Interface (GUI). Fine\$\$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI).
 
 If you want to better manage your finances and at the same time increase your savings by cultivating good financial habits, then look no further as Fine\$\$e is definitely for you.
 
-Explore our User Guide to find out more about Fine\$\$e’s amazing features.  
+Explore our User Guide to find out more about Fine\$\$e’s amazing features.
 
 ### 1.2 Navigating the User Guide
 The aim of the User Guide is to provide you with all of the necessary information required for you to utilize Fine$$e. We understand that a Command Line Interface (CLI) might not be the easiest to use, hence we have ensured that the information provided is concise and easily readable.
@@ -36,7 +36,7 @@ If you want to have a overview of Fine$$e's commands, you can visit the [Section
 Do take note of the following symbols and formatting used throughout this document:
 
 [Table showing the various symbol/formats that we will be using]
- 
+
 --------------------------------------------------------------------------------------------------------------------
 ## 2. Quick start
 This section will show you the various components that make up Fine$$e's user interface. You can also follow our step-by-step guide on how to install Fine$$e and get it to work on your computer. Let's get started!
@@ -69,10 +69,10 @@ This section will show you the various components that make up Fine$$e's user in
 
 1. Refer to the [Features](#features) below for the details of each command.
 
-> :<bulb>: If you have any questions, you can check out our [Section 7. FAQ](#7-faq).
->
+> :bulb: If you have any questions, you can check out our [Section 7. FAQ](#7-faq).
 --------------------------------------------------------------------------------------------------------------------
 ## 3. Overview of Features
+[To be added]
 
 --------------------------------------------------------------------------------------------------------------------
 ## 4. Features
@@ -96,12 +96,45 @@ This section aims to provide you with in-depth details on Fine$$e's unique featu
 
 </div>
 
-### Viewing help: `help`
+### 4.1 Viewing Help
 Shows a message with instructions on how to access the user guide.
 
 Format: `help`
 
-### Add an expense: `add-expense` / `adde` / (on Expense tab) `add`
+Expected Outcome: 
+```$xslt
+Refer to the user guide: https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html. 
+Please copy the url and paste it in your favourite browser to view all valid commands.
+``` 
+### 4.2 Tabs
+[Brief Overview of this feature]
+
+#### 4.2.1 Switch Tab
+Switches the current tab on Fine$$e.
+
+Format: `tab INDEX`
+- Switches to the tab corresponding to the specified `INDEX`. The index **must be either 1, 2, 3 or 4**.
+    - Index 1 switches to the Overview Tab
+    - Index 2 switches to the Incomes Tab
+    - Index 3 switches to the Expenses Tab
+    - Index 4 switches to the Analytics Tab
+
+Example:
+- `tab 3`
+
+Example Usage: 
+- `tag 1`
+
+Expected Outcome:
+```$xslt
+Switched to overview tab.
+```
+
+### 4.3 Expense 
+[Overview of feature]
+
+#### 4.3.1 Add Expense 
+
 Adds an expense to the finance tracker.
 
 Format: `add-expense t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...`
@@ -113,7 +146,77 @@ Examples:
 * `add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food & Beverage`
 * `adde t/Taxi Home from School a/$13.50 d/10/10/2020 c/Transport c/School`
 
-### Add an income: `add-income` / `addi` / (on Income tab) `add`
+#### 4.3.2 Edit Expense
+
+Edits an expense in the finance tracker.
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples:
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.3.3 Delete Expense
+
+Deletes the specified expense from the finance tracker.
+
+Format: 
+
+Shortcut:
+
+[Description of parameters]
+
+Examples:
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.3.4 List Expense
+
+Shows a list of all the expenses in the finance tracker.
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples:
+
+Example Usage:
+
+Expected Outcome:
+
+
+#### 4.3.5 Find Expense
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+### 4.4 Income
+
+[Summary of feature]
+
+#### 4.4.1 Add Income
+
 Adds an income to the finance tracker.
 
 Format: `add-income t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...`
@@ -125,91 +228,250 @@ Examples:
 * `add-income t/Internship a/560 d/03/10/2020 c/Work`
 * `addi t/Angpao money a/$20 d/25/01/2020 c/CNY c/Gift`
 
-### List transactions: `list`
+#### 4.4.2 Edit Income
 
-Shows a list of all transactions on the current tab.
-* On Overview tab: lists all transactions (expenses/incomes).
-* On Expenses tab: lists all expenses.
-* On Income tab: lists all incomes.
+Edits an income in the finance tracker.
 
-Format: `list`
+Format:
 
-### Finding transactions by keyword: `find`
+Shortcut:
 
-Finds transactions with titles that contain any of the given keywords on the current tab.
-* On Overview tab: searches all transactions (expenses/incomes).
-* On Expenses tab: searches all expenses.
-* On Income tab: searches all incomes.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `taxi` will match `Taxi`
-* The order of the keywords does not matter. e.g. `Bus Train` will match `Train Bus`
-* Only the title is searched.
-* Only full words will be matched. e.g. `Snack` will not match `Snacks`
-* Titles matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Tea Coffee` will return `Bubble Tea`, `Starbucks Coffee`
+[Description of parameters]
 
 Examples:
-* `find milk` returns `strawberry milk` and `Chocolate Milk`
-* `find tea coffee` returns `Bubble Tea` and `Starbucks Coffee`
 
-### Edit a transaction: `edit`
+Example Usage:
 
-Edits an existing transaction in the finance tracker.
+Expected Outcome:
 
-Format: `edit INDEX [t/TITLE] [a/AMOUNT] [d/DATE] [c/CATEGORY]…​`
+#### 4.4.3 Delete Income
 
-* Edits the transaction at the specified `INDEX` on the current list.
-  The index refers to the index number shown on the current displayed list.
-  The index **must be a positive integer** 1, 2, 3, …​
-    * On Overview tab: edits the transaction at the specified `INDEX` on the current transaction list.
-    * On Expenses tab: edits the expense at the specified `INDEX` on the current expenses list.
-    * On Income tab: edits the income at the specified `INDEX` on the current incomes list.
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing category, the existing categories for that transaction will be removed i.e adding of categories is not cumulative.
-* You can remove all the transaction's categories by typing `c/` without specifying any categories after it.
+Deletes the specified income from the finance tracker.
 
-Examples:
-*  (On Expenses tab) `list` followed by `edit 1 t/Brunch d/22/09/2020` edits the title and date of the 1st expense in the expenses list to be `Brunch` and `22/09/2020` respectively.
-*  (On Income tab) `find prize` followed by `edit 2 a/500 c/` edits the amount of the 2nd income in the resulting incomes list of the `find` command to be `500` and clears all existing categories.
+Format:
 
-### Delete a transaction: `delete`
+Shortcut:
 
-Deletes a specified transaction from the finance tracker.
+#### 4.4.4 List Income
 
-Format: `delete INDEX`
+Shows a list of all the incomes in the finance tracker.
 
-* Deletes a specified transaction at the specified `INDEX` on the current list.
-  The index refers to the index number shown on the current displayed list.
-  The index **must be a positive integer** 1, 2, 3, …​
-    * On Overview tab: deletes the transaction at the specified `INDEX` on the current transaction list.
-    * On Expenses tab: deletes the expense at the specified `INDEX` on the current expenses list.
-    * On Income tab: deletes the income at the specified `INDEX` on the current incomes list.
+Format:
 
-Examples:
-* (On Expenses tab) `list` followed by `delete 3` deletes the 3rd expense in the expenses list from the finance tracker.
-* (On Income tab) `find allowance` followed by `delete 2` deletes the 2nd income in the resulting incomes list of the `find` command from the finance tracker.
+Shortcut:
 
-### Switch tab: `tab`
+[Description of parameters]
 
-Switches the current tab on the finance tracker.
+Examples: 
 
-Format: `delete INDEX`
+Example Usage:
 
-* Switches to the tab corresponding to the specified `INDEX`. The index **must be 1, 2, 3, or 4**.
-    1. Switches to the Overview tab.
-    1. Switches to the Expenses tab.
-    1. Switches to the Income tab.
-    1. Switches to the Analytics tab.
+Expected Outcome:
 
-### Exiting the app: `exit`
-Exits the app.
+#### 4.4.5 Find Income
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+### 4.5 Frequent Expense
+
+[Summary of feature]
+
+#### 4.5.1 Add Frequent Expense
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.5.2 Edit Frequent Expense
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.5.3 Delete Frequent Expense
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.5.4 Convert Frequent Expense
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+### 4.6 Frequent Income
+
+[Summary of feature]
+
+#### 4.6.1 Add Frequent Income
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.6.2 Edit Frequent Income
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.6.3 Delete Frequent Income
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+#### 4.6.4 Convert Frequent Income
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+### 4.7 Expense Limit
+
+[Summary of feature]
+
+#### 4.7.1 Set Expense Limit
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+### 4.8 Savings Goal 
+
+[Summary of feature]
+
+#### 4.8.1 Set Savings Goal
+
+[Explain what the command does]
+
+Format:
+
+Shortcut:
+
+[Description of parameters]
+
+Examples: 
+
+Example Usage:
+
+Expected Outcome:
+
+### 4.9 Analytics
+
+[Summary of feature]
+
+[Sub section for your commands]
+
+### 4.10 Exiting the Program
+Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### 4.11 Saving the data
 
 Fine$$e data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
@@ -230,6 +492,8 @@ Exit | `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 ## 6. Glossary
+
+[To be added]
 
 --------------------------------------------------------------------------------------------------------------------
 ## 7. FAQ
