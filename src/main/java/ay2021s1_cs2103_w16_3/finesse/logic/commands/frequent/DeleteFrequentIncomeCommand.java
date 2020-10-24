@@ -12,6 +12,9 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 
+/**
+ * Deletes a frequent income identified using its displayed index from the finance tracker.
+ */
 public class DeleteFrequentIncomeCommand extends Command {
     public static final String COMMAND_WORD = "delete-frequent-income";
 

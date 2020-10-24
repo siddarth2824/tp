@@ -13,6 +13,8 @@ import javafx.collections.ObservableList;
 
 /**
  * A list of frequent incomes that does not allow nulls.
+ * The removal of a frequent income uses FrequentIncome#equals(Object) so as to ensure that the frequent income
+ * with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  */
@@ -41,15 +43,6 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     }
 
     /**
-     * Replaces the contents of this list with {@code frequentIncomes}.
-     */
-    public void setFrequentIncomes(List<FrequentIncome> frequentIncomes) {
-        requireAllNonNull(frequentIncomes);
-
-        internalFrequentIncomeList.setAll(frequentIncomes);
-    }
-
-    /**
      * Replaces the frequent income {@code target} in the list with {@code editedFrequentIncome}.
      * {@code target} must exist in the list.
      * The frequent income identity of {@code editedFrequentIncome} must not be the same as another existing
@@ -67,6 +60,13 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     }
 
     /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList<FrequentIncome> asUnmodifiableObservableList() {
+        return internalUnmodifiableFrequentIncomeList;
+    }
+
+    /**
      * Removes the equivalent frequent income from the list.
      * The frequent income must exist in the list.
      */
@@ -78,10 +78,17 @@ public class FrequentIncomeList implements Iterable<FrequentIncome> {
     }
 
     /**
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     * Replaces the contents of this list with {@code frequentIncomes}.
      */
-    public ObservableList<FrequentIncome> asUnmodifiableObservableList() {
-        return internalUnmodifiableFrequentIncomeList;
+    public void setFrequentIncomes(List<FrequentIncome> frequentIncomes) {
+        requireAllNonNull(frequentIncomes);
+
+        internalFrequentIncomeList.setAll(frequentIncomes);
+    }
+
+    public void setFrequentIncomes(FrequentIncomeList replacement) {
+        requireNonNull(replacement);
+        internalFrequentIncomeList.setAll(replacement.internalFrequentIncomeList);
     }
 
     @Override

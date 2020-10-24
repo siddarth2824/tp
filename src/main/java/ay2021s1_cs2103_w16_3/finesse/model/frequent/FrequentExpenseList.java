@@ -13,8 +13,8 @@ import javafx.collections.ObservableList;
 
 /**
  * A list of frequent expenses that does not allow nulls.
- * The removal of a transaction uses FrequentExpense#equals(Object) so as to ensure that the transaction with exactly
- * the same fields will be removed.
+ * The removal of a frequent expense uses FrequentExpense#equals(Object) so as to ensure that the frequent expense
+ * with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  */
