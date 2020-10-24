@@ -13,7 +13,7 @@ import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand.EditFrequentExpenseDescriptor;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentTransactionDescriptor;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentMultimap;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentTokenizer;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.Parser;
@@ -43,7 +43,7 @@ public class EditFrequentExpenseCommandParser implements Parser<EditFrequentExpe
                     EditFrequentExpenseCommand.MESSAGE_USAGE), pe);
         }
 
-        EditFrequentExpenseDescriptor editFrequentExpenseDescriptor = new EditFrequentExpenseDescriptor();
+        EditFrequentTransactionDescriptor editFrequentExpenseDescriptor = new EditFrequentTransactionDescriptor();
 
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
             editFrequentExpenseDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));

@@ -45,13 +45,14 @@ public class EditFrequentExpenseCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final Index targetIndex;
-    private final EditFrequentExpenseDescriptor editFrequentExpenseDescriptor;
+    private final EditFrequentTransactionDescriptor editFrequentExpenseDescriptor;
 
     /**
      * @param targetIndex Index of the frequent expense in the filtered frequent expense list to edit.
      * @param editFrequentExpenseDescriptor Details to edit the frequent expense with.
      */
-    public EditFrequentExpenseCommand(Index targetIndex, EditFrequentExpenseDescriptor editFrequentExpenseDescriptor) {
+    public EditFrequentExpenseCommand(Index targetIndex,
+                                      EditFrequentTransactionDescriptor editFrequentExpenseDescriptor) {
         requireNonNull(targetIndex);
         requireNonNull(editFrequentExpenseDescriptor);
 
@@ -69,7 +70,7 @@ public class EditFrequentExpenseCommand extends Command {
         }
 
         FrequentExpense frequentExpenseToEdit = lastShownList.get(targetIndex.getZeroBased());
-        FrequentExpense editedFrequentExpense = createdEditedFrequentExpense(frequentExpenseToEdit,
+        FrequentExpense editedFrequentExpense = createEditedFrequentExpense(frequentExpenseToEdit,
                 editFrequentExpenseDescriptor);
 
         model.setFrequentExpense(frequentExpenseToEdit, editedFrequentExpense);
@@ -81,8 +82,9 @@ public class EditFrequentExpenseCommand extends Command {
      * Creates and returns a {@code FrequentExpense} with the details of {@code frequentExpenseToEdit}
      * edited with {@code editFrequentExpenseDescriptor}.
      */
-    private static FrequentExpense createdEditedFrequentExpense(FrequentExpense frequentExpenseToEdit,
-                                                       EditFrequentExpenseDescriptor editFrequentExpenseDescriptor) {
+    private static FrequentExpense createEditedFrequentExpense(FrequentExpense frequentExpenseToEdit,
+                                                       EditFrequentTransactionDescriptor
+                                                       editFrequentExpenseDescriptor) {
         assert frequentExpenseToEdit != null;
 
         Title updatedTitle = editFrequentExpenseDescriptor.getTitle().orElse(frequentExpenseToEdit.getTitle());
@@ -111,82 +113,4 @@ public class EditFrequentExpenseCommand extends Command {
                 && editFrequentExpenseDescriptor.equals(otherEditFrequentExpenseCommand.editFrequentExpenseDescriptor);
     }
 
-    /**
-     * Stores the details to edit the frequent expense with. Each non-empty field value will replace the
-     * corresponding field value of the frequent expense.
-     */
-    public static class EditFrequentExpenseDescriptor {
-        private Title title;
-        private Amount amount;
-        private Set<Category> categories;
-
-        public EditFrequentExpenseDescriptor() {}
-
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code categories} is used internally.
-         */
-        public EditFrequentExpenseDescriptor(EditFrequentExpenseDescriptor toCopy) {
-            setTitle(toCopy.title);
-            setAmount(toCopy.amount);
-            setCategories(toCopy.categories);
-        }
-
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, amount, categories);
-        }
-
-        public void setTitle(Title title) {
-            this.title = title;
-        }
-
-        public Optional<Title> getTitle() {
-            return Optional.ofNullable(title);
-        }
-
-        public void setAmount(Amount amount) {
-            this.amount = amount;
-        }
-
-        public Optional<Amount> getAmount() {
-            return Optional.ofNullable(amount);
-        }
-
-        /**
-         * Sets {@code categories} to this object's {@code categories}.
-         * A defensive copy of {@code categories} is used internally.
-         */
-        public void setCategories(Set<Category> categories) {
-            this.categories = (categories != null) ? new HashSet<>(categories) : null;
-        }
-
-        /**
-         * Returns an unmodifiable category set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code categories} is null.
-         */
-        public Optional<Set<Category>> getCategories() {
-            return (categories != null) ? Optional.of(Collections.unmodifiableSet(categories)) : Optional.empty();
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof EditFrequentExpenseDescriptor)) {
-                return false;
-            }
-
-            // state check
-            EditFrequentExpenseDescriptor otherEditFrequentExpenseDescriptor = (EditFrequentExpenseDescriptor) other;
-
-            return getTitle().equals(otherEditFrequentExpenseDescriptor.getTitle())
-                    && getAmount().equals(otherEditFrequentExpenseDescriptor.getAmount())
-                    && getCategories().equals(otherEditFrequentExpenseDescriptor.getCategories());
-        }
-    }
 }

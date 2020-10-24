@@ -13,7 +13,7 @@ import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentIncomeCommand.EditFrequentIncomeDescriptor;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentTransactionDescriptor;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentMultimap;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentTokenizer;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.Parser;
@@ -43,7 +43,7 @@ public class EditFrequentIncomeCommandParser implements Parser<EditFrequentIncom
                     EditFrequentIncomeCommand.MESSAGE_USAGE));
         }
 
-        EditFrequentIncomeDescriptor editFrequentIncomeDescriptor = new EditFrequentIncomeDescriptor();
+        EditFrequentTransactionDescriptor editFrequentIncomeDescriptor = new EditFrequentTransactionDescriptor();
 
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
             editFrequentIncomeDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
@@ -77,4 +77,5 @@ public class EditFrequentIncomeCommandParser implements Parser<EditFrequentIncom
                 ? Collections.emptySet() : categories;
         return Optional.of(ParserUtil.parseCategories(categorySet));
     }
+
 }

@@ -46,13 +46,14 @@ public class EditFrequentIncomeCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final Index targetIndex;
-    private final EditFrequentIncomeDescriptor editFrequentIncomeDescriptor;
+    private final EditFrequentTransactionDescriptor editFrequentIncomeDescriptor;
 
     /**
      * @param targetIndex Index of the frequent income in the filtered frequent income list to edit.
      * @param editFrequentIncomeDescriptor Details to edit the frequent income with.
      */
-    public EditFrequentIncomeCommand(Index targetIndex, EditFrequentIncomeDescriptor editFrequentIncomeDescriptor) {
+    public EditFrequentIncomeCommand(Index targetIndex,
+                                     EditFrequentTransactionDescriptor editFrequentIncomeDescriptor) {
         requireNonNull(targetIndex);
         requireNonNull(editFrequentIncomeDescriptor);
 
@@ -83,7 +84,7 @@ public class EditFrequentIncomeCommand extends Command {
      * edited with {@code editFrequentIncomeDescriptor}.
      */
     private static FrequentIncome createdEditedFrequentIncome(FrequentIncome frequentIncomeToEdit,
-                                                       EditFrequentIncomeDescriptor editFrequentIncomeDescriptor) {
+                                                       EditFrequentTransactionDescriptor editFrequentIncomeDescriptor) {
         assert frequentIncomeToEdit != null;
 
         Title updatedTitle = editFrequentIncomeDescriptor.getTitle().orElse(frequentIncomeToEdit.getTitle());
@@ -110,81 +111,6 @@ public class EditFrequentIncomeCommand extends Command {
         EditFrequentIncomeCommand otherEditFrequentIncomeCommand = (EditFrequentIncomeCommand) other;
         return targetIndex.equals(otherEditFrequentIncomeCommand.targetIndex)
                 && editFrequentIncomeDescriptor.equals(otherEditFrequentIncomeCommand.editFrequentIncomeDescriptor);
-    }
-
-    public static class EditFrequentIncomeDescriptor {
-        private Title title;
-        private Amount amount;
-        private Set<Category> categories;
-
-        public EditFrequentIncomeDescriptor() {}
-
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code categories} is used internally.
-         */
-        public EditFrequentIncomeDescriptor(EditFrequentIncomeDescriptor toCopy) {
-            setTitle(toCopy.title);
-            setAmount(toCopy.amount);
-            setCategories(toCopy.categories);
-        }
-
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, amount, categories);
-        }
-
-        public void setTitle(Title title) {
-            this.title = title;
-        }
-
-        public Optional<Title> getTitle() {
-            return Optional.ofNullable(title);
-        }
-
-        public void setAmount(Amount amount) {
-            this.amount = amount;
-        }
-
-        public Optional<Amount> getAmount() {
-            return Optional.ofNullable(amount);
-        }
-
-        /**
-         * Sets {@code categories} to this object's {@code categories}.
-         * A defensive copy of {@code categories} is used internally.
-         */
-        public void setCategories(Set<Category> categories) {
-            this.categories = (categories != null) ? new HashSet<>(categories) : null;
-        }
-
-        /**
-         * Returns an unmodifiable category set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code categories} is null.
-         */
-        public Optional<Set<Category>> getCategories() {
-            return (categories != null) ? Optional.of(Collections.unmodifiableSet(categories)) : Optional.empty();
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof EditFrequentIncomeDescriptor)) {
-                return false;
-            }
-
-            // state check
-            EditFrequentIncomeDescriptor otherEditFrequentIncomeDescriptor = (EditFrequentIncomeDescriptor) other;
-
-            return getTitle().equals(otherEditFrequentIncomeDescriptor.getTitle())
-                    && getAmount().equals(otherEditFrequentIncomeDescriptor.getAmount())
-                    && getCategories().equals(otherEditFrequentIncomeDescriptor.getCategories());
-        }
     }
 
 }
