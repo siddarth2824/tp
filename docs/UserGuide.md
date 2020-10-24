@@ -16,7 +16,7 @@ Welcome to Fine\$\$e!
 
 Looking for an all-in-one solution to help you develop good financial habits? Look no further!
 
-Fine\$\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine\$\$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine\$\$e allows you to set expense limits and savings goals. 
+Fine\$\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively. Fine\$\$e allows you to keep track of your incomes, expenses and savings with a few simple commands. Furthermore, to help you cultivate good financial habits Fine\$\$e allows you to set expense limits and savings goals.
 
 All your important information will be displayed on our sleek Graphical User Interface (GUI). Fine\$\$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI).
 
@@ -101,11 +101,11 @@ Shows a message with instructions on how to access the user guide.
 
 Format: `help`
 
-Expected Outcome: 
+Expected Outcome:
 ```$xslt
-Refer to the user guide: https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html. 
+Refer to the user guide: https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html.
 Please copy the url and paste it in your favourite browser to view all valid commands.
-``` 
+```
 ### 4.2 Tabs
 [Brief Overview of this feature]
 
@@ -122,7 +122,7 @@ Format: `tab INDEX`
 Example:
 - `tab 3`
 
-Example Usage: 
+Example Usage:
 - `tag 1`
 
 Expected Outcome:
@@ -130,10 +130,10 @@ Expected Outcome:
 Switched to overview tab.
 ```
 
-### 4.3 Expense 
+### 4.3 Expense
 [Overview of feature]
 
-#### 4.3.1 Add Expense 
+#### 4.3.1 Add Expense
 
 Adds an expense to the finance tracker.
 
@@ -166,7 +166,7 @@ Expected Outcome:
 
 Deletes the specified expense from the finance tracker.
 
-Format: 
+Format:
 
 Shortcut:
 
@@ -205,7 +205,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -262,7 +262,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -278,7 +278,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -298,7 +298,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -314,7 +314,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -330,7 +330,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -346,7 +346,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -366,7 +366,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -382,7 +382,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -398,7 +398,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -414,7 +414,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
@@ -434,13 +434,13 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
 Expected Outcome:
 
-### 4.8 Savings Goal 
+### 4.8 Savings Goal
 
 [Summary of feature]
 
@@ -454,7 +454,7 @@ Shortcut:
 
 [Description of parameters]
 
-Examples: 
+Examples:
 
 Example Usage:
 
