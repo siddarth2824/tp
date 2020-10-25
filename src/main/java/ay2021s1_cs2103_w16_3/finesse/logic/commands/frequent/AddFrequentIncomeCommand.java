@@ -31,8 +31,6 @@ public class AddFrequentIncomeCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New frequent income added: %1$s";
 
-    private static final Index INCOME_TAB_INDEX = Index.fromZeroBased(1);
-
     private final FrequentIncome toAdd;
 
     /**
@@ -54,8 +52,7 @@ public class AddFrequentIncomeCommand extends Command {
             throw new CommandException(e.getMessage());
         }
 
-        Tab tabToSwitchTo = Tab.values()[INCOME_TAB_INDEX.getZeroBased()];
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), tabToSwitchTo);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), Tab.INCOME);
     }
 
     @Override

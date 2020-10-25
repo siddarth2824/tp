@@ -31,8 +31,6 @@ public class AddFrequentExpenseCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New frequent expense added: %1$s";
 
-    private static final Index EXPENSE_TAB_INDEX = Index.fromZeroBased(2);
-
     private final FrequentExpense toAdd;
 
     /**
@@ -52,8 +50,7 @@ public class AddFrequentExpenseCommand extends Command {
         } catch (DuplicateFrequentTransactionException e) {
             throw new CommandException(e.getMessage());
         }
-        Tab tabToSwitchTo = Tab.values()[EXPENSE_TAB_INDEX.getZeroBased()];
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), tabToSwitchTo);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), Tab.EXPENSES);
     }
 
     @Override
