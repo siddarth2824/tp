@@ -513,7 +513,7 @@ Edits the details of bookmark expenses.
 
 **Format**:
 ```$xslt
-edit-bookmark-expense INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES] 
+edit-bookmark-expense INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]
 ```
 - Edits the bookmark expense at the specified `INDEX` in the bookmark expense list.
 - The index refers to the bookmark expense in the displayed bookmark expense list on the Expense Tab.
@@ -586,7 +586,7 @@ convert-bookmark-expense INDEX d/DATE
 convertbe INDEX d/DATE
 ```
 
-- Converts the bookmark expense at the specified `INDEX` into an `EXPENSE`, using the `DATE` it has been converted on, and adds it to the expense list in Fine$$e. 
+- Converts the bookmark expense at the specified `INDEX` into an `EXPENSE`, using the `DATE` it has been converted on, and adds it to the expense list in Fine$$e.
 - The `INDEX` and `DATE` **cannot be empty**.
 - The `DATE` should be in dd/mm/yyyy format and it cannot be later than the current date.
 - The `INDEX` refers to the index number of the bookmark expense shown in the bookmark-expense list.
