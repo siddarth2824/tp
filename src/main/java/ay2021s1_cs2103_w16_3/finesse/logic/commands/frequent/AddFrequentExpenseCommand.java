@@ -5,14 +5,17 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGO
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
 import static java.util.Objects.requireNonNull;
 
+import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
+import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
 public class AddFrequentExpenseCommand extends Command {
+
     public static final String COMMAND_WORD = "add-frequent-expense";
     public static final String COMMAND_ALIAS = "addfe";
 
@@ -27,6 +30,8 @@ public class AddFrequentExpenseCommand extends Command {
             + PREFIX_CATEGORY + "Utilities";
 
     public static final String MESSAGE_SUCCESS = "New frequent expense added: %1$s";
+
+    private static final Index EXPENSE_TAB_INDEX = Index.fromZeroBased(2);
 
     private final FrequentExpense toAdd;
 
@@ -47,7 +52,8 @@ public class AddFrequentExpenseCommand extends Command {
         } catch (DuplicateFrequentTransactionException e) {
             throw new CommandException(e.getMessage());
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        Tab tabToSwitchTo = Tab.values()[EXPENSE_TAB_INDEX.getZeroBased()];
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), tabToSwitchTo);
     }
 
     @Override
@@ -56,4 +62,5 @@ public class AddFrequentExpenseCommand extends Command {
                 || (other instanceof AddFrequentExpenseCommand // instanceof handles nulls
                 && toAdd.equals(((AddFrequentExpenseCommand) other).toAdd));
     }
+
 }

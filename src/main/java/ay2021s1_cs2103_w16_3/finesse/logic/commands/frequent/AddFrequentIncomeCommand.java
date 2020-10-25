@@ -5,14 +5,17 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGO
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
 import static java.util.Objects.requireNonNull;
 
+import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.frequent.exceptions.DuplicateFrequentTransactionException;
+import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
 public class AddFrequentIncomeCommand extends Command {
+
     public static final String COMMAND_WORD = "add-frequent-income";
     public static final String COMMAND_ALIAS = "addfi";
 
@@ -27,6 +30,8 @@ public class AddFrequentIncomeCommand extends Command {
             + PREFIX_CATEGORY + "Utilities";
 
     public static final String MESSAGE_SUCCESS = "New frequent income added: %1$s";
+
+    private static final Index INCOME_TAB_INDEX = Index.fromZeroBased(1);
 
     private final FrequentIncome toAdd;
 
@@ -49,7 +54,8 @@ public class AddFrequentIncomeCommand extends Command {
             throw new CommandException(e.getMessage());
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        Tab tabToSwitchTo = Tab.values()[INCOME_TAB_INDEX.getZeroBased()];
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), tabToSwitchTo);
     }
 
     @Override
@@ -58,4 +64,5 @@ public class AddFrequentIncomeCommand extends Command {
                 || (other instanceof AddFrequentIncomeCommand // instanceof handles nulls
                 && toAdd.equals(((AddFrequentIncomeCommand) other).toAdd));
     }
+
 }
