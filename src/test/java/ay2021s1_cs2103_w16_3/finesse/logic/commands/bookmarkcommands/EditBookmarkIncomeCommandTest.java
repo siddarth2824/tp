@@ -94,7 +94,7 @@ public class EditBookmarkIncomeCommandTest {
         showBookmarkIncomeAtIndex(model, INDEX_FIRST);
         Index outOfBoundIndex = INDEX_SECOND;
 
-        // ensures that outOfBoundIndex is still in bounds of frequent income list
+        // ensures that outOfBoundIndex is still in bounds of bookmark income list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkIncomeList().size());
 
         EditBookmarkIncomeCommand editBookmarkIncomeCommand = new EditBookmarkIncomeCommand(outOfBoundIndex,

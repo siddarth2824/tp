@@ -82,7 +82,7 @@ public class ConvertBookmarkIncomeCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND;
         Date dateOfConvertedIncome = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-        // ensures that outOfBoundIndex is still in bounds of frequent income list
+        // ensures that outOfBoundIndex is still in bounds of bookmark income list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkIncomeList().size());
 
         ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand =

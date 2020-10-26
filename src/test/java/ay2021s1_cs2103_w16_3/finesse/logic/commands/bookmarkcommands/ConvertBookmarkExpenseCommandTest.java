@@ -83,7 +83,7 @@ public class ConvertBookmarkExpenseCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND;
         Date dateOfConvertedExpense = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-        // ensures that outOfBoundIndex is still in bounds of frequent expense list
+        // ensures that outOfBoundIndex is still in bounds of bookmark expense list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkExpenseList().size());
 
         ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand =

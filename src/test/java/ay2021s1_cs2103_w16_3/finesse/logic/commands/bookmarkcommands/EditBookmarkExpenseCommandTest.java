@@ -94,7 +94,7 @@ public class EditBookmarkExpenseCommandTest {
         showBookmarkExpenseAtIndex(model, INDEX_FIRST);
         Index outOfBoundIndex = INDEX_SECOND;
 
-        // ensures that outOfBoundIndex is still in bounds of frequent expense list
+        // ensures that outOfBoundIndex is still in bounds of bookmark expense list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkExpenseList().size());
 
         EditBookmarkExpenseCommand editBookmarkExpenseCommand = new EditBookmarkExpenseCommand(outOfBoundIndex,
