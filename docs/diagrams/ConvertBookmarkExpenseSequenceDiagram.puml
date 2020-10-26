@@ -11,11 +11,11 @@ box Model MODEL_COLOR_T1
 participant ":ModelManager" as ModelManager MODEL_COLOR
 end box
 
-box FrequentExpense UI_COLOR_T1
+box BookmarkExpense UI_COLOR_T1
 participant ":BookmarkExpense" as BookmarkExpense UI_COLOR
 end box
 
-[->LogicManager: execute("convert-frequent-expense 1 d/20/10/2020")
+[->LogicManager: execute("convert-bookmark-expense 1 d/20/10/2020")
 activate LogicManager LOGIC_COLOR
 
 LogicManager -> FinanceTrackerParser: parseCommand("convert-bookmark-expense 1 d/20/10/2020")

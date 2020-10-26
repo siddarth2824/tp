@@ -62,14 +62,14 @@ This tab provides you with an overview of your most recent activities and allows
 
 #### 2.1.2 Incomes Tab
 
-Displays a list of [incomes](#44-income) and [bookmarked incomes](#46-frequent-income).
+Displays a list of [incomes](#44-income) and [bookmarked incomes](#46-bookmark-income).
 This tab allows you to keep track of all your sources of income.
 
 ![Incomes Tab](images/userguide/IncomesTab.png)
 
 #### 2.1.3 Expenses Tab
 
-Displays a list of [expenses](#43-expense) and [bookmarked expenses](#45-frequent-expense).
+Displays a list of [expenses](#43-expense) and [bookmarked expenses](#45-bookmark-expense).
 This tab allows you to keep track of all your sources of expenditure.
 
 ![Expenses Tab](images/userguide/ExpensesTab.png)
