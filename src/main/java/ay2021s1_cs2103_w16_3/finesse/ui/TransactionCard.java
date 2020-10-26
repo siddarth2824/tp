@@ -63,6 +63,14 @@ public class TransactionCard extends UiPart<Region> {
                 });
         categories.setRowValignment(VPos.CENTER);
         categories.setColumnHalignment(HPos.CENTER);
+
+        Region filler = new Region();
+        filler.setPrefWidth(80);
+        transactionDetails.add(filler, 3, 0);
+
+        Label dateLabel = new Label();
+        dateLabel.setText(transaction.getDate().toString());
+        transactionDetails.add(dateLabel, 4, 0);
     }
 
     @Override
