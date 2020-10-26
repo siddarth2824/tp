@@ -59,7 +59,7 @@ public class TypicalTransactions {
     public static final Income HACKATHON_WINNINGS = new TransactionBuilder().withTitle("Hackathon Winnings")
             .withDate("22/09/2020").withAmount("1000").buildIncome();
 
-    // Frequent Expenses
+    // Bookmark Expenses
     public static final BookmarkExpense PHONE_BILL = new BookmarkTransactionBuilder().withTitle("Phone Bill")
             .withAmount("60").buildBookmarkExpense();
     public static final BookmarkExpense SPOTIFY_SUBSCRIPTION = new BookmarkTransactionBuilder()
@@ -69,7 +69,7 @@ public class TypicalTransactions {
     public static final BookmarkExpense TIMES_MAGAZINE_SUBSCRIPTION = new BookmarkTransactionBuilder()
             .withTitle("Times Magazine Subscription").withAmount("12").buildBookmarkExpense();
 
-    // Frequent Incomes
+    // Bookmark Incomes
     public static final BookmarkIncome PART_TIME = new BookmarkTransactionBuilder().withTitle("Part Time")
             .withAmount("450").withCategories("Work").buildBookmarkIncome();
     public static final BookmarkIncome INVESTING = new BookmarkTransactionBuilder().withTitle("Investing")

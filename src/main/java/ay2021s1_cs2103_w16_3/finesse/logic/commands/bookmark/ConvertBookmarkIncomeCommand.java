@@ -35,7 +35,7 @@ public class ConvertBookmarkIncomeCommand extends Command {
     private final Date date;
 
     /**
-     * @param targetIndex Index of the bookmark income in the filtered frequent income list to convert.
+     * @param targetIndex Index of the bookmark income in the filtered bookmark income list to convert.
      * @param convertDate Date of converting a bookmark income to an income and adding it to the finance tracker.
      */
     public ConvertBookmarkIncomeCommand(Index targetIndex, Date convertDate) {

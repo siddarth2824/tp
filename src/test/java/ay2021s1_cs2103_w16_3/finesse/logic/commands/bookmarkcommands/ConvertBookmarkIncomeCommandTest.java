@@ -94,26 +94,26 @@ public class ConvertBookmarkIncomeCommandTest {
     @Test
     public void equals() {
         Date dateOfConvertedIncome = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-        ConvertBookmarkIncomeCommand convertFirstFrequentIncomeCommand =
+        ConvertBookmarkIncomeCommand convertFirstBookmarkIncomeCommand =
                 new ConvertBookmarkIncomeCommand(INDEX_FIRST, dateOfConvertedIncome);
-        ConvertBookmarkIncomeCommand convertSecondFrequentIncomeCommand =
+        ConvertBookmarkIncomeCommand convertSecondBookmarkIncomeCommand =
                 new ConvertBookmarkIncomeCommand(INDEX_SECOND, dateOfConvertedIncome);
 
         // same object -> returns true
-        assertTrue(convertFirstFrequentIncomeCommand.equals(convertFirstFrequentIncomeCommand));
+        assertTrue(convertFirstBookmarkIncomeCommand.equals(convertFirstBookmarkIncomeCommand));
 
         // same values -> returns true
         ConvertBookmarkIncomeCommand deleteFirstCommandCopy =
                 new ConvertBookmarkIncomeCommand(INDEX_FIRST, dateOfConvertedIncome);
-        assertTrue(convertFirstFrequentIncomeCommand.equals(deleteFirstCommandCopy));
+        assertTrue(convertFirstBookmarkIncomeCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(convertFirstFrequentIncomeCommand.equals(1));
+        assertFalse(convertFirstBookmarkIncomeCommand.equals(1));
 
         // null -> returns false
-        assertFalse(convertFirstFrequentIncomeCommand.equals(null));
+        assertFalse(convertFirstBookmarkIncomeCommand.equals(null));
 
         // different income -> returns false
-        assertFalse(convertFirstFrequentIncomeCommand.equals(convertSecondFrequentIncomeCommand));
+        assertFalse(convertFirstBookmarkIncomeCommand.equals(convertSecondBookmarkIncomeCommand));
     }
 }

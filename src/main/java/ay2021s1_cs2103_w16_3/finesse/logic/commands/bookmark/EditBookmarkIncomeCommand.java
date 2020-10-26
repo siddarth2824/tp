@@ -45,8 +45,8 @@ public class EditBookmarkIncomeCommand extends Command {
     private final EditBookmarkTransactionDescriptor editBookmarkIncomeDescriptor;
 
     /**
-     * @param targetIndex Index of the frequent income in the filtered frequent income list to edit.
-     * @param editBookmarkIncomeDescriptor Details to edit the frequent income with.
+     * @param targetIndex Index of the bookmark income in the filtered bookmark income list to edit.
+     * @param editBookmarkIncomeDescriptor Details to edit the bookmark income with.
      */
     public EditBookmarkIncomeCommand(Index targetIndex,
                                      EditBookmarkTransactionDescriptor editBookmarkIncomeDescriptor) {

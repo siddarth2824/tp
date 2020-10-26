@@ -70,7 +70,7 @@ public class DeleteBookmarkExpenseCommandTest {
         showBookmarkExpenseAtIndex(model, INDEX_FIRST);
 
         Index outOfBoundIndex = INDEX_SECOND;
-        // ensures that outOfBoundIndex is still in bounds of frequent expense list
+        // ensures that outOfBoundIndex is still in bounds of bookmark expense list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkExpenseList().size());
 
         DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand = new DeleteBookmarkExpenseCommand(outOfBoundIndex);

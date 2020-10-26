@@ -28,7 +28,7 @@ public class BookmarkExpenseTest {
         // different type -> returns false
         assertFalse(PHONE_BILL.equals(5));
 
-        // different frequent expense -> returns false
+        // different bookmark expense -> returns false
         assertFalse(PHONE_BILL.equals(SPOTIFY_SUBSCRIPTION));
 
         // different title -> returns false

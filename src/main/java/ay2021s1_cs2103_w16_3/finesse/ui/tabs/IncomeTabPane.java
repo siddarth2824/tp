@@ -18,7 +18,7 @@ public class IncomeTabPane extends TwoColumnTabPane {
      * and bookmarked incomes.
      *
      * @param incomeList The list of incomes to be displayed.
-     * @param bookmarkIncomeList The list of frequent incomes to be displayed.
+     * @param bookmarkIncomeList The list of bookmark incomes to be displayed.
      */
     public IncomeTabPane(ObservableList<Income> incomeList, ObservableList<BookmarkIncome> bookmarkIncomeList) {
         super(MAIN_PANEL_LABEL, SIDE_PANEL_LABEL,

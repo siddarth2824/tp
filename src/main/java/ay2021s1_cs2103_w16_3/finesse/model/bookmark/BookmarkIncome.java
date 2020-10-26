@@ -24,8 +24,8 @@ public class BookmarkIncome extends BookmarkTransaction<Income> {
     }
 
     /**
-     * Returns true if both frequent incomes have the same identity and data fields.
-     * This defines a stronger notion of equality between two frequent incomes.
+     * Returns true if both bookmark incomes have the same identity and data fields.
+     * This defines a stronger notion of equality between two bookmark incomes.
      */
     @Override
     public boolean equals(Object other) {

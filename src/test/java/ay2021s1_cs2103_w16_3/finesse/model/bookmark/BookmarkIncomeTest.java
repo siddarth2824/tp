@@ -29,7 +29,7 @@ public class BookmarkIncomeTest {
         // different type -> returns false
         assertFalse(PART_TIME.equals(5));
 
-        // different frequent expense -> returns false
+        // different bookmark expense -> returns false
         assertFalse(PART_TIME.equals(INVESTING));
 
         // different title -> returns false

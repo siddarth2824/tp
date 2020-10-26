@@ -18,7 +18,7 @@ public class ExpenseTabPane extends TwoColumnTabPane {
      * and bookmarked expenses.
      *
      * @param expenseList The list of expenses to be displayed.
-     * @param bookmarkExpenseList The list of frequent expenses to be displayed.
+     * @param bookmarkExpenseList The list of bookmark expenses to be displayed.
      */
     public ExpenseTabPane(ObservableList<Expense> expenseList, ObservableList<BookmarkExpense> bookmarkExpenseList) {
         super(MAIN_PANEL_LABEL, SIDE_PANEL_LABEL,

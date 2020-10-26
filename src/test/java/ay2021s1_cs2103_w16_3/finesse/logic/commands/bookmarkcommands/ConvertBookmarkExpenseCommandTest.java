@@ -95,26 +95,26 @@ public class ConvertBookmarkExpenseCommandTest {
     @Test
     public void equals() {
         Date dateOfConvertedExpense = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-        ConvertBookmarkExpenseCommand convertFirstFrequentExpenseCommand =
+        ConvertBookmarkExpenseCommand convertFirstBookmarkExpenseCommand =
                 new ConvertBookmarkExpenseCommand(INDEX_FIRST, dateOfConvertedExpense);
-        ConvertBookmarkExpenseCommand convertSecondFrequentExpenseCommand =
+        ConvertBookmarkExpenseCommand convertSecondBookmarkExpenseCommand =
                 new ConvertBookmarkExpenseCommand(INDEX_SECOND, dateOfConvertedExpense);
 
         // same object -> returns true
-        assertTrue(convertFirstFrequentExpenseCommand.equals(convertFirstFrequentExpenseCommand));
+        assertTrue(convertFirstBookmarkExpenseCommand.equals(convertFirstBookmarkExpenseCommand));
 
         // same values -> returns true
         ConvertBookmarkExpenseCommand deleteFirstCommandCopy =
                 new ConvertBookmarkExpenseCommand(INDEX_FIRST, dateOfConvertedExpense);
-        assertTrue(convertFirstFrequentExpenseCommand.equals(deleteFirstCommandCopy));
+        assertTrue(convertFirstBookmarkExpenseCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(convertFirstFrequentExpenseCommand.equals(1));
+        assertFalse(convertFirstBookmarkExpenseCommand.equals(1));
 
         // null -> returns false
-        assertFalse(convertFirstFrequentExpenseCommand.equals(null));
+        assertFalse(convertFirstBookmarkExpenseCommand.equals(null));
 
         // different expense -> returns false
-        assertFalse(convertFirstFrequentExpenseCommand.equals(convertSecondFrequentExpenseCommand));
+        assertFalse(convertFirstBookmarkExpenseCommand.equals(convertSecondBookmarkExpenseCommand));
     }
 }
