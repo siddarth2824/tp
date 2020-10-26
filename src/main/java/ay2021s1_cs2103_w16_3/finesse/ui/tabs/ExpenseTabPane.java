@@ -2,8 +2,8 @@ package ay2021s1_cs2103_w16_3.finesse.ui.tabs;
 
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
-import ay2021s1_cs2103_w16_3.finesse.ui.expense.ExpensePanel;
 import ay2021s1_cs2103_w16_3.finesse.ui.bookmark.BookmarkExpensePanel;
+import ay2021s1_cs2103_w16_3.finesse.ui.expense.ExpensePanel;
 import javafx.collections.ObservableList;
 
 /**
