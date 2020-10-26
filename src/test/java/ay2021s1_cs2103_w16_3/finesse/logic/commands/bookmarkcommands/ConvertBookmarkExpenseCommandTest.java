@@ -1,6 +1,6 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_DATE_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandFailure;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -39,7 +39,7 @@ public class ConvertBookmarkExpenseCommandTest {
         Expense convertedExpense = bookmarkExpenseToBeConverted.convert(dateOfConvertedExpense);
         expectedModel.addExpense(convertedExpense);
 
-        String expectedMessage = String.format(ConvertBookmarkExpenseCommand.MESSAGE_CONVERT_FREQUENT_EXPENSE_SUCCESS,
+        String expectedMessage = String.format(ConvertBookmarkExpenseCommand.MESSAGE_CONVERT_BOOKMARK_EXPENSE_SUCCESS,
                 convertedExpense);
 
         assertCommandSuccess(convertBookmarkExpenseCommand, model, expectedMessage, expectedModel, true);
@@ -53,7 +53,7 @@ public class ConvertBookmarkExpenseCommandTest {
         ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand =
                 new ConvertBookmarkExpenseCommand(outOfBoundIndex, dateOfConvertedExpense);
 
-        assertCommandFailure(convertBookmarkExpenseCommand, model, MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+        assertCommandFailure(convertBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class ConvertBookmarkExpenseCommandTest {
         Expense convertedExpense = bookmarkExpenseToBeConverted.convert(dateOfConvertedExpense);
         expectedModel.addExpense(convertedExpense);
 
-        String expectedMessage = String.format(ConvertBookmarkExpenseCommand.MESSAGE_CONVERT_FREQUENT_EXPENSE_SUCCESS,
+        String expectedMessage = String.format(ConvertBookmarkExpenseCommand.MESSAGE_CONVERT_BOOKMARK_EXPENSE_SUCCESS,
                 convertedExpense);
 
         assertCommandSuccess(convertBookmarkExpenseCommand, model, expectedMessage, expectedModel, true);
@@ -89,7 +89,7 @@ public class ConvertBookmarkExpenseCommandTest {
         ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand =
                 new ConvertBookmarkExpenseCommand(outOfBoundIndex, dateOfConvertedExpense);
 
-        assertCommandFailure(convertBookmarkExpenseCommand, model, MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+        assertCommandFailure(convertBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
 
     @Test

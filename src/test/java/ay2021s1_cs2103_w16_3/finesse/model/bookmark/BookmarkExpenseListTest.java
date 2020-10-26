@@ -4,7 +4,7 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID
 import static ay2021s1_cs2103_w16_3.finesse.testutil.Assert.assertThrows;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.PHONE_BILL;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.SPOTIFY_SUBSCRIPTION;
-import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.getTypicalFrequentExpenses;
+import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.getTypicalBookmarkExpenses;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
@@ -143,7 +143,7 @@ public class BookmarkExpenseListTest {
 
     @Test
     public void equals_distinctBookmarkExpenseListsWithSameAttributes_returnsTrue() {
-        List<BookmarkExpense> bookmarkExpens = getTypicalFrequentExpenses();
+        List<BookmarkExpense> bookmarkExpens = getTypicalBookmarkExpenses();
         BookmarkExpenseList firstTransactionList = new BookmarkExpenseList();
         BookmarkExpenseList secondTransactionList = new BookmarkExpenseList();
 
@@ -156,7 +156,7 @@ public class BookmarkExpenseListTest {
 
     @Test
     public void hashCode_distinctBookmarkExpenseListsWithSameAttributes_returnsTrue() {
-        List<BookmarkExpense> bookmarkExpens = getTypicalFrequentExpenses();
+        List<BookmarkExpense> bookmarkExpens = getTypicalBookmarkExpenses();
         BookmarkExpenseList firstTransactionList = new BookmarkExpenseList();
         BookmarkExpenseList secondTransactionList = new BookmarkExpenseList();
 

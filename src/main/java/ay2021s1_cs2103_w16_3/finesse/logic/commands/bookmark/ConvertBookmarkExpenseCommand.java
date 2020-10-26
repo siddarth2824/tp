@@ -1,6 +1,6 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static java.util.Objects.requireNonNull;
 
@@ -28,7 +28,7 @@ public class ConvertBookmarkExpenseCommand extends Command {
             + PREFIX_DATE + "DATE\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_DATE + "03/10/2020 ";
 
-    public static final String MESSAGE_CONVERT_FREQUENT_EXPENSE_SUCCESS = "Bookmark expense has been converted "
+    public static final String MESSAGE_CONVERT_BOOKMARK_EXPENSE_SUCCESS = "Bookmark expense has been converted "
             + "and successfully added to finance tracker: %1$s";
 
     private final Index targetIndex;
@@ -49,13 +49,13 @@ public class ConvertBookmarkExpenseCommand extends Command {
         List<BookmarkExpense> lastShownList = model.getFilteredBookmarkExpenseList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
         }
 
         BookmarkExpense bookmarkExpenseToBeConverted = lastShownList.get(targetIndex.getZeroBased());
         Expense newExpenseToAdd = bookmarkExpenseToBeConverted.convert(date);
         model.addExpense(newExpenseToAdd);
-        return new CommandResult(String.format(MESSAGE_CONVERT_FREQUENT_EXPENSE_SUCCESS, newExpenseToAdd), true);
+        return new CommandResult(String.format(MESSAGE_CONVERT_BOOKMARK_EXPENSE_SUCCESS, newExpenseToAdd), true);
     }
 
     @Override

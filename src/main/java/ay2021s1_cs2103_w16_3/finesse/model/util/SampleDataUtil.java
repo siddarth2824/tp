@@ -41,7 +41,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static BookmarkExpense[] getFrequentExpenses() {
+    public static BookmarkExpense[] getBookmarkExpenses() {
         return new BookmarkExpense[] {
             new BookmarkExpense(new Title("Phone Bill"), new Amount("60"),
                     getCategoriesSet("Personal", "Utilities")),
@@ -50,7 +50,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static BookmarkIncome[] getFrequentIncome() {
+    public static BookmarkIncome[] getBookmarkIncome() {
         return new BookmarkIncome[] {
             new BookmarkIncome(new Title("Internship"), new Amount("1000"),
                     getCategoriesSet("Work", "Stipend")),
@@ -65,10 +65,10 @@ public class SampleDataUtil {
         for (Transaction sampleTransaction : getSampleTransactions()) {
             sampleFt.addTransaction(sampleTransaction);
         }
-        for (BookmarkExpense bookmarkExpense : getFrequentExpenses()) {
+        for (BookmarkExpense bookmarkExpense : getBookmarkExpenses()) {
             sampleFt.addBookmarkExpense(bookmarkExpense);
         }
-        for (BookmarkIncome bookmarkIncome : getFrequentIncome()) {
+        for (BookmarkIncome bookmarkIncome : getBookmarkIncome()) {
             sampleFt.addBookmarkIncome(bookmarkIncome);
         }
         return sampleFt;

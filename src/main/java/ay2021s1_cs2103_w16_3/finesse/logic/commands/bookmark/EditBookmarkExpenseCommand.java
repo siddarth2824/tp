@@ -1,6 +1,6 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
@@ -37,7 +37,7 @@ public class EditBookmarkExpenseCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_AMOUNT + "5 ";
 
-    public static final String MESSAGE_EDIT_FREQUENT_EXPENSE_SUCCESS = "Edited Bookmark Expense: %1$s";
+    public static final String MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS = "Edited Bookmark Expense: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final Index targetIndex;
@@ -62,7 +62,7 @@ public class EditBookmarkExpenseCommand extends Command {
         List<BookmarkExpense> lastShownList = model.getFilteredBookmarkExpenseList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
         }
 
         BookmarkExpense bookmarkExpenseToEdit = lastShownList.get(targetIndex.getZeroBased());
@@ -71,7 +71,7 @@ public class EditBookmarkExpenseCommand extends Command {
 
         model.setBookmarkExpense(bookmarkExpenseToEdit, editedBookmarkExpense);
         model.updateFilteredBookmarkExpenseList(PREDICATE_SHOW_ALL_BOOKMARK_EXPENSES);
-        return new CommandResult(String.format(MESSAGE_EDIT_FREQUENT_EXPENSE_SUCCESS, editedBookmarkExpense));
+        return new CommandResult(String.format(MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS, editedBookmarkExpense));
     }
 
     /**

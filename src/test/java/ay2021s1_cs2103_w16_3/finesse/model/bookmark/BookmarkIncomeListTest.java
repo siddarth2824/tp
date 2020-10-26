@@ -4,7 +4,7 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID
 import static ay2021s1_cs2103_w16_3.finesse.testutil.Assert.assertThrows;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.INVESTING;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.PART_TIME;
-import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.getTypicalFrequentIncome;
+import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.getTypicalBookmarkIncome;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
@@ -91,12 +91,12 @@ public class BookmarkIncomeListTest {
     }
 
     @Test
-    public void remove_frequentBookmarkDoesNotExist_throwsTransactionNotFoundException() {
+    public void remove_bookmarkBookmarkDoesNotExist_throwsTransactionNotFoundException() {
         assertThrows(BookmarkTransactionNotFoundException.class, () -> bookmarkIncomeList.remove(PART_TIME));
     }
 
     @Test
-    public void remove_existingBookmarkIncome_removesFrequentIncome() {
+    public void remove_existingBookmarkIncome_removesBookmarkIncome() {
         bookmarkIncomeList.add(PART_TIME);
         bookmarkIncomeList.remove(PART_TIME);
         BookmarkIncomeList expectedBookmarkIncomeList = new BookmarkIncomeList();
@@ -142,7 +142,7 @@ public class BookmarkIncomeListTest {
 
     @Test
     public void equals_distinctBookmarkIncomeListsWithSameAttributes_returnsTrue() {
-        List<BookmarkIncome> bookmarkIncomes = getTypicalFrequentIncome();
+        List<BookmarkIncome> bookmarkIncomes = getTypicalBookmarkIncome();
         BookmarkIncomeList firstTransactionList = new BookmarkIncomeList();
         BookmarkIncomeList secondTransactionList = new BookmarkIncomeList();
 
@@ -155,7 +155,7 @@ public class BookmarkIncomeListTest {
 
     @Test
     public void hashCode_distinctBookmarkIncomeListsWithSameAttributes_returnsTrue() {
-        List<BookmarkIncome> bookmarkIncomes = getTypicalFrequentIncome();
+        List<BookmarkIncome> bookmarkIncomes = getTypicalBookmarkIncome();
         BookmarkIncomeList firstTransactionList = new BookmarkIncomeList();
         BookmarkIncomeList secondTransactionList = new BookmarkIncomeList();
 

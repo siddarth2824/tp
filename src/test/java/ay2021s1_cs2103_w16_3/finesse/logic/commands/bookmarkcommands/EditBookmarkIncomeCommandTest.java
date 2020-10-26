@@ -1,6 +1,6 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_PHONE_BILL;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_AMOUNT_PART_TIME;
@@ -40,7 +40,7 @@ public class EditBookmarkIncomeCommandTest {
         EditBookmarkIncomeCommand editBookmarkIncomeCommand =
                 new EditBookmarkIncomeCommand(INDEX_FIRST, descriptor);
 
-        String expectedMessage = String.format(EditBookmarkIncomeCommand.MESSAGE_EDIT_FREQUENT_INCOME_SUCCESS,
+        String expectedMessage = String.format(EditBookmarkIncomeCommand.MESSAGE_EDIT_BOOKMARK_INCOME_SUCCESS,
                 editedBookmarkIncome);
 
         Model expectedModel = new ModelManager(new FinanceTracker(model.getFinanceTracker()), new UserPrefs());
@@ -65,7 +65,7 @@ public class EditBookmarkIncomeCommandTest {
         EditBookmarkIncomeCommand editBookmarkIncomeCommand =
                 new EditBookmarkIncomeCommand(indexLastIncome, descriptor);
 
-        String expectedMessage = String.format(EditBookmarkIncomeCommand.MESSAGE_EDIT_FREQUENT_INCOME_SUCCESS,
+        String expectedMessage = String.format(EditBookmarkIncomeCommand.MESSAGE_EDIT_BOOKMARK_INCOME_SUCCESS,
                 editedIncome);
 
         Model expectedModel = new ModelManager(new FinanceTracker(model.getFinanceTracker()), new UserPrefs());
@@ -75,14 +75,14 @@ public class EditBookmarkIncomeCommandTest {
     }
 
     @Test
-    public void execute_invalidFrequentIncomeIndexUnfilteredList_failure() {
+    public void execute_invalidBookmarkIncomeIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkIncomeList().size() + 1);
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_PART_TIME).build();
         EditBookmarkIncomeCommand editBookmarkIncomeCommand =
                 new EditBookmarkIncomeCommand(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editBookmarkIncomeCommand, model, MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX);
+        assertCommandFailure(editBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     /**
@@ -90,7 +90,7 @@ public class EditBookmarkIncomeCommandTest {
      * but smaller than size of finance tracker
      */
     @Test
-    public void execute_invalidFrequentIncomeIndexFilteredList_failure() {
+    public void execute_invalidBookmarkIncomeIndexFilteredList_failure() {
         showBookmarkIncomeAtIndex(model, INDEX_FIRST);
         Index outOfBoundIndex = INDEX_SECOND;
 
@@ -100,7 +100,7 @@ public class EditBookmarkIncomeCommandTest {
         EditBookmarkIncomeCommand editBookmarkIncomeCommand = new EditBookmarkIncomeCommand(outOfBoundIndex,
                 new EditBookmarkTransactionDescriptorBuilder().withTitle(VALID_TITLE_PART_TIME).build());
 
-        assertCommandFailure(editBookmarkIncomeCommand, model, MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX);
+        assertCommandFailure(editBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     @Test

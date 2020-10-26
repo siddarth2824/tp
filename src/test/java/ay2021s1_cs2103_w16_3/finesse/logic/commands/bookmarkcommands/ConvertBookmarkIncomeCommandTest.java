@@ -1,6 +1,6 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_DATE_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandFailure;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -38,7 +38,7 @@ public class ConvertBookmarkIncomeCommandTest {
         Income convertedIncome = bookmarkIncomeToBeConverted.convert(dateOfConvertedIncome);
         expectedModel.addIncome(convertedIncome);
 
-        String expectedMessage = String.format(ConvertBookmarkIncomeCommand.MESSAGE_CONVERT_FREQUENT_INCOME_SUCCESS,
+        String expectedMessage = String.format(ConvertBookmarkIncomeCommand.MESSAGE_CONVERT_BOOKMARK_INCOME_SUCCESS,
                 convertedIncome);
 
         assertCommandSuccess(convertBookmarkIncomeCommand, model, expectedMessage, expectedModel, true);
@@ -52,7 +52,7 @@ public class ConvertBookmarkIncomeCommandTest {
         ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand =
                 new ConvertBookmarkIncomeCommand(outOfBoundIndex, dateOfConvertedIncome);
 
-        assertCommandFailure(convertBookmarkIncomeCommand, model, MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX);
+        assertCommandFailure(convertBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ConvertBookmarkIncomeCommandTest {
         Income convertedIncome = bookmarkIncomeToBeConverted.convert(dateOfConvertedIncome);
         expectedModel.addIncome(convertedIncome);
 
-        String expectedMessage = String.format(ConvertBookmarkIncomeCommand.MESSAGE_CONVERT_FREQUENT_INCOME_SUCCESS,
+        String expectedMessage = String.format(ConvertBookmarkIncomeCommand.MESSAGE_CONVERT_BOOKMARK_INCOME_SUCCESS,
                 convertedIncome);
 
         assertCommandSuccess(convertBookmarkIncomeCommand, model, expectedMessage, expectedModel, true);
@@ -88,7 +88,7 @@ public class ConvertBookmarkIncomeCommandTest {
         ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand =
                 new ConvertBookmarkIncomeCommand(outOfBoundIndex, dateOfConvertedIncome);
 
-        assertCommandFailure(convertBookmarkIncomeCommand, model, MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX);
+        assertCommandFailure(convertBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     @Test

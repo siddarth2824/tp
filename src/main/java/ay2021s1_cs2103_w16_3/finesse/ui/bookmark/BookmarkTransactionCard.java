@@ -1,4 +1,4 @@
-package ay2021s1_cs2103_w16_3.finesse.ui.frequent;
+package ay2021s1_cs2103_w16_3.finesse.ui.bookmark;
 
 import java.util.Comparator;
 

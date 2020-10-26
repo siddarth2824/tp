@@ -2,7 +2,7 @@ package ay2021s1_cs2103_w16_3.finesse.ui.tabs;
 
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
-import ay2021s1_cs2103_w16_3.finesse.ui.frequent.BookmarkIncomePanel;
+import ay2021s1_cs2103_w16_3.finesse.ui.bookmark.BookmarkIncomePanel;
 import ay2021s1_cs2103_w16_3.finesse.ui.income.IncomePanel;
 import javafx.collections.ObservableList;
 

@@ -1,6 +1,6 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandFailure;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.showBookmarkExpenseAtIndex;
@@ -29,7 +29,7 @@ public class DeleteBookmarkExpenseCommandTest {
         DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand =
                 new DeleteBookmarkExpenseCommand(INDEX_FIRST);
 
-        String expectedMessage = String.format(DeleteBookmarkExpenseCommand.MESSAGE_DELETE_FREQUENT_EXPENSE_SUCCESS,
+        String expectedMessage = String.format(DeleteBookmarkExpenseCommand.MESSAGE_DELETE_BOOKMARK_EXPENSE_SUCCESS,
                 bookmarkExpenseToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
@@ -43,7 +43,7 @@ public class DeleteBookmarkExpenseCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkExpenseList().size() + 1);
         DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand = new DeleteBookmarkExpenseCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteBookmarkExpenseCommand, model, MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+        assertCommandFailure(deleteBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
 
     @Test
@@ -55,12 +55,12 @@ public class DeleteBookmarkExpenseCommandTest {
         DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand =
                 new DeleteBookmarkExpenseCommand(INDEX_FIRST);
 
-        String expectedMessage = String.format(DeleteBookmarkExpenseCommand.MESSAGE_DELETE_FREQUENT_EXPENSE_SUCCESS,
+        String expectedMessage = String.format(DeleteBookmarkExpenseCommand.MESSAGE_DELETE_BOOKMARK_EXPENSE_SUCCESS,
                 bookmarkExpenseToDelete);
 
         Model expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         expectedModel.deleteBookmarkExpense(bookmarkExpenseToDelete);
-        showNoFrequentExpenses(expectedModel);
+        showNoBookmarkExpenses(expectedModel);
 
         assertCommandSuccess(deleteBookmarkExpenseCommand, model, expectedMessage, expectedModel);
     }
@@ -75,7 +75,7 @@ public class DeleteBookmarkExpenseCommandTest {
 
         DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand = new DeleteBookmarkExpenseCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteBookmarkExpenseCommand, model, MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+        assertCommandFailure(deleteBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
 
     @Test
@@ -104,9 +104,9 @@ public class DeleteBookmarkExpenseCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no frequent expenses.
+     * Updates {@code model}'s filtered list to show no bookmark expenses.
      */
-    private void showNoFrequentExpenses(Model model) {
+    private void showNoBookmarkExpenses(Model model) {
         model.updateFilteredBookmarkExpenseList(p -> false);
 
         assertTrue(model.getFilteredBookmarkExpenseList().isEmpty());

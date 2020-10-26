@@ -246,7 +246,7 @@ conversion.
 Given below is the proposed UML sequence diagram and explanation of an example usage scenario for
 convert-frequent-expense
 
-![Sequence Diagram of the Convert Frequent Expense To Expense Feature](images/ConvertFrequentExpenseSequenceDiagram.png)
+![Sequence Diagram of the Convert Frequent Expense To Expense Feature](images/ConvertBookmarkExpenseSequenceDiagram.png)
 
 1. User enters the command `convert-frequent-expense 1 d/05/05/2020`, where `1` is the index of the respective frequent
 expense in the frequent expense list and `d/05/05/20` is the date on which the user wants to carry out the conversion,

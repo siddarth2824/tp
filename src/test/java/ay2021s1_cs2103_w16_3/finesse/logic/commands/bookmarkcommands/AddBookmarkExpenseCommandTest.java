@@ -1,4 +1,4 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
 import static ay2021s1_cs2103_w16_3.finesse.testutil.Assert.assertThrows;
 import static java.util.Objects.requireNonNull;
@@ -33,13 +33,13 @@ import javafx.collections.ObservableList;
 public class AddBookmarkExpenseCommandTest {
 
     @Test
-    public void constructor_nullFrequentExpense_throwsNullPointerException() {
+    public void constructor_nullBookmarkExpense_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddBookmarkExpenseCommand(null));
     }
 
     @Test
-    public void execute_frequentExpenseAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingFrequentExpenseAdded modelStub = new ModelStubAcceptingFrequentExpenseAdded();
+    public void execute_bookmarkExpenseAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingBookmarkExpenseAdded modelStub = new ModelStubAcceptingBookmarkExpenseAdded();
         BookmarkExpense validBookmarkExpense = new BookmarkTransactionBuilder().buildBookmarkExpense();
 
         CommandResult commandResult = new AddBookmarkExpenseCommand(validBookmarkExpense).execute(modelStub);
@@ -240,9 +240,9 @@ public class AddBookmarkExpenseCommandTest {
     }
 
     /**
-     * A Model stub that always accept the frequent expense being added.
+     * A Model stub that always accept the bookmark expense being added.
      */
-    private class ModelStubAcceptingFrequentExpenseAdded extends ModelStub {
+    private class ModelStubAcceptingBookmarkExpenseAdded extends ModelStub {
         final ArrayList<BookmarkExpense> bookmarkExpensesAdded = new ArrayList<>();
 
         @Override

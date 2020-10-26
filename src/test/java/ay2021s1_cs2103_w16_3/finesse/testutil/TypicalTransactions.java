@@ -98,8 +98,8 @@ public class TypicalTransactions {
         FinanceTracker ft = new FinanceTracker();
         getTypicalExpenses().forEach(ft::addTransaction);
         getTypicalIncomes().forEach(ft::addTransaction);
-        getTypicalFrequentExpenses().forEach(ft::addBookmarkExpense);
-        getTypicalFrequentIncome().forEach(ft::addBookmarkIncome);
+        getTypicalBookmarkExpenses().forEach(ft::addBookmarkExpense);
+        getTypicalBookmarkIncome().forEach(ft::addBookmarkIncome);
         return ft;
     }
 
@@ -118,12 +118,12 @@ public class TypicalTransactions {
                 ALLOWANCE, ANG_PAO, GST_VOUCHER, HACKATHON_WINNINGS));
     }
 
-    public static List<BookmarkExpense> getTypicalFrequentExpenses() {
+    public static List<BookmarkExpense> getTypicalBookmarkExpenses() {
         return new ArrayList<>(Arrays.asList(PHONE_BILL, SPOTIFY_SUBSCRIPTION, NETFLIX_SUBSCRIPTION,
                 TIMES_MAGAZINE_SUBSCRIPTION));
     }
 
-    public static List<BookmarkIncome> getTypicalFrequentIncome() {
+    public static List<BookmarkIncome> getTypicalBookmarkIncome() {
         return new ArrayList<>(Arrays.asList(PART_TIME, INVESTING));
     }
 

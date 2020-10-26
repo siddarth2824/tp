@@ -1,4 +1,4 @@
-package ay2021s1_cs2103_w16_3.finesse.ui.frequent;
+package ay2021s1_cs2103_w16_3.finesse.ui.bookmark;
 
 import java.util.logging.Logger;
 
@@ -17,18 +17,18 @@ public class BookmarkExpensePanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(BookmarkExpensePanel.class);
 
     @FXML
-    private ListView<BookmarkExpense> frequentTransactionList;
+    private ListView<BookmarkExpense> bookmarkTransactionList;
 
     /**
      * Creates a {@code BookmarkExpensePanel} with the given {@code ObservableList}.
      */
     public BookmarkExpensePanel(ObservableList<BookmarkExpense> bookmarkExpensesList) {
         super(FXML);
-        frequentTransactionList.setItems(bookmarkExpensesList);
-        frequentTransactionList.setCellFactory(listView -> new FrequentExpenseListViewCell());
+        bookmarkTransactionList.setItems(bookmarkExpensesList);
+        bookmarkTransactionList.setCellFactory(listView -> new BookmarkExpenseListViewCell());
     }
 
-    class FrequentExpenseListViewCell extends ListCell<BookmarkExpense> {
+    class BookmarkExpenseListViewCell extends ListCell<BookmarkExpense> {
         @Override
         protected void updateItem(BookmarkExpense bookmarkExpense, boolean empty) {
             super.updateItem(bookmarkExpense, empty);

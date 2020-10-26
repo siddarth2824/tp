@@ -1,6 +1,6 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandFailure;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.showBookmarkIncomeAtIndex;
@@ -30,7 +30,7 @@ public class DeleteBookmarkIncomeCommandTest {
         DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand =
                 new DeleteBookmarkIncomeCommand(INDEX_FIRST);
 
-        String expectedMessage = String.format(DeleteBookmarkIncomeCommand.MESSAGE_DELETE_FREQUENT_INCOME_SUCCESS,
+        String expectedMessage = String.format(DeleteBookmarkIncomeCommand.MESSAGE_DELETE_BOOKMARK_INCOME_SUCCESS,
                 bookmarkIncomeToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
@@ -44,7 +44,7 @@ public class DeleteBookmarkIncomeCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkIncomeList().size() + 1);
         DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand = new DeleteBookmarkIncomeCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteBookmarkIncomeCommand, model, MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX);
+        assertCommandFailure(deleteBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     @Test
@@ -56,12 +56,12 @@ public class DeleteBookmarkIncomeCommandTest {
         DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand =
                 new DeleteBookmarkIncomeCommand(INDEX_FIRST);
 
-        String expectedMessage = String.format(DeleteBookmarkIncomeCommand.MESSAGE_DELETE_FREQUENT_INCOME_SUCCESS,
+        String expectedMessage = String.format(DeleteBookmarkIncomeCommand.MESSAGE_DELETE_BOOKMARK_INCOME_SUCCESS,
                 bookmarkIncomeToDelete);
 
         Model expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         expectedModel.deleteBookmarkIncome(bookmarkIncomeToDelete);
-        showNoFrequentIncomes(expectedModel);
+        showNoBookmarkIncomes(expectedModel);
 
         assertCommandSuccess(deleteBookmarkIncomeCommand, model, expectedMessage, expectedModel);
     }
@@ -76,7 +76,7 @@ public class DeleteBookmarkIncomeCommandTest {
 
         DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand = new DeleteBookmarkIncomeCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteBookmarkIncomeCommand, model, MESSAGE_INVALID_FREQUENT_INCOME_DISPLAYED_INDEX);
+        assertCommandFailure(deleteBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     @Test
@@ -105,9 +105,9 @@ public class DeleteBookmarkIncomeCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no frequent incomes.
+     * Updates {@code model}'s filtered list to show no bookmark incomes.
      */
-    private void showNoFrequentIncomes(Model model) {
+    private void showNoBookmarkIncomes(Model model) {
         model.updateFilteredBookmarkIncomeList(p -> false);
 
         assertTrue(model.getFilteredBookmarkIncomeList().isEmpty());

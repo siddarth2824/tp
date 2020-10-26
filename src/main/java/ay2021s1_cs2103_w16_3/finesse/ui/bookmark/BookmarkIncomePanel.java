@@ -1,4 +1,4 @@
-package ay2021s1_cs2103_w16_3.finesse.ui.frequent;
+package ay2021s1_cs2103_w16_3.finesse.ui.bookmark;
 
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
@@ -13,18 +13,18 @@ public class BookmarkIncomePanel extends UiPart<Region> {
     private static final String FXML = "BookmarkTransactionPanel.fxml";
 
     @FXML
-    private ListView<BookmarkIncome> frequentTransactionList;
+    private ListView<BookmarkIncome> bookmarkTransactionList;
 
     /**
      * Creates a {@code BookmarkIncomePanel} with the given {@code ObservableList}.
      */
     public BookmarkIncomePanel(ObservableList<BookmarkIncome> bookmarkIncomesList) {
         super(FXML);
-        frequentTransactionList.setItems(bookmarkIncomesList);
-        frequentTransactionList.setCellFactory(listView -> new FrequentIncomeListViewCell());
+        bookmarkTransactionList.setItems(bookmarkIncomesList);
+        bookmarkTransactionList.setCellFactory(listView -> new BookmarkIncomeListViewCell());
     }
 
-    class FrequentIncomeListViewCell extends ListCell<BookmarkIncome> {
+    class BookmarkIncomeListViewCell extends ListCell<BookmarkIncome> {
         @Override
         protected void updateItem(BookmarkIncome bookmarkIncome, boolean empty) {
             super.updateItem(bookmarkIncome, empty);

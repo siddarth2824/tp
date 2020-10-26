@@ -1,6 +1,6 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands.frequentcommands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX;
+import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_PHONE_BILL;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_AMOUNT_SPOTIFY_SUBSCRIPTION;
@@ -40,7 +40,7 @@ public class EditBookmarkExpenseCommandTest {
         EditBookmarkExpenseCommand editBookmarkExpenseCommand =
                 new EditBookmarkExpenseCommand(INDEX_FIRST, descriptor);
 
-        String expectedMessage = String.format(EditBookmarkExpenseCommand.MESSAGE_EDIT_FREQUENT_EXPENSE_SUCCESS,
+        String expectedMessage = String.format(EditBookmarkExpenseCommand.MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS,
                 editedBookmarkExpense);
 
         Model expectedModel = new ModelManager(new FinanceTracker(model.getFinanceTracker()), new UserPrefs());
@@ -65,7 +65,7 @@ public class EditBookmarkExpenseCommandTest {
         EditBookmarkExpenseCommand editBookmarkExpenseCommand =
                 new EditBookmarkExpenseCommand(indexLastExpense, descriptor);
 
-        String expectedMessage = String.format(EditBookmarkExpenseCommand.MESSAGE_EDIT_FREQUENT_EXPENSE_SUCCESS,
+        String expectedMessage = String.format(EditBookmarkExpenseCommand.MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS,
                 editedExpense);
 
         Model expectedModel = new ModelManager(new FinanceTracker(model.getFinanceTracker()), new UserPrefs());
@@ -75,13 +75,13 @@ public class EditBookmarkExpenseCommandTest {
     }
 
     @Test
-    public void execute_invalidFrequentExpenseIndexUnfilteredList_failure() {
+    public void execute_invalidBookmarkExpenseIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkExpenseList().size() + 1);
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build();
         EditBookmarkExpenseCommand editExpenseCommand = new EditBookmarkExpenseCommand(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editExpenseCommand, model, MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+        assertCommandFailure(editExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
 
 
@@ -90,7 +90,7 @@ public class EditBookmarkExpenseCommandTest {
      * but smaller than size of finance tracker
      */
     @Test
-    public void execute_invalidFrequentExpenseIndexFilteredList_failure() {
+    public void execute_invalidBookmarkExpenseIndexFilteredList_failure() {
         showBookmarkExpenseAtIndex(model, INDEX_FIRST);
         Index outOfBoundIndex = INDEX_SECOND;
 
@@ -100,7 +100,7 @@ public class EditBookmarkExpenseCommandTest {
         EditBookmarkExpenseCommand editBookmarkExpenseCommand = new EditBookmarkExpenseCommand(outOfBoundIndex,
                 new EditBookmarkTransactionDescriptorBuilder().withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build());
 
-        assertCommandFailure(editBookmarkExpenseCommand, model, MESSAGE_INVALID_FREQUENT_EXPENSE_DISPLAYED_INDEX);
+        assertCommandFailure(editBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
 
     @Test
