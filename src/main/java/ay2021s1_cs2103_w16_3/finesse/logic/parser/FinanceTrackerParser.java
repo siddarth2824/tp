@@ -32,27 +32,27 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListTransactionCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetExpenseLimitCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetSavingsGoalCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.AddFrequentIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.ConvertFrequentExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.ConvertFrequentIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.DeleteFrequentExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.DeleteFrequentIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.frequent.EditFrequentIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.AddBookmarkExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.AddBookmarkIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetExpenseLimitCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetSavingsGoalCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.AddFrequentIncomeCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.ConvertFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.ConvertFrequentIncomeCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.DeleteFrequentIncomeCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.frequentparsers.EditFrequentIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
@@ -114,13 +114,13 @@ public class FinanceTrackerParser {
         case AddIncomeCommand.COMMAND_ALIAS:
             return new AddIncomeCommandParser().parse(arguments);
 
-        case AddFrequentExpenseCommand.COMMAND_WORD:
-        case AddFrequentExpenseCommand.COMMAND_ALIAS:
-            return new AddFrequentExpenseCommandParser().parse(arguments);
+        case AddBookmarkExpenseCommand.COMMAND_WORD:
+        case AddBookmarkExpenseCommand.COMMAND_ALIAS:
+            return new AddBookmarkExpenseCommandParser().parse(arguments);
 
-        case AddFrequentIncomeCommand.COMMAND_WORD:
-        case AddFrequentIncomeCommand.COMMAND_ALIAS:
-            return new AddFrequentIncomeCommandParser().parse(arguments);
+        case AddBookmarkIncomeCommand.COMMAND_WORD:
+        case AddBookmarkIncomeCommand.COMMAND_ALIAS:
+            return new AddBookmarkIncomeCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             switch (uiCurrentTab) {
@@ -133,11 +133,11 @@ public class FinanceTrackerParser {
                         Tab.EXPENSES, Tab.INCOME));
             }
 
-        case EditFrequentExpenseCommand.COMMAND_WORD:
-            return new EditFrequentExpenseCommandParser().parse(arguments);
+        case EditBookmarkExpenseCommand.COMMAND_WORD:
+            return new EditBookmarkExpenseCommandParser().parse(arguments);
 
-        case EditFrequentIncomeCommand.COMMAND_WORD:
-            return new EditFrequentIncomeCommandParser().parse(arguments);
+        case EditBookmarkIncomeCommand.COMMAND_WORD:
+            return new EditBookmarkIncomeCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             switch (uiCurrentTab) {
@@ -150,19 +150,19 @@ public class FinanceTrackerParser {
                         Tab.EXPENSES, Tab.INCOME));
             }
 
-        case DeleteFrequentExpenseCommand.COMMAND_WORD:
-            return new DeleteFrequentExpenseCommandParser().parse(arguments);
+        case DeleteBookmarkExpenseCommand.COMMAND_WORD:
+            return new DeleteBookmarkExpenseCommandParser().parse(arguments);
 
-        case DeleteFrequentIncomeCommand.COMMAND_WORD:
-            return new DeleteFrequentIncomeCommandParser().parse(arguments);
+        case DeleteBookmarkIncomeCommand.COMMAND_WORD:
+            return new DeleteBookmarkIncomeCommandParser().parse(arguments);
 
-        case ConvertFrequentExpenseCommand.COMMAND_WORD:
-        case ConvertFrequentExpenseCommand.COMMAND_ALIAS:
-            return new ConvertFrequentExpenseCommandParser().parse(arguments);
+        case ConvertBookmarkExpenseCommand.COMMAND_WORD:
+        case ConvertBookmarkExpenseCommand.COMMAND_ALIAS:
+            return new ConvertBookmarkExpenseCommandParser().parse(arguments);
 
-        case ConvertFrequentIncomeCommand.COMMAND_WORD:
-        case ConvertFrequentIncomeCommand.COMMAND_ALIAS:
-            return new ConvertFrequentIncomeCommandParser().parse(arguments);
+        case ConvertBookmarkIncomeCommand.COMMAND_WORD:
+        case ConvertBookmarkIncomeCommand.COMMAND_ALIAS:
+            return new ConvertBookmarkIncomeCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();

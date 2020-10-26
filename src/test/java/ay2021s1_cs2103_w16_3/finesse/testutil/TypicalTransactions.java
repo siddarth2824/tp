@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -60,20 +60,20 @@ public class TypicalTransactions {
             .withDate("22/09/2020").withAmount("1000").buildIncome();
 
     // Frequent Expenses
-    public static final FrequentExpense PHONE_BILL = new FrequentTransactionBuilder().withTitle("Phone Bill")
-            .withAmount("60").buildFrequentExpense();
-    public static final FrequentExpense SPOTIFY_SUBSCRIPTION = new FrequentTransactionBuilder()
-            .withTitle("Spotify Subscription").withAmount("9.90").buildFrequentExpense();
-    public static final FrequentExpense NETFLIX_SUBSCRIPTION = new FrequentTransactionBuilder()
-            .withTitle("Netflix Subscription").withAmount("20").buildFrequentExpense();
-    public static final FrequentExpense TIMES_MAGAZINE_SUBSCRIPTION = new FrequentTransactionBuilder()
-            .withTitle("Times Magazine Subscription").withAmount("12").buildFrequentExpense();
+    public static final BookmarkExpense PHONE_BILL = new BookmarkTransactionBuilder().withTitle("Phone Bill")
+            .withAmount("60").buildBookmarkExpense();
+    public static final BookmarkExpense SPOTIFY_SUBSCRIPTION = new BookmarkTransactionBuilder()
+            .withTitle("Spotify Subscription").withAmount("9.90").buildBookmarkExpense();
+    public static final BookmarkExpense NETFLIX_SUBSCRIPTION = new BookmarkTransactionBuilder()
+            .withTitle("Netflix Subscription").withAmount("20").buildBookmarkExpense();
+    public static final BookmarkExpense TIMES_MAGAZINE_SUBSCRIPTION = new BookmarkTransactionBuilder()
+            .withTitle("Times Magazine Subscription").withAmount("12").buildBookmarkExpense();
 
     // Frequent Incomes
-    public static final FrequentIncome PART_TIME = new FrequentTransactionBuilder().withTitle("Part Time")
-            .withAmount("450").withCategories("Work").buildFrequentIncome();
-    public static final FrequentIncome INVESTING = new FrequentTransactionBuilder().withTitle("Investing")
-            .withAmount("50").buildFrequentIncome();
+    public static final BookmarkIncome PART_TIME = new BookmarkTransactionBuilder().withTitle("Part Time")
+            .withAmount("450").withCategories("Work").buildBookmarkIncome();
+    public static final BookmarkIncome INVESTING = new BookmarkTransactionBuilder().withTitle("Investing")
+            .withAmount("50").buildBookmarkIncome();
 
     // Manually added
     public static final Expense TUITION_FEES_2 = new TransactionBuilder().withTitle("Tuition Fees")
@@ -98,8 +98,8 @@ public class TypicalTransactions {
         FinanceTracker ft = new FinanceTracker();
         getTypicalExpenses().forEach(ft::addTransaction);
         getTypicalIncomes().forEach(ft::addTransaction);
-        getTypicalFrequentExpenses().forEach(ft::addFrequentExpense);
-        getTypicalFrequentIncome().forEach(ft::addFrequentIncome);
+        getTypicalFrequentExpenses().forEach(ft::addBookmarkExpense);
+        getTypicalFrequentIncome().forEach(ft::addBookmarkIncome);
         return ft;
     }
 
@@ -118,12 +118,12 @@ public class TypicalTransactions {
                 ALLOWANCE, ANG_PAO, GST_VOUCHER, HACKATHON_WINNINGS));
     }
 
-    public static List<FrequentExpense> getTypicalFrequentExpenses() {
+    public static List<BookmarkExpense> getTypicalFrequentExpenses() {
         return new ArrayList<>(Arrays.asList(PHONE_BILL, SPOTIFY_SUBSCRIPTION, NETFLIX_SUBSCRIPTION,
                 TIMES_MAGAZINE_SUBSCRIPTION));
     }
 
-    public static List<FrequentIncome> getTypicalFrequentIncome() {
+    public static List<BookmarkIncome> getTypicalFrequentIncome() {
         return new ArrayList<>(Arrays.asList(PART_TIME, INVESTING));
     }
 

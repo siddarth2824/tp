@@ -1,8 +1,8 @@
 package ay2021s1_cs2103_w16_3.finesse.model;
 
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -29,14 +29,14 @@ public interface ReadOnlyFinanceTracker {
     ObservableList<Income> getIncomeList();
 
     /**
-     * Returns an unmodifiable view of the frequent expense list.
+     * Returns an unmodifiable view of the bookmark expense list.
      */
-    ObservableList<FrequentExpense> getFrequentExpenseList();
+    ObservableList<BookmarkExpense> getBookmarkExpenseList();
 
     /**
-     * Returns an unmodifiable view of the frequent income list.
+     * Returns an unmodifiable view of the bookmark income list.
      */
-    ObservableList<FrequentIncome> getFrequentIncomeList();
+    ObservableList<BookmarkIncome> getBookmarkIncomeList();
 
     /**
      * Returns the monthly budget.

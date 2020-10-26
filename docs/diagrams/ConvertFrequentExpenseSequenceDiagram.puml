@@ -37,10 +37,10 @@ activate ConvertFrequentExpenseCommand LOGIC_COLOR
 ConvertFrequentExpenseCommand -> ModelManager: getFilteredFrequentExpenseList()
 activate ModelManager MODEL_COLOR
 
-ModelManager --> ConvertFrequentExpenseCommand: frequentExpenseList
+ModelManager --> ConvertFrequentExpenseCommand: bookmarkExpenseList
 deactivate ModelManager
 
-ConvertFrequentExpenseCommand -> FrequentExpense: frequentExpenseList.get(Index)
+ConvertFrequentExpenseCommand -> FrequentExpense: bookmarkExpenseList.get(Index)
 activate FrequentExpense UI_COLOR
 
 FrequentExpense --> ConvertFrequentExpenseCommand: FrequentExpense

@@ -13,9 +13,9 @@ import ay2021s1_cs2103_w16_3.finesse.logic.parser.FinanceTrackerParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -86,13 +86,13 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<FrequentExpense> getFilteredFrequentExpenseList() {
-        return model.getFilteredFrequentExpenseList();
+    public ObservableList<BookmarkExpense> getFilteredBookmarkExpenseList() {
+        return model.getFilteredBookmarkExpenseList();
     }
 
     @Override
-    public ObservableList<FrequentIncome> getFilteredFrequentIncomeList() {
-        return model.getFilteredFrequentIncomeList();
+    public ObservableList<BookmarkIncome> getFilteredBookmarkIncomeList() {
+        return model.getFilteredBookmarkIncomeList();
     }
 
     public MonthlyBudget getMonthlyBudget() {

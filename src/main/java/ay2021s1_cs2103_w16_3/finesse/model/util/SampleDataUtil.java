@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
@@ -41,20 +41,20 @@ public class SampleDataUtil {
         };
     }
 
-    public static FrequentExpense[] getFrequentExpenses() {
-        return new FrequentExpense[] {
-            new FrequentExpense(new Title("Phone Bill"), new Amount("60"),
+    public static BookmarkExpense[] getFrequentExpenses() {
+        return new BookmarkExpense[] {
+            new BookmarkExpense(new Title("Phone Bill"), new Amount("60"),
                     getCategoriesSet("Personal", "Utilities")),
-            new FrequentExpense(new Title("Spotify Subscription"), new Amount("9.90"),
+            new BookmarkExpense(new Title("Spotify Subscription"), new Amount("9.90"),
                     getCategoriesSet("Others"))
         };
     }
 
-    public static FrequentIncome[] getFrequentIncome() {
-        return new FrequentIncome[] {
-            new FrequentIncome(new Title("Internship"), new Amount("1000"),
+    public static BookmarkIncome[] getFrequentIncome() {
+        return new BookmarkIncome[] {
+            new BookmarkIncome(new Title("Internship"), new Amount("1000"),
                     getCategoriesSet("Work", "Stipend")),
-            new FrequentIncome(new Title("Teaching Assistant"), new Amount("1890"),
+            new BookmarkIncome(new Title("Teaching Assistant"), new Amount("1890"),
                     getCategoriesSet("CS1101S", "CS1231S"))
         };
     }
@@ -65,11 +65,11 @@ public class SampleDataUtil {
         for (Transaction sampleTransaction : getSampleTransactions()) {
             sampleFt.addTransaction(sampleTransaction);
         }
-        for (FrequentExpense frequentExpense : getFrequentExpenses()) {
-            sampleFt.addFrequentExpense(frequentExpense);
+        for (BookmarkExpense bookmarkExpense : getFrequentExpenses()) {
+            sampleFt.addBookmarkExpense(bookmarkExpense);
         }
-        for (FrequentIncome frequentIncome : getFrequentIncome()) {
-            sampleFt.addFrequentIncome(frequentIncome);
+        for (BookmarkIncome bookmarkIncome : getFrequentIncome()) {
+            sampleFt.addBookmarkIncome(bookmarkIncome);
         }
         return sampleFt;
     }

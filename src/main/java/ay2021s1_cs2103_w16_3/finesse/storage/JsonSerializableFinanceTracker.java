@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import ay2021s1_cs2103_w16_3.finesse.commons.exceptions.IllegalValueException;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 
@@ -25,8 +25,8 @@ class JsonSerializableFinanceTracker {
 
     private final List<JsonAdaptedExpense> expenses = new ArrayList<>();
     private final List<JsonAdaptedIncome> incomes = new ArrayList<>();
-    private final List<JsonAdaptedFrequentExpense> frequentExpenses = new ArrayList<>();
-    private final List<JsonAdaptedFrequentIncome> frequentIncomes = new ArrayList<>();
+    private final List<JsonAdaptedBookmarkExpense> bookmarkExpenses = new ArrayList<>();
+    private final List<JsonAdaptedBookmarkIncome> bookmarkIncomes = new ArrayList<>();
     private final JsonAdaptedMonthlyBudget monthlyBudget;
 
     /**
@@ -35,13 +35,13 @@ class JsonSerializableFinanceTracker {
     @JsonCreator
     public JsonSerializableFinanceTracker(@JsonProperty("expenses") List<JsonAdaptedExpense> expenses,
             @JsonProperty("incomes") List<JsonAdaptedIncome> incomes,
-            @JsonProperty("frequentExpenses") List<JsonAdaptedFrequentExpense> frequentExpenses,
-            @JsonProperty("frequentIncomes") List<JsonAdaptedFrequentIncome> frequentIncomes,
+            @JsonProperty("bookmarkExpenses") List<JsonAdaptedBookmarkExpense> bookmarkExpenses,
+            @JsonProperty("bookmarkIncomes") List<JsonAdaptedBookmarkIncome> bookmarkIncomes,
             @JsonProperty("monthlyBudget") JsonAdaptedMonthlyBudget monthlyBudget) {
         this.expenses.addAll(expenses);
         this.incomes.addAll(incomes);
-        this.frequentExpenses.addAll(frequentExpenses);
-        this.frequentIncomes.addAll(frequentIncomes);
+        this.bookmarkExpenses.addAll(bookmarkExpenses);
+        this.bookmarkIncomes.addAll(bookmarkIncomes);
         this.monthlyBudget = monthlyBudget;
     }
 
@@ -55,9 +55,9 @@ class JsonSerializableFinanceTracker {
                 .collect(Collectors.toList()));
         incomes.addAll(source.getIncomeList().stream().map(JsonAdaptedIncome::new)
                 .collect(Collectors.toList()));
-        frequentExpenses.addAll(source.getFrequentExpenseList().stream().map(JsonAdaptedFrequentExpense::new)
+        bookmarkExpenses.addAll(source.getBookmarkExpenseList().stream().map(JsonAdaptedBookmarkExpense::new)
                 .collect(Collectors.toList()));
-        frequentIncomes.addAll(source.getFrequentIncomeList().stream().map(JsonAdaptedFrequentIncome::new)
+        bookmarkIncomes.addAll(source.getBookmarkIncomeList().stream().map(JsonAdaptedBookmarkIncome::new)
                 .collect(Collectors.toList()));
         monthlyBudget = new JsonAdaptedMonthlyBudget(source.getMonthlyBudget());
     }
@@ -77,13 +77,13 @@ class JsonSerializableFinanceTracker {
             Income income = jsonAdaptedIncome.toModelType();
             financeTracker.addTransaction(income);
         }
-        for (JsonAdaptedFrequentExpense jsonAdaptedFrequentExpense : frequentExpenses) {
-            FrequentExpense frequentExpense = jsonAdaptedFrequentExpense.toModelType();
-            financeTracker.addFrequentExpense(frequentExpense);
+        for (JsonAdaptedBookmarkExpense jsonAdaptedBookmarkExpense : bookmarkExpenses) {
+            BookmarkExpense bookmarkExpense = jsonAdaptedBookmarkExpense.toModelType();
+            financeTracker.addBookmarkExpense(bookmarkExpense);
         }
-        for (JsonAdaptedFrequentIncome jsonAdaptedFrequentIncome : frequentIncomes) {
-            FrequentIncome frequentIncome = jsonAdaptedFrequentIncome.toModelType();
-            financeTracker.addFrequentIncome(frequentIncome);
+        for (JsonAdaptedBookmarkIncome jsonAdaptedBookmarkIncome : bookmarkIncomes) {
+            BookmarkIncome bookmarkIncome = jsonAdaptedBookmarkIncome.toModelType();
+            financeTracker.addBookmarkIncome(bookmarkIncome);
         }
         MonthlyBudget budget = monthlyBudget.toModelType();
         financeTracker.setMonthlyBudget(budget);

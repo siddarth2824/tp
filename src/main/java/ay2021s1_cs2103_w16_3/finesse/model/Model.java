@@ -4,9 +4,9 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
@@ -28,9 +28,9 @@ public interface Model {
     Predicate<Transaction> PREDICATE_SHOW_ALL_INCOMES = transaction -> transaction instanceof Income;
 
     /** {@code Predicate} that always evaluates to true. */
-    Predicate<FrequentExpense> PREDICATE_SHOW_ALL_FREQUENT_EXPENSES = frequentExpense -> true;
+    Predicate<BookmarkExpense> PREDICATE_SHOW_ALL_BOOKMARK_EXPENSES = bookmarkExpense -> true;
 
-    Predicate<FrequentIncome> PREDICATE_SHOW_ALL_FREQUENT_INCOMES = frequentIncome -> true;
+    Predicate<BookmarkIncome> PREDICATE_SHOW_ALL_BOOKMARK_INCOMES = bookmarkIncome -> true;
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -76,16 +76,16 @@ public interface Model {
     void deleteTransaction(Transaction target);
 
     /**
-     * Deletes the given frequent expense.
-     * The frequent expense must exist in the finance tracker.
+     * Deletes the given bookmark expense.
+     * The bookmark expense must exist in the finance tracker.
      */
-    void deleteFrequentExpense(FrequentExpense target);
+    void deleteBookmarkExpense(BookmarkExpense target);
 
     /**
-     * Deletes the given frequent income.
-     * The frequent income must exist in the finance tracker.
+     * Deletes the given bookmark income.
+     * The bookmark income must exist in the finance tracker.
      */
-    void deleteFrequentIncome(FrequentIncome target);
+    void deleteBookmarkIncome(BookmarkIncome target);
 
     /**
      * Adds the given expense.
@@ -98,14 +98,14 @@ public interface Model {
     void addIncome(Income income);
 
     /**
-     * Adds the given frequent expense.
+     * Adds the given bookmark expense.
      */
-    void addFrequentExpense(FrequentExpense frequentExpense);
+    void addBookmarkExpense(BookmarkExpense bookmarkExpense);
 
     /**
-     * Adds the given frequent income.
+     * Adds the given bookmark income.
      */
-    void addFrequentIncome(FrequentIncome frequentIncome);
+    void addBookmarkIncome(BookmarkIncome bookmarkIncome);
 
     /**
      * Replaces the given transaction {@code target} with {@code editedTransaction}.
@@ -114,16 +114,16 @@ public interface Model {
     void setTransaction(Transaction target, Transaction editedTransaction);
 
     /**
-     * Replaces the given frequent expense {@code target} with {@code editedFrequentExpense}.
+     * Replaces the given bookmark expense {@code target} with {@code editedBookmarkExpense}.
      * {@code target} must exist in the finance tracker.
      */
-    void setFrequentExpense(FrequentExpense target, FrequentExpense editedFrequentExpense);
+    void setBookmarkExpense(BookmarkExpense target, BookmarkExpense editedBookmarkExpense);
 
     /**
-     * Replaces the given frequent income {@code target} with {@code editedFrequentIncome}.
+     * Replaces the given bookmark income {@code target} with {@code editedBookmarkIncome}.
      * {@code target} must exist in the finance tracker.
      */
-    void setFrequentIncome(FrequentIncome target, FrequentIncome editedFrequentIncome);
+    void setBookmarkIncome(BookmarkIncome target, BookmarkIncome editedBookmarkIncome);
 
     /** Returns the monthly budget. */
     MonthlyBudget getMonthlyBudget();
@@ -145,11 +145,11 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered income list. */
     ObservableList<Income> getFilteredIncomeList();
 
-    /** Returns an unmodifiable view of the filtered frequent expense list. */
-    ObservableList<FrequentExpense> getFilteredFrequentExpenseList();
+    /** Returns an unmodifiable view of the filtered bookmark expense list. */
+    ObservableList<BookmarkExpense> getFilteredBookmarkExpenseList();
 
-    /** Returns an unmodifiable view of the filtered frequent income list. */
-    ObservableList<FrequentIncome> getFilteredFrequentIncomeList();
+    /** Returns an unmodifiable view of the filtered bookmark income list. */
+    ObservableList<BookmarkIncome> getFilteredBookmarkIncomeList();
 
     /**
      * Updates the filter of the filtered transaction list to filter by the given {@code predicate}.
@@ -170,14 +170,14 @@ public interface Model {
     void updateFilteredIncomeList(Predicate<Transaction> predicate);
 
     /**
-     * Updates the filter of the filtered frequent expense list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered bookmark expense list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredFrequentExpenseList(Predicate<FrequentExpense> predicate);
+    void updateFilteredBookmarkExpenseList(Predicate<BookmarkExpense> predicate);
 
     /**
-     * Updates the filter of the filtered frequent income list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered bookmark income list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredFrequentIncomeList(Predicate<FrequentIncome> predicate);
+    void updateFilteredBookmarkIncomeList(Predicate<BookmarkIncome> predicate);
 }

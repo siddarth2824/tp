@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
@@ -33,8 +33,8 @@ public class ModelManager implements Model {
     private final FilteredList<Transaction> filteredTransactions;
     private final FilteredList<Transaction> filteredExpenses;
     private final FilteredList<Transaction> filteredIncomes;
-    private final FilteredList<FrequentExpense> filteredFrequentExpenses;
-    private final FilteredList<FrequentIncome> filteredFrequentIncomes;
+    private final FilteredList<BookmarkExpense> filteredBookmarkExpenses;
+    private final FilteredList<BookmarkIncome> filteredBookmarkIncomes;
     private final ObservableList<Expense> castFilteredExpenses;
     private final ObservableList<Income> castFilteredIncomes;
     private final MonthlyBudget monthlyBudget;
@@ -53,8 +53,8 @@ public class ModelManager implements Model {
         filteredTransactions = new FilteredList<>(this.financeTracker.getTransactionList());
         filteredExpenses = new FilteredList<>(this.financeTracker.getTransactionList(), PREDICATE_SHOW_ALL_EXPENSES);
         filteredIncomes = new FilteredList<>(this.financeTracker.getTransactionList(), PREDICATE_SHOW_ALL_INCOMES);
-        filteredFrequentExpenses = new FilteredList<>(this.financeTracker.getFrequentExpenseList());
-        filteredFrequentIncomes = new FilteredList<>(this.financeTracker.getFrequentIncomeList());
+        filteredBookmarkExpenses = new FilteredList<>(this.financeTracker.getBookmarkExpenseList());
+        filteredBookmarkIncomes = new FilteredList<>(this.financeTracker.getBookmarkIncomeList());
         castFilteredExpenses = FXCollections.observableArrayList(castFilteredList(filteredExpenses, Expense.class));
         castFilteredIncomes = FXCollections.observableArrayList(castFilteredList(filteredIncomes, Income.class));
         monthlyBudget = this.financeTracker.getMonthlyBudget();
@@ -137,54 +137,54 @@ public class ModelManager implements Model {
         refreshTransactionLists();
     }
 
-    //=========== Frequent Transaction ================================================================================
+    //=========== Bookmark Transaction ================================================================================
 
     @Override
-    public void addFrequentExpense(FrequentExpense frequentExpense) {
-        financeTracker.addFrequentExpense(frequentExpense);
+    public void addBookmarkExpense(BookmarkExpense bookmarkExpense) {
+        financeTracker.addBookmarkExpense(bookmarkExpense);
     }
 
     @Override
-    public void addFrequentIncome(FrequentIncome frequentIncome) {
-        financeTracker.addFrequentIncome(frequentIncome);
+    public void addBookmarkIncome(BookmarkIncome bookmarkIncome) {
+        financeTracker.addBookmarkIncome(bookmarkIncome);
     }
 
     @Override
-    public void deleteFrequentExpense(FrequentExpense frequentExpense) {
-        financeTracker.removeFrequentExpense(frequentExpense);
+    public void deleteBookmarkExpense(BookmarkExpense bookmarkExpense) {
+        financeTracker.removeBookmarkExpense(bookmarkExpense);
     }
 
     @Override
-    public void deleteFrequentIncome(FrequentIncome frequentIncome) {
-        financeTracker.removeFrequentIncome(frequentIncome);
+    public void deleteBookmarkIncome(BookmarkIncome bookmarkIncome) {
+        financeTracker.removeBookmarkIncome(bookmarkIncome);
     }
 
     @Override
-    public void setFrequentExpense(FrequentExpense target, FrequentExpense editedFrequentExpense) {
-        requireAllNonNull(target, editedFrequentExpense);
+    public void setBookmarkExpense(BookmarkExpense target, BookmarkExpense editedBookmarkExpense) {
+        requireAllNonNull(target, editedBookmarkExpense);
 
-        financeTracker.setFrequentExpense(target, editedFrequentExpense);
+        financeTracker.setBookmarkExpense(target, editedBookmarkExpense);
     }
 
     @Override
-    public void setFrequentIncome(FrequentIncome target, FrequentIncome editedFrequentIncome) {
-        requireAllNonNull(target, editedFrequentIncome);
+    public void setBookmarkIncome(BookmarkIncome target, BookmarkIncome editedBookmarkIncome) {
+        requireAllNonNull(target, editedBookmarkIncome);
 
-        financeTracker.setFrequentIncome(target, editedFrequentIncome);
+        financeTracker.setBookmarkIncome(target, editedBookmarkIncome);
     }
 
     @Override
-    public void updateFilteredFrequentExpenseList(Predicate<FrequentExpense> predicate) {
+    public void updateFilteredBookmarkExpenseList(Predicate<BookmarkExpense> predicate) {
         requireNonNull(predicate);
 
-        filteredFrequentExpenses.setPredicate(predicate);
+        filteredBookmarkExpenses.setPredicate(predicate);
     }
 
     @Override
-    public void updateFilteredFrequentIncomeList(Predicate<FrequentIncome> predicate) {
+    public void updateFilteredBookmarkIncomeList(Predicate<BookmarkIncome> predicate) {
         requireNonNull(predicate);
 
-        filteredFrequentIncomes.setPredicate(predicate);
+        filteredBookmarkIncomes.setPredicate(predicate);
     }
 
     //=========== Budget ===========================================================================================
@@ -240,21 +240,21 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code FrequentExpense} backed by the internal frequent expense
+     * Returns an unmodifiable view of the list of {@code BookmarkExpense} backed by the internal bookmark expense
      * list of {@code versionedFinanceTracker}.
      */
     @Override
-    public ObservableList<FrequentExpense> getFilteredFrequentExpenseList() {
-        return filteredFrequentExpenses;
+    public ObservableList<BookmarkExpense> getFilteredBookmarkExpenseList() {
+        return filteredBookmarkExpenses;
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code FrequentIncome} backed by the internal frequent income list of
-     * {@code versionedFinanceTracker}.
+     * Returns an unmodifiable view of the list of {@code BookmarkIncome} backed by the internal bookmark income
+     * list of {@code versionedFinanceTracker}.
      */
     @Override
-    public ObservableList<FrequentIncome> getFilteredFrequentIncomeList() {
-        return filteredFrequentIncomes;
+    public ObservableList<BookmarkIncome> getFilteredBookmarkIncomeList() {
+        return filteredBookmarkIncomes;
     }
 
     @Override

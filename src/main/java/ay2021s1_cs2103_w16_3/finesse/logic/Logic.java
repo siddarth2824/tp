@@ -7,9 +7,9 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
@@ -50,11 +50,11 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of incomes. */
     ObservableList<Income> getFilteredIncomeList();
 
-    /** Returns an unmodifiable view of the filtered list of frequent expenses. */
-    ObservableList<FrequentExpense> getFilteredFrequentExpenseList();
+    /** Returns an unmodifiable view of the filtered list of bookmark expenses. */
+    ObservableList<BookmarkExpense> getFilteredBookmarkExpenseList();
 
-    /** Returns an unmodifiable view of the filtered list of frequent incomes. */
-    ObservableList<FrequentIncome> getFilteredFrequentIncomeList();
+    /** Returns an unmodifiable view of the filtered list of bookmark incomes. */
+    ObservableList<BookmarkIncome> getFilteredBookmarkIncomeList();
     /** Returns the monthly budget. */
     MonthlyBudget getMonthlyBudget();
 

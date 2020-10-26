@@ -123,11 +123,11 @@ public class MainWindow extends UiPart<Stage> {
         overviewTab.setContent(overviewTabPane.getRoot());
 
         IncomeTabPane incomeTabPane =
-                new IncomeTabPane(logic.getFilteredIncomeList(), logic.getFilteredFrequentIncomeList());
+                new IncomeTabPane(logic.getFilteredIncomeList(), logic.getFilteredBookmarkIncomeList());
         incomeTab.setContent(incomeTabPane.getRoot());
 
         ExpenseTabPane expenseTabPane =
-                new ExpenseTabPane(logic.getFilteredExpenseList(), logic.getFilteredFrequentExpenseList());
+                new ExpenseTabPane(logic.getFilteredExpenseList(), logic.getFilteredBookmarkExpenseList());
         expenseTab.setContent(expenseTabPane.getRoot());
 
         AnalyticsTabPane analyticsTabPane = new AnalyticsTabPane(logic.getMonthlyBudget());

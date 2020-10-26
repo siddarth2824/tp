@@ -93,15 +93,15 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getFilteredFrequentExpenseList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredBookmarkExpenseList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> modelManager.getFilteredFrequentExpenseList().remove(0));
+            -> modelManager.getFilteredBookmarkExpenseList().remove(0));
     }
 
     @Test
-    public void getFilteredFrequentIncomeList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredBookmarkIncomeList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> modelManager.getFilteredFrequentIncomeList().remove(0));
+            -> modelManager.getFilteredBookmarkIncomeList().remove(0));
     }
 
     @Test

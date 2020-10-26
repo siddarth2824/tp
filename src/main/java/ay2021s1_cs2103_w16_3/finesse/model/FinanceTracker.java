@@ -4,11 +4,11 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpenseList;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncomeList;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpense;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentExpenseList;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncome;
-import ay2021s1_cs2103_w16_3.finesse.model.frequent.FrequentIncomeList;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
@@ -25,8 +25,8 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     private static final int NUM_OF_MONTHS = 3;
 
     private final TransactionList transactions;
-    private final FrequentExpenseList frequentExpenses;
-    private final FrequentIncomeList frequentIncomes;
+    private final BookmarkExpenseList bookmarkExpenses;
+    private final BookmarkIncomeList bookmarkIncomes;
     private final MonthlyBudget monthlyBudget;
 
     /*
@@ -38,8 +38,8 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
      */
     {
         transactions = new TransactionList();
-        frequentExpenses = new FrequentExpenseList();
-        frequentIncomes = new FrequentIncomeList();
+        bookmarkExpenses = new BookmarkExpenseList();
+        bookmarkIncomes = new BookmarkIncomeList();
         monthlyBudget = new MonthlyBudget();
     }
 
@@ -63,17 +63,17 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     }
 
     /**
-     * Replaces the contents of the frequent expense list with {@code frequentExpenses}.
+     * Replaces the contents of the bookmark expense list with {@code bookmarkExpens}.
      */
-    public void setFrequentExpenses(List<FrequentExpense> frequentExpenses) {
-        this.frequentExpenses.setFrequentExpenses(frequentExpenses);
+    public void setBookmarkExpenses(List<BookmarkExpense> bookmarkExpens) {
+        this.bookmarkExpenses.setBookmarkExpenses(bookmarkExpens);
     }
 
     /**
-     * Replaces the contents of the frequent incomes list with {@code frequentIncomes}.
+     * Replaces the contents of the bookmark incomes list with {@code bookmarkIncomes}.
      */
-    public void setFrequentIncomes(List<FrequentIncome> frequentIncomes) {
-        this.frequentIncomes.setFrequentIncomes(frequentIncomes);
+    public void setBookmarkIncomes(List<BookmarkIncome> bookmarkIncomes) {
+        this.bookmarkIncomes.setBookmarkIncomes(bookmarkIncomes);
     }
 
     /**
@@ -83,8 +83,8 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
         requireNonNull(newData);
 
         setTransactions(newData.getTransactionList());
-        setFrequentExpenses(newData.getFrequentExpenseList());
-        setFrequentIncomes(newData.getFrequentIncomeList());
+        setBookmarkExpenses(newData.getBookmarkExpenseList());
+        setBookmarkIncomes(newData.getBookmarkIncomeList());
         setMonthlyBudget(newData.getMonthlyBudget());
         calculateBudgetInfo();
     }
@@ -99,17 +99,17 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     }
 
     /**
-     * Adds a frequent expense to the finance tracker.
+     * Adds a bookmark expense to the finance tracker.
      */
-    public void addFrequentExpense(FrequentExpense frequentExpense) {
-        frequentExpenses.add(frequentExpense);
+    public void addBookmarkExpense(BookmarkExpense bookmarkExpense) {
+        bookmarkExpenses.add(bookmarkExpense);
     }
 
     /**
-     * Adds a frequent income to the finance tracker.
+     * Adds a bookmark income to the finance tracker.
      */
-    public void addFrequentIncome(FrequentIncome frequentIncome) {
-        frequentIncomes.add(frequentIncome);
+    public void addBookmarkIncome(BookmarkIncome bookmarkIncome) {
+        bookmarkIncomes.add(bookmarkIncome);
     }
 
     /**
@@ -123,23 +123,23 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     }
 
     /**
-     * Replaces the given frequent expense {@code target} in the list with {@code editedFrequentExpense}.
-     * {@code target} must exist in the frequent expense list.
+     * Replaces the given bookmark expense {@code target} in the list with {@code editedBookmarkExpense}.
+     * {@code target} must exist in the bookmark expense list.
      */
-    public void setFrequentExpense(FrequentExpense target, FrequentExpense editedFrequentExpense) {
-        requireNonNull(editedFrequentExpense);
+    public void setBookmarkExpense(BookmarkExpense target, BookmarkExpense editedBookmarkExpense) {
+        requireNonNull(editedBookmarkExpense);
 
-        frequentExpenses.setFrequentExpense(target, editedFrequentExpense);
+        bookmarkExpenses.setBookmark(target, editedBookmarkExpense);
     }
 
     /**
-     * Replaces the given frequent income {@code target} in the list with {@code editedFrequentIncome}.
-     * {@code target} must exist in the frequent income list.
+     * Replaces the given bookmark income {@code target} in the list with {@code editedBookmarkIncome}.
+     * {@code target} must exist in the bookmark bookmark list.
      */
-    public void setFrequentIncome(FrequentIncome target, FrequentIncome editedFrequentIncome) {
-        requireNonNull(editedFrequentIncome);
+    public void setBookmarkIncome(BookmarkIncome target, BookmarkIncome editedBookmarkIncome) {
+        requireNonNull(editedBookmarkIncome);
 
-        frequentIncomes.setFrequentIncome(target, editedFrequentIncome);
+        bookmarkIncomes.setBookmarkIncome(target, editedBookmarkIncome);
     }
 
     /**
@@ -154,16 +154,16 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
      * Removes {@code key} from this {@code FinanceTracker}.
      * {@code key} must exist in the finance tracker.
      */
-    public void removeFrequentExpense(FrequentExpense key) {
-        frequentExpenses.remove(key);
+    public void removeBookmarkExpense(BookmarkExpense key) {
+        bookmarkExpenses.remove(key);
     }
 
     /**
      * Removes {@code key} from this {@code FinanceTracker}.
      * {@code key} must exist in the finance tracker.
      */
-    public void removeFrequentIncome(FrequentIncome key) {
-        frequentIncomes.remove(key);
+    public void removeBookmarkIncome(BookmarkIncome key) {
+        bookmarkIncomes.remove(key);
     }
 
     //// budget-level operations
@@ -221,13 +221,13 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     }
 
     @Override
-    public ObservableList<FrequentExpense> getFrequentExpenseList() {
-        return frequentExpenses.asUnmodifiableObservableList();
+    public ObservableList<BookmarkExpense> getBookmarkExpenseList() {
+        return bookmarkExpenses.asUnmodifiableObservableList();
     }
 
     @Override
-    public ObservableList<FrequentIncome> getFrequentIncomeList() {
-        return frequentIncomes.asUnmodifiableObservableList();
+    public ObservableList<BookmarkIncome> getBookmarkIncomeList() {
+        return bookmarkIncomes.asUnmodifiableObservableList();
     }
 
     public MonthlyBudget getMonthlyBudget() {
