@@ -68,11 +68,11 @@ public class AddExpenseCommandParserTest {
                 new AddExpenseCommand(expectedExpenseWithNoCategories));
 
         // arguments has no date
-        Expense expectedExpenseWithNoDate = new TransactionBuilder().withTitle(VALID_TITLE_INTERNSHIP)
+        Expense expectedExpenseWithCurrentDate = new TransactionBuilder().withTitle(VALID_TITLE_INTERNSHIP)
                 .withAmount(VALID_AMOUNT_INTERNSHIP).withCategories(VALID_CATEGORY_WORK).withDate(CURRENT_DATE)
                 .buildExpense();
         assertParseSuccess(parser, TITLE_DESC_INTERNSHIP + AMOUNT_DESC_INTERNSHIP + CATEGORY_DESC_WORK,
-                new AddExpenseCommand(expectedExpenseWithNoDate));
+                new AddExpenseCommand(expectedExpenseWithCurrentDate));
     }
 
     @Test

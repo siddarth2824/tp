@@ -63,17 +63,17 @@ public class AddIncomeCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Income expectedIncomeWithNoInputCategories = new TransactionBuilder(BUBBLE_TEA_2).withCategories()
+        Income expectedIncomeWithNoCategories = new TransactionBuilder(BUBBLE_TEA_2).withCategories()
                 .buildIncome();
         assertParseSuccess(parser, TITLE_DESC_BUBBLE_TEA + AMOUNT_DESC_BUBBLE_TEA + DATE_DESC_BUBBLE_TEA,
-                new AddIncomeCommand(expectedIncomeWithNoInputCategories));
+                new AddIncomeCommand(expectedIncomeWithNoCategories));
 
         // arguments has no date
-        Income expectedIncomeWithNoInputDate = new TransactionBuilder().withTitle(VALID_TITLE_INTERNSHIP)
+        Income expectedIncomeWithCurrentDate = new TransactionBuilder().withTitle(VALID_TITLE_INTERNSHIP)
                 .withAmount(VALID_AMOUNT_INTERNSHIP).withDate(CURRENT_DATE).withCategories(VALID_CATEGORY_WORK)
                 .buildIncome();
         assertParseSuccess(parser, TITLE_DESC_INTERNSHIP + AMOUNT_DESC_INTERNSHIP + CATEGORY_DESC_WORK,
-                new AddIncomeCommand(expectedIncomeWithNoInputDate));
+                new AddIncomeCommand(expectedIncomeWithCurrentDate));
     }
 
     @Test
