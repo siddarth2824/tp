@@ -22,7 +22,7 @@ public class ConvertBookmarkIncomeCommand extends ConvertBookmarkCommand {
             + " it as an income to the finance tracker.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_DATE + "DATE]\n"
-            + "Inputting the date is optional. If no input is given for d/DATE, current date will be used.\n"
+            + "Inputting the date is optional. If no input is given for d/DATE, the current date will be used.\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_DATE + "03/10/2020 ";
 
     public static final String MESSAGE_CONVERT_BOOKMARK_INCOME_SUCCESS = "Bookmark income has been converted "

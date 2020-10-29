@@ -63,8 +63,7 @@ public class AddIncomeCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Income expectedIncomeWithNoCategories = new TransactionBuilder(BUBBLE_TEA_2).withCategories()
-                .buildIncome();
+        Income expectedIncomeWithNoCategories = new TransactionBuilder(BUBBLE_TEA_2).buildIncome();
         assertParseSuccess(parser, TITLE_DESC_BUBBLE_TEA + AMOUNT_DESC_BUBBLE_TEA + DATE_DESC_BUBBLE_TEA,
                 new AddIncomeCommand(expectedIncomeWithNoCategories));
 

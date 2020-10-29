@@ -23,7 +23,7 @@ public class AddIncomeCommand extends Command {
             + PREFIX_AMOUNT + "AMOUNT "
             + "[" + PREFIX_DATE + "DATE] "
             + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
-            + "Inputting the date is optional. If no input is given for d/DATE, current date will be used.\n"
+            + "Inputting the date is optional. If no input is given for d/DATE, the current date will be used.\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Internship "
             + PREFIX_AMOUNT + "560 "

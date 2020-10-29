@@ -63,7 +63,7 @@ public class AddExpenseCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Expense expectedExpenseWithNoCategories = new TransactionBuilder(BUBBLE_TEA_2).withCategories().buildExpense();
+        Expense expectedExpenseWithNoCategories = new TransactionBuilder(BUBBLE_TEA_2).buildExpense();
         assertParseSuccess(parser, TITLE_DESC_BUBBLE_TEA + AMOUNT_DESC_BUBBLE_TEA + DATE_DESC_BUBBLE_TEA,
                 new AddExpenseCommand(expectedExpenseWithNoCategories));
 
