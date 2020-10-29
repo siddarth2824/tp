@@ -4,6 +4,9 @@ import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALI
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentMultimap;
@@ -12,6 +15,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.parser.Parser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.ParserUtil;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 
 /**
  * Parser input arguments and creates a new ConvertBookmarkIncomeCommand object
@@ -26,12 +30,21 @@ public class ConvertBookmarkIncomeCommandParser implements Parser<ConvertBookmar
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DATE);
 
-        if (!argMultimap.arePrefixesPresent(PREFIX_DATE) || argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    ConvertBookmarkIncomeCommand.MESSAGE_USAGE));
+        Date date;
+
+        if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            if (argMultimap.moreThanOneValuePresent(PREFIX_DATE)) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, Transaction.MESSAGE_DATE_CONSTRAINTS));
+            } else {
+                date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
+            }
+        } else {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate currentDate = LocalDate.now();
+            date = new Date(dateTimeFormatter.format(currentDate));
         }
 
-        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Index index;
 
         try {

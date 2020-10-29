@@ -6,6 +6,8 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGO
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddExpenseCommand;
@@ -31,7 +33,7 @@ public class AddExpenseCommandParser implements Parser<AddExpenseCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_AMOUNT, PREFIX_DATE, PREFIX_CATEGORY);
 
-        if (!argMultimap.arePrefixesPresent(PREFIX_TITLE, PREFIX_AMOUNT, PREFIX_DATE)
+        if (!argMultimap.arePrefixesPresent(PREFIX_TITLE, PREFIX_AMOUNT)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddExpenseCommand.MESSAGE_USAGE));
         }
@@ -46,15 +48,23 @@ public class AddExpenseCommandParser implements Parser<AddExpenseCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, Transaction.MESSAGE_AMOUNT_CONSTRAINTS));
         }
 
-        if (argMultimap.moreThanOneValuePresent(PREFIX_DATE)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, Transaction.MESSAGE_DATE_CONSTRAINTS));
-        }
-
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Amount amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get());
-        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Set<Category> categoryList = ParserUtil.parseCategories(argMultimap.getAllValues(PREFIX_CATEGORY));
+        Date date;
+
+        if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            if (argMultimap.moreThanOneValuePresent(PREFIX_DATE)) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, Transaction.MESSAGE_DATE_CONSTRAINTS));
+            } else {
+                date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
+            }
+        } else {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate currentDate = LocalDate.now();
+            date = new Date(dateTimeFormatter.format(currentDate));
+        }
 
         Expense expense = new Expense(title, amount, date, categoryList);
 

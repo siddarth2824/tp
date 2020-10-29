@@ -25,6 +25,9 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CommandParserTestUtil.a
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.BUBBLE_TEA_2;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.INTERNSHIP_2;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddIncomeCommand;
@@ -37,6 +40,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.testutil.TransactionBuilder;
 
 public class AddIncomeCommandParserTest {
+    private static final String CURRENT_DATE = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     private AddIncomeCommandParser parser = new AddIncomeCommandParser();
 
     @Test
@@ -59,9 +63,17 @@ public class AddIncomeCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Income expectedIncome = new TransactionBuilder(BUBBLE_TEA_2).withCategories().buildIncome();
+        Income expectedIncomeWithNoInputCategories = new TransactionBuilder(BUBBLE_TEA_2).withCategories()
+                .buildIncome();
         assertParseSuccess(parser, TITLE_DESC_BUBBLE_TEA + AMOUNT_DESC_BUBBLE_TEA + DATE_DESC_BUBBLE_TEA,
-                new AddIncomeCommand(expectedIncome));
+                new AddIncomeCommand(expectedIncomeWithNoInputCategories));
+
+        // arguments has no date
+        Income expectedIncomeWithNoInputDate = new TransactionBuilder().withTitle(VALID_TITLE_INTERNSHIP)
+                .withAmount(VALID_AMOUNT_INTERNSHIP).withDate(CURRENT_DATE).withCategories(VALID_CATEGORY_WORK)
+                .buildIncome();
+        assertParseSuccess(parser, TITLE_DESC_INTERNSHIP + AMOUNT_DESC_INTERNSHIP + CATEGORY_DESC_WORK,
+                new AddIncomeCommand(expectedIncomeWithNoInputDate));
     }
 
     @Test
@@ -74,10 +86,6 @@ public class AddIncomeCommandParserTest {
 
         // missing amount prefix
         assertParseFailure(parser, TITLE_DESC_INTERNSHIP + VALID_AMOUNT_INTERNSHIP + DATE_DESC_INTERNSHIP,
-                expectedMessage);
-
-        // missing date prefix
-        assertParseFailure(parser, TITLE_DESC_INTERNSHIP + AMOUNT_DESC_INTERNSHIP + VALID_DATE_INTERNSHIP,
                 expectedMessage);
 
         // all prefixes missing

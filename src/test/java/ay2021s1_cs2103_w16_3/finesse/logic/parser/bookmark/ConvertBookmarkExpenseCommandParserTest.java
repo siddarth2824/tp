@@ -1,6 +1,7 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmark;
 
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DATE_DESC_BUBBLE_TEA;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DATE_DESC_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.INVALID_DATE_DESC;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_DATE_SPOTIFY_SUBSCRIPTION;
@@ -8,15 +9,20 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CommandParserTestUtil.a
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalIndexes.INDEX_SECOND;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 
 public class ConvertBookmarkExpenseCommandParserTest {
 
+    private static final String CURRENT_DATE = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, ConvertBookmarkExpenseCommand.MESSAGE_USAGE);
 
@@ -26,9 +32,6 @@ public class ConvertBookmarkExpenseCommandParserTest {
     public void parse_missingParts_failure() {
         // no index specified
         assertParseFailure(parser, DATE_DESC_SPOTIFY_SUBSCRIPTION, MESSAGE_INVALID_FORMAT);
-
-        // no date specified
-        assertParseFailure(parser, "1", MESSAGE_INVALID_FORMAT);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
@@ -51,7 +54,13 @@ public class ConvertBookmarkExpenseCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_DATE_DESC, Date.MESSAGE_CONSTRAINTS); // invalid date
+        // invalid date
+        assertParseFailure(parser, "1" + INVALID_DATE_DESC, Date.MESSAGE_CONSTRAINTS);
+
+        // multiple dates
+        assertParseFailure(parser, INDEX_SECOND + DATE_DESC_SPOTIFY_SUBSCRIPTION
+                        + DATE_DESC_BUBBLE_TEA,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, Transaction.MESSAGE_DATE_CONSTRAINTS));
     }
 
     @Test
@@ -60,6 +69,19 @@ public class ConvertBookmarkExpenseCommandParserTest {
         Date convertedDate = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
 
         String userInput = targetIndex.getOneBased() + DATE_DESC_SPOTIFY_SUBSCRIPTION;
+
+        ConvertBookmarkExpenseCommand expectedConvertBookmarkExpenseCommand =
+                new ConvertBookmarkExpenseCommand(targetIndex, convertedDate);
+
+        assertParseSuccess(parser, userInput, expectedConvertBookmarkExpenseCommand);
+    }
+
+    @Test
+    public void parse_optionalDateFieldMissing_success() {
+        Index targetIndex = INDEX_SECOND;
+        Date convertedDate = new Date(CURRENT_DATE);
+
+        String userInput = String.valueOf(targetIndex.getOneBased());
 
         ConvertBookmarkExpenseCommand expectedConvertBookmarkExpenseCommand =
                 new ConvertBookmarkExpenseCommand(targetIndex, convertedDate);

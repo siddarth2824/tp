@@ -21,7 +21,7 @@ public class ConvertBookmarkExpenseCommand extends ConvertBookmarkCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Converts the specified bookmark expense and adds"
             + " it as an expense to the finance tracker.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_DATE + "DATE\n"
+            + "[" + PREFIX_DATE + "DATE]\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_DATE + "03/10/2020 ";
 
     public static final String MESSAGE_CONVERT_BOOKMARK_EXPENSE_SUCCESS = "Bookmark expense has been converted "

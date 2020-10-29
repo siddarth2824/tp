@@ -21,7 +21,7 @@ public class AddIncomeCommand extends Command {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_AMOUNT + "AMOUNT "
-            + PREFIX_DATE + "DATE "
+            + "[" + PREFIX_DATE + "DATE] "
             + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Internship "

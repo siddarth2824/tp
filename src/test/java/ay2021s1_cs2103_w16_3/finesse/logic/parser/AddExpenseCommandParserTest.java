@@ -25,6 +25,9 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CommandParserTestUtil.a
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.BUBBLE_TEA_2;
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.INTERNSHIP_2;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddExpenseCommand;
@@ -37,6 +40,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.testutil.TransactionBuilder;
 
 public class AddExpenseCommandParserTest {
+    private static final String CURRENT_DATE = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     private AddExpenseCommandParser parser = new AddExpenseCommandParser();
 
     @Test
@@ -59,9 +63,16 @@ public class AddExpenseCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Expense expectedExpense = new TransactionBuilder(BUBBLE_TEA_2).withCategories().buildExpense();
+        Expense expectedExpenseWithNoCategories = new TransactionBuilder(BUBBLE_TEA_2).withCategories().buildExpense();
         assertParseSuccess(parser, TITLE_DESC_BUBBLE_TEA + AMOUNT_DESC_BUBBLE_TEA + DATE_DESC_BUBBLE_TEA,
-                new AddExpenseCommand(expectedExpense));
+                new AddExpenseCommand(expectedExpenseWithNoCategories));
+
+        // arguments has no date
+        Expense expectedExpenseWithNoDate = new TransactionBuilder().withTitle(VALID_TITLE_INTERNSHIP)
+                .withAmount(VALID_AMOUNT_INTERNSHIP).withCategories(VALID_CATEGORY_WORK).withDate(CURRENT_DATE)
+                .buildExpense();
+        assertParseSuccess(parser, TITLE_DESC_INTERNSHIP + AMOUNT_DESC_INTERNSHIP + CATEGORY_DESC_WORK,
+                new AddExpenseCommand(expectedExpenseWithNoDate));
     }
 
     @Test
@@ -74,10 +85,6 @@ public class AddExpenseCommandParserTest {
 
         // missing amount prefix
         assertParseFailure(parser, TITLE_DESC_INTERNSHIP + VALID_AMOUNT_INTERNSHIP + DATE_DESC_INTERNSHIP,
-                expectedMessage);
-
-        // missing date prefix
-        assertParseFailure(parser, TITLE_DESC_INTERNSHIP + AMOUNT_DESC_INTERNSHIP + VALID_DATE_INTERNSHIP,
                 expectedMessage);
 
         // all prefixes missing
