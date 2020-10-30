@@ -528,8 +528,12 @@ Lists all incomes with the category `prize` and/or `gift`, with amounts between 
 
 ### 4.5 Bookmark Expense
 
-Fine<span>$</span><span>$</span>e's Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
+Fine\\$\\$e's Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
 The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine<span>$</span><span>$</span>e's expense list.
+
+![Bookmark Expense Overview](images/userguide/bookmark/AnnotatedBookmarkExpenseOverview.png)
+
+Bookmark Expenses List Panel in the Expenses Tab
 
 #### 4.5.1 Add Bookmark Expense: `add-bookmark-expense`
 
@@ -549,14 +553,17 @@ Examples:
 
 Example Usage:
 ```
-add-bookmark-expense t/Phone Bill a/65 c/Utilities c/Personal
+add-bookmark-expense t/Netflix Subscription a/11.98 c/Entertainment
 ```
 
 Expected Outcome:
 ```
-New bookmark expense added: Phone Bill Amount: $60.00 Categories: [Personal][Utilities]
+New bookmark expense added: Netflix Subscription Amount: $11.98 Categories: [Entertainment]
 ```
-Adds a bookmark expense titled `Phone Bill` with amount `$65.00` and two categories `Utilities` and `Personal`.
+
+![Add Bookmark Expense](images/userguide/bookmark/AnnotatedAddBookmarkExpense.png)
+
+Adds a bookmark expense titled `Netflix Subscription` with amount `$11.98` and one category `Entertainment`.
 
 #### 4.5.2 Edit Bookmark Expense: `edit-bookmark`
 
@@ -579,14 +586,17 @@ Examples:
 
 Example Usage:
 ```
-edit-bookmark 2 a/70
+edit-bookmark 3 a/15 c/Entertainment c/Personal
 ```
 
 Expected Outcome:
 ```
-Edited Bookmark Expense: Phone Bill Amount: $70.00 Categories: [Personal][Utilities]
+Edited Bookmark Expense: Netflix Subscription Amount: $15.00 Categories: [Entertainment][Personal]
 ```
-Edits the second bookmark expense in the bookmark expenses list to have an amount of `$70.00`.
+
+![Edit Bookmark Expense](images/userguide/bookmark/AnnotatedEditBookmarkExpense.png)
+
+Edits the third bookmark expense in the bookmark expenses list to have an amount of `$15.00` and two categories of `Entertainment` and `Personal`.
 
 #### 4.5.3 Delete Bookmark Expense: `delete-bookmark`
 
@@ -631,20 +641,27 @@ Examples:
 
 Example Usage:
 ```
-convert-bookmark 2 d/10/10/2020
+convert-bookmark 3 d/10/08/2020
 ```
 
 Expected Outcome:
 ```
-Bookmark expense has been converted and successfully added to finance tracker: Phone Bill Amount: $65.00 Date: 10/10/2020 Categories: [Utilities][Personal]
+Bookmark expense has been converted and successfully added to finance tracker: Netflix Subscription Amount: $15.00 Date: 10/08/2020 Categories: [Entertainment][Personal]
 ```
-Converts the bookmark expense at index 2 in the bookmark expense list into an expense with the information of the
-specified bookmark expense and date `10/10/2020`, and adds it to the finance tracker.
+
+![Convert Bookmark Expense](images/userguide/bookmark/AnnotatedConvertBookmarkExpense.png)
+
+Converts the third bookmark expense in the bookmark expense list into an expense with the information of the
+specified bookmark expense and date `10/08/2020`, and adds it to the expenses list in the finance tracker.
 
 ### 4.6 Bookmark Income
 
 Fine<span>$</span><span>$</span>e's Bookmark Income feature is used to store incomes that the user receives frequently, such as monthly salary or stipend for being a teaching assistant.
-The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine<span>$</span><span>$</span>e's incomes list.
+The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine\\$\\$e's incomes list.
+
+![Overview Bookmark Income Panel](images/userguide/bookmark/AnnotatedBookmarkIncomeOverview.png)
+
+Bookmark Incomes List Panel in the Incomes tab
 
 #### 4.6.1 Add Bookmark Income: `add-bookmark-income`
 
@@ -664,14 +681,17 @@ Examples:
 
 Example Usage:
 ```
-add-bookmark-income t/Teaching Assistant a/1920 c/CS1101S c/CS1231S
+add-bookmark-income t/Part Time a/400 c/Work
 ```
 
 Expected Outcome:
 ```
-New bookmark income added: Teaching Assistant Amount: $1920.00 Categories: [CS1231S][CS1101S]
+New bookmark income added: Part Time Amount: $400.00 Categories: [Work]
 ```
-Adds a bookmark income titled `Teaching Assistant` with amount `$1920.00` and two categories `CS1101S` and `CS1231S`.
+
+![Add Bookmark Income Outcome](images/userguide/bookmark/AnnotatedAddBookmarkIncome.png)
+
+Adds a bookmark income titled `Part Time` with amount `$400.00` and one category `Work`.
 
 #### 4.6.2 Edit Bookmark Income: `edit-bookmark`
 
@@ -694,14 +714,17 @@ Examples:
 
 Example Usage:
 ```
-edit-bookmark 5 a/1800 c/CS1101S c/CS2030
+edit-bookmark 3 a/500 c/Work c/Part Time Intern
 ```
 
 Expected Outcome:
 ```
-Edited Bookmark Income: Teaching Assistant Amount: $1800.00 Categories: [CS2030][CS1101S]
+Edited Bookmark Income: Part Time Amount: $500.00 Categories: [Work][Part Time Intern]
 ```
-Edits the fifth bookmark income in the bookmark incomes list to have an amount of `1800` and two categories `CS1101s` and `CS2030`.
+
+![Edit Bookmark Income](images/userguide/bookmark/AnnotatedEditBookmarkIncome.png)
+
+Edits the third bookmark income in the bookmark incomes list to have an amount of `$500.00` and two categories `Work` and `Part Time Intern`.
 
 #### 4.6.3 Delete Bookmark Income: `delete-bookmark`
 
@@ -714,18 +737,18 @@ Format: `delete-bookmark INDEX`
 * `INDEX` allows you to choose which bookmark income to delete by specifying its position in the bookmark incomes list.
 
 Example:
-* `delete-bookmark 2`
+* `delete-bookmark 1`
 
 Example Usage:
 ```
-delete-bookmark 3
+delete-bookmark 2
 ```
 
 Expected Outcome:
 ```
-Deleted Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
+Deleted Bookmark Income: Teaching Assistant Amount: $1890.00 Categories: [CS1101S][CS1231S]
 ```
-Deletes the bookmark income at index 3 in the bookmark incomes list.
+Deletes the bookmark income at index 2 in the bookmark incomes list.
 
 #### 4.6.4 Convert Bookmark Income: `convert-bookmark`
 
@@ -746,15 +769,18 @@ Examples:
 
 Example Usage:
 ```
-convert-bookmark 2 d/10/10/2020
+convert-bookmark 3 d/03/08/2020
 ```
 
 Expected Outcome:
 ```
-Bookmark income has been converted and successfully added to finance tracker: Teaching Assistant Amount: $1890.00 Date: 10/10/2020 Categories: [CS1231S][CS1101S]
+Bookmark income has been converted and successfully added to finance tracker: Part Time Amount: $500.00 Date: 03/08/2020 Categories: [Work][Part Time Intern]
 ```
-Converts the bookmark income at index 2 in the bookmark incomes list into an income with the information of the
-specified bookmark income and date `10/10/2020`, then adds it to the finance tracker.
+
+![Convert Bookmark Income](images/userguide/bookmark/AnnotatedConvertBookmarkIncome.png)
+
+Converts the third bookmark income in the bookmark incomes list into an income with the information of the
+specified bookmark income and date `03/08/2020`, then adds it to the incomes list in the finance tracker.
 
 ### 4.7 Expense Limit
 
