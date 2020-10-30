@@ -77,7 +77,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTitleWithAdditionalWhiteSpaces_returnsTitle() throws Exception {
+    public void parseTitleWithAdditionalWhitespaces_returnsTitle() throws Exception {
         String moreThanOneWhitespace = WHITESPACE + WHITESPACE + WHITESPACE;
         String titleWithExtraWhitespacesBetweenWords = VALID_TITLE.replaceAll(WHITESPACE, moreThanOneWhitespace);
         Title expectedTitle = new Title(VALID_TITLE);
