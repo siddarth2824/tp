@@ -82,7 +82,7 @@ public class ParserUtilTest {
         String titleWithExtraWhitespacesBetweenWords = VALID_TITLE.replaceAll(WHITESPACE, moreThanOneWhitespace);
         Title expectedTitle = new Title(VALID_TITLE);
         assertEquals(expectedTitle,
-                ParserUtil.parseTitleWithAdditionalWhiteSpaces(titleWithExtraWhitespacesBetweenWords));
+                ParserUtil.parseTitleWithAdditionalWhitespaces(titleWithExtraWhitespacesBetweenWords));
     }
 
     @Test
