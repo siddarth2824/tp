@@ -25,7 +25,7 @@ public class ParserUtilTest {
     private static final String INVALID_DATE = "example.com";
     private static final String INVALID_CATEGORY = "\u2416friend";
 
-    private static final String VALID_TITLE = "Rachel Walker";
+    private static final String VALID_TITLE = "Phone Bill";
     private static final String VALID_AMOUNT = "123456";
     private static final String VALID_DATE = "01/01/2020";
     private static final String VALID_CATEGORY_1 = "friend";
@@ -74,6 +74,15 @@ public class ParserUtilTest {
         String titleWithWhitespace = WHITESPACE + VALID_TITLE + WHITESPACE;
         Title expectedTitle = new Title(VALID_TITLE);
         assertEquals(expectedTitle, ParserUtil.parseTitle(titleWithWhitespace));
+    }
+
+    @Test
+    public void parseTitleWithAdditionalWhiteSpaces_returnsTitle() throws Exception {
+        String moreThanOneWhitespace = WHITESPACE + WHITESPACE + WHITESPACE;
+        String titleWithExtraWhitespacesBetweenWords = VALID_TITLE.replaceAll(WHITESPACE, moreThanOneWhitespace);
+        Title expectedTitle = new Title(VALID_TITLE);
+        assertEquals(expectedTitle,
+                ParserUtil.parseTitleWithAdditionalWhiteSpaces(titleWithExtraWhitespacesBetweenWords));
     }
 
     @Test
