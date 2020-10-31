@@ -545,6 +545,12 @@ Shortcut: `addbe t/TITLE a/AMOUNT [c/CATEGORY...]`
 
 * `CATEGORY` is optional. Multiple `c/` prefixes can be used to specify multiple categories.
 
+> :warning: &nbsp; Adding of duplicate bookmark expenses is not allowed.
+> Bookmark expenses with the same title are considered to be duplicates of each other.
+> Contiguous whitespace characters between words in the title will be treated as a single whitespace character.
+>
+> For example: `Phone Bill` and `Phone  Bill` are considered to be the same title while `Phone Bill` and `PhoneBill` are not considered to be the same title.
+
 Examples:
 * `add-bookmark-expense t/Phone Bill a/60 c/Utilities c/Personal`
 * `add-bookmark-expense t/Spotify Subscription a/$9 c/Others`
@@ -656,7 +662,7 @@ specified bookmark expense and date `10/08/2020`, and adds it to the expenses li
 
 ### 4.6 Bookmark Income
 
-Fine<span>$</span><span>$</span>e's Bookmark Income feature is used to store incomes that the user receives frequently, such as monthly salary or stipend for being a teaching assistant.
+Fine<span>$<span><span>$<span>e's Bookmark Income feature is used to store incomes that the user receives frequently, such as monthly salary or stipend for being a teaching assistant.
 The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine\\$\\$e's incomes list.
 
 ![Overview Bookmark Income Panel](images/userguide/bookmark/AnnotatedBookmarkIncomeOverview.png)
@@ -672,6 +678,12 @@ Format: `add-bookmark-income t/TITLE a/AMOUNT [c/CATEGORY...]`
 Shortcut: `addbi t/TITLE a/AMOUNT [c/CATEGORY...]`
 
 * `CATEGORY` is optional. Multiple `c/` prefixes can be used to specify multiple categories.
+
+> :warning: &nbsp; Adding of duplicate bookmark incomes is not allowed.
+> Bookmark incomes with the same title are considered to be duplicates of each other.
+> Contiguous whitespace characters between words in the title will be treated as a single whitespace character.
+>
+> For example: `Part Time` and `Part  Time` are considered to be the same title while `Part Time` and `PartTime` are not considered to be the same title.
 
 Examples:
 * `add-bookmark-income t/Internship a/$1000 c/Work`
