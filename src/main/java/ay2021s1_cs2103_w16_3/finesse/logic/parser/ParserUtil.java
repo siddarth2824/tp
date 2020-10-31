@@ -56,14 +56,10 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code title} is invalid.
      */
-    public static Title parseTitleWithAdditionalWhitespaces(String title) throws ParseException {
+    public static Title parseTitleWithAdditionalWhitespace(String title) throws ParseException {
         requireNonNull(title);
-        String removedExtraWhiteSpacesTitle = title.replaceAll("\\s{2,}", " ");
-        String trimmedTitle = removedExtraWhiteSpacesTitle.trim();
-        if (!Title.isValidTitle(trimmedTitle)) {
-            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
-        }
-        return new Title(trimmedTitle);
+        String removedExtraWhiteSpaceTitle = title.replaceAll("\\s{2,}", " ");
+        return parseTitle(removedExtraWhiteSpaceTitle);
     }
 
     /**
