@@ -602,8 +602,9 @@ Edits a bookmark expense in the finance tracker.
 
 > :warning: &nbsp; This command can only be executed on the [Expenses tab](#223-expenses-tab).
 
-> :warning: &nbsp; Editing a bookmark expense to contain a title that already exists in the bookmark expense list is not allowed.
-> 
+> :warning: &nbsp; Bookmark expenses with same titles are considered to be duplicates of each other.
+> Therefore, editing the title of a bookmark expense to an already existing title in the bookmark expenses list is not allowed.
+> Contiguous whitespace characters between words in the title will be treated as a single whitespace character.
 
 Format: `edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORY...]`
 
@@ -746,6 +747,10 @@ Adds a bookmark income titled `Part Time` with amount `$400.00` and one category
 Edits a bookmark income in the finance tracker.
 
 > :warning: &nbsp; This command can only be executed on the [Incomes tab](#222-incomes-tab).
+
+> :warning: &nbsp; Bookmark incomes with same titles are considered to be duplicates of each other.
+> Therefore, editing the title of a bookmark income to an already existing title in the bookmark incomes list is not allowed.
+> Contiguous whitespace characters between words in the title will be treated as a single whitespace character.
 
 Format: `edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORY...]`
 
