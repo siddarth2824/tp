@@ -549,7 +549,7 @@ Shortcut: `addbe t/TITLE a/AMOUNT [c/CATEGORY...]`
 > Bookmark expenses with the same title are considered to be duplicates of each other.
 > Contiguous whitespace characters between words in the title will be treated as a single whitespace character.
 >
-> For example: `Phone Bill` and `Phone  Bill` are considered to be the same title while `Phone Bill` and `PhoneBill` are not considered to be the same title.
+> For example: `Phone Bill` and `Phone  Bill` are considered to be the same title while `Phone Bill` and `PhoneBill` are not considered to be the same title.
 
 Examples:
 * `add-bookmark-expense t/Phone Bill a/60 c/Utilities c/Personal`
@@ -683,7 +683,7 @@ Shortcut: `addbi t/TITLE a/AMOUNT [c/CATEGORY...]`
 > Bookmark incomes with the same title are considered to be duplicates of each other.
 > Contiguous whitespace characters between words in the title will be treated as a single whitespace character.
 >
-> For example: `Part Time` and `Part  Time` are considered to be the same title while `Part Time` and `PartTime` are not considered to be the same title.
+> For example: `Part Time` and `Part  Time` are considered to be the same title while `Part Time` and `PartTime` are not considered to be the same title.
 
 Examples:
 * `add-bookmark-income t/Internship a/$1000 c/Work`
@@ -875,7 +875,7 @@ Format: `exit`
 Accidentally entered the wrong command and wish to modify it without typing it out again fully?
 Simply press the ↑ or ↓ arrow keys on your keyboard to navigate through your command history.
 
-* The command history keeps track of the latest 50 commands entered.
+* The command history keeps track of the latest 50 commands entered in the current session.
 * The command input box must be focused on, i.e. ensure that the text cursor is blinking in the command input box.
 * Press the ↑ arrow key to retrieve the previous commands.
   * Each press of the ↑ arrow key retrieves the command immediately preceding the current command.
