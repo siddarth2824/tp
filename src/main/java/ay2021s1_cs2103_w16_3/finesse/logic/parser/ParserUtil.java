@@ -58,8 +58,8 @@ public class ParserUtil {
      */
     public static Title parseTitleWithAdditionalWhitespace(String title) throws ParseException {
         requireNonNull(title);
-        String removedExtraWhiteSpaceTitle = title.replaceAll("\\s{2,}", " ");
-        return parseTitle(removedExtraWhiteSpaceTitle);
+        String removedExtraWhitespaceTitle = title.replaceAll("\\s{2,}", " ");
+        return parseTitle(removedExtraWhitespaceTitle);
     }
 
     /**
