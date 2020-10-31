@@ -15,6 +15,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.exceptions.DuplicateBookmarkTransactionException;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
@@ -65,8 +66,11 @@ public class EditBookmarkExpenseCommand extends EditBookmarkCommand {
         BookmarkExpense bookmarkExpenseToEdit = lastShownList.get(targetIndex.getZeroBased());
         BookmarkExpense editedBookmarkExpense = createEditedBookmarkExpense(bookmarkExpenseToEdit,
                 editBookmarkExpenseDescriptor);
-
-        model.setBookmarkExpense(bookmarkExpenseToEdit, editedBookmarkExpense);
+        try {
+            model.setBookmarkExpense(bookmarkExpenseToEdit, editedBookmarkExpense);
+        } catch (DuplicateBookmarkTransactionException e) {
+            throw new CommandException(e.getMessage());
+        }
         model.updateFilteredBookmarkExpenseList(PREDICATE_SHOW_ALL_BOOKMARK_EXPENSES);
         return new CommandResult(String.format(MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS, editedBookmarkExpense));
     }

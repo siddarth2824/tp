@@ -57,7 +57,8 @@ public class EditBookmarkExpenseCommandParser implements Parser<EditBookmarkExpe
         EditBookmarkTransactionDescriptor editBookmarkExpenseDescriptor = new EditBookmarkTransactionDescriptor();
 
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
-            editBookmarkExpenseDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
+            editBookmarkExpenseDescriptor.setTitle(ParserUtil
+                    .parseTitleWithAdditionalWhitespace(argMultimap.getValue(PREFIX_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_AMOUNT).isPresent()) {
             editBookmarkExpenseDescriptor.setAmount(ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get()));

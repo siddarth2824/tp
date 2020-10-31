@@ -56,6 +56,10 @@ public class BookmarkExpenseList implements Iterable<BookmarkExpense> {
             throw new BookmarkTransactionNotFoundException();
         }
 
+        if (contains(editedBookmarkExpense)) {
+            throw new DuplicateBookmarkTransactionException("expense");
+        }
+
         internalBookmarkExpenseList.set(index, editedBookmarkExpense);
     }
 

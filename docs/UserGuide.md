@@ -602,6 +602,9 @@ Edits a bookmark expense in the finance tracker.
 
 > :warning: &nbsp; This command can only be executed on the [Expenses tab](#223-expenses-tab).
 
+> :warning: &nbsp; Editing a bookmark expense to contain a title that already exists in the bookmark expense list is not allowed.
+> 
+
 Format: `edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORY...]`
 
 * `INDEX` allows you to choose which bookmark expense to edit by specifying its position in the bookmark expenses list.
