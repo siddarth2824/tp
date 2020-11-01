@@ -3,8 +3,10 @@ package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_PHONE_BILL;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_SPOTIFY_SUBSCRIPTION;
+import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_AMOUNT_BUBBLE_TEA;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_AMOUNT_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_CATEGORY_MISCELLANEOUS;
+import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_TITLE_BUBBLE_TEA;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_TITLE_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandFailure;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -34,7 +36,9 @@ public class EditBookmarkExpenseCommandTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        BookmarkExpense editedBookmarkExpense = new BookmarkTransactionBuilder().buildBookmarkExpense();
+        BookmarkExpense editedBookmarkExpense = new BookmarkTransactionBuilder()
+                .withTitle(VALID_TITLE_BUBBLE_TEA).withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION)
+                .buildBookmarkExpense();
         EditBookmarkTransactionDescriptor descriptor =
                 new EditBookmarkTransactionDescriptorBuilder(editedBookmarkExpense).build();
         EditBookmarkExpenseCommand editBookmarkExpenseCommand =
@@ -55,12 +59,12 @@ public class EditBookmarkExpenseCommandTest {
         BookmarkExpense lastExpense = model.getFilteredBookmarkExpenseList().get(indexLastExpense.getZeroBased());
 
         BookmarkTransactionBuilder expenseInList = new BookmarkTransactionBuilder(lastExpense);
-        BookmarkExpense editedExpense = expenseInList.withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION)
-                .withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION)
+        BookmarkExpense editedExpense = expenseInList.withTitle(VALID_TITLE_BUBBLE_TEA)
+                .withAmount(VALID_AMOUNT_BUBBLE_TEA)
                 .withCategories(VALID_CATEGORY_MISCELLANEOUS).buildBookmarkExpense();
 
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
-                .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION)
+                .withTitle(VALID_TITLE_BUBBLE_TEA).withAmount(VALID_AMOUNT_BUBBLE_TEA)
                 .withCategories(VALID_CATEGORY_MISCELLANEOUS).build();
         EditBookmarkExpenseCommand editBookmarkExpenseCommand =
                 new EditBookmarkExpenseCommand(indexLastExpense, descriptor);

@@ -129,7 +129,7 @@ public class FinanceTracker implements ReadOnlyFinanceTracker {
     public void setBookmarkExpense(BookmarkExpense target, BookmarkExpense editedBookmarkExpense) {
         requireNonNull(editedBookmarkExpense);
 
-        bookmarkExpenses.setBookmark(target, editedBookmarkExpense);
+        bookmarkExpenses.setBookmarkExpense(target, editedBookmarkExpense);
     }
 
     /**

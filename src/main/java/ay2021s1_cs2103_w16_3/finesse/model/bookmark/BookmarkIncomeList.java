@@ -56,7 +56,7 @@ public class BookmarkIncomeList implements Iterable<BookmarkIncome> {
             throw new BookmarkTransactionNotFoundException();
         }
 
-        if (contains(editedBookmarkIncome)) {
+        if (contains(editedBookmarkIncome) && !(target.getTitle().equals(editedBookmarkIncome.getTitle()))) {
             throw new DuplicateBookmarkTransactionException("income");
         }
 

@@ -48,7 +48,7 @@ public class BookmarkExpenseList implements Iterable<BookmarkExpense> {
      * The bookmark expense identity of {@code editedBookmarkExpense} must not be the same as another existing
      * bookmark expense in the list.
      */
-    public void setBookmark(BookmarkExpense target, BookmarkExpense editedBookmarkExpense) {
+    public void setBookmarkExpense(BookmarkExpense target, BookmarkExpense editedBookmarkExpense) {
         requireAllNonNull(target, editedBookmarkExpense);
 
         int index = internalBookmarkExpenseList.indexOf(target);
@@ -56,7 +56,7 @@ public class BookmarkExpenseList implements Iterable<BookmarkExpense> {
             throw new BookmarkTransactionNotFoundException();
         }
 
-        if (contains(editedBookmarkExpense)) {
+        if (contains(editedBookmarkExpense) && !(target.getTitle().equals(editedBookmarkExpense.getTitle()))) {
             throw new DuplicateBookmarkTransactionException("expense");
         }
 

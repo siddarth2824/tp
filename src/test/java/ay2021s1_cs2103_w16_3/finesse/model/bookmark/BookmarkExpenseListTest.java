@@ -42,25 +42,25 @@ public class BookmarkExpenseListTest {
     @Test
     public void setBookmarkExpense_nullTargetBookmarkExpense_throwsNullPointerException() {
         assertThrows(NullPointerException.class, ()
-            -> bookmarkExpenseList.setBookmark(null, PHONE_BILL));
+            -> bookmarkExpenseList.setBookmarkExpense(null, PHONE_BILL));
     }
 
     @Test
     public void setBookmarkExpense_nullEditedBookmarkExpense_throwsNullPointerException() {
         assertThrows(NullPointerException.class, ()
-            -> bookmarkExpenseList.setBookmark(PHONE_BILL, null));
+            -> bookmarkExpenseList.setBookmarkExpense(PHONE_BILL, null));
     }
 
     @Test
     public void setBookmarkExpense_targetBookmarkExpenseNotInList_throwsTransactionNotFoundException() {
         assertThrows(BookmarkTransactionNotFoundException.class, ()
-            -> bookmarkExpenseList.setBookmark(PHONE_BILL, PHONE_BILL));
+            -> bookmarkExpenseList.setBookmarkExpense(PHONE_BILL, PHONE_BILL));
     }
 
     @Test
     public void setBookmarkExpense_editedBookmarkExpenseIsSameBookmarkExpense_success() {
         bookmarkExpenseList.add(PHONE_BILL);
-        bookmarkExpenseList.setBookmark(PHONE_BILL, PHONE_BILL);
+        bookmarkExpenseList.setBookmarkExpense(PHONE_BILL, PHONE_BILL);
         BookmarkExpenseList expectedTransactionList = new BookmarkExpenseList();
         expectedTransactionList.add(PHONE_BILL);
         assertEquals(expectedTransactionList, bookmarkExpenseList);
@@ -71,16 +71,26 @@ public class BookmarkExpenseListTest {
         bookmarkExpenseList.add(PHONE_BILL);
         BookmarkExpense editedPhone = new BookmarkTransactionBuilder(PHONE_BILL)
                 .withCategories(VALID_CATEGORY_UTILITIES).buildBookmarkExpense();
-        bookmarkExpenseList.setBookmark(PHONE_BILL, editedPhone);
+        bookmarkExpenseList.setBookmarkExpense(PHONE_BILL, editedPhone);
         BookmarkExpenseList expectedTransactionList = new BookmarkExpenseList();
         expectedTransactionList.add(editedPhone);
         assertEquals(expectedTransactionList, bookmarkExpenseList);
     }
 
     @Test
+    public void setBookmarkExpense_editedBookmarkExpenseIsDuplicateOfAnotherBookmarkExpense() {
+        bookmarkExpenseList.add(PHONE_BILL);
+        bookmarkExpenseList.add(SPOTIFY_SUBSCRIPTION);
+        BookmarkExpense editedPhoneBill = new BookmarkTransactionBuilder(PHONE_BILL)
+                .withTitle(SPOTIFY_SUBSCRIPTION.getTitle().toString()).buildBookmarkExpense();
+        assertThrows(DuplicateBookmarkTransactionException.class, ()
+            -> bookmarkExpenseList.setBookmarkExpense(PHONE_BILL, editedPhoneBill));
+    }
+
+    @Test
     public void setBookmarkExpense_editedBookmarkExpenseHasDifferentIdentity_success() {
         bookmarkExpenseList.add(PHONE_BILL);
-        bookmarkExpenseList.setBookmark(PHONE_BILL, SPOTIFY_SUBSCRIPTION);
+        bookmarkExpenseList.setBookmarkExpense(PHONE_BILL, SPOTIFY_SUBSCRIPTION);
         BookmarkExpenseList expectedTransactionList = new BookmarkExpenseList();
         expectedTransactionList.add(SPOTIFY_SUBSCRIPTION);
         assertEquals(expectedTransactionList, bookmarkExpenseList);

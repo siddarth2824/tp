@@ -5,6 +5,7 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DESC_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_AMOUNT_PART_TIME;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_CATEGORY_WORK;
+import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_TITLE_INTERNSHIP;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.VALID_TITLE_PART_TIME;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandFailure;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -55,12 +56,12 @@ public class EditBookmarkIncomeCommandTest {
         BookmarkIncome lastIncome = model.getFilteredBookmarkIncomeList().get(indexLastIncome.getZeroBased());
 
         BookmarkTransactionBuilder incomeInList = new BookmarkTransactionBuilder(lastIncome);
-        BookmarkIncome editedIncome = incomeInList.withTitle(VALID_TITLE_PART_TIME)
+        BookmarkIncome editedIncome = incomeInList.withTitle(VALID_TITLE_INTERNSHIP)
                 .withAmount(VALID_AMOUNT_PART_TIME)
                 .withCategories(VALID_CATEGORY_WORK).buildBookmarkIncome();
 
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
-                .withTitle(VALID_TITLE_PART_TIME).withAmount(VALID_AMOUNT_PART_TIME)
+                .withTitle(VALID_TITLE_INTERNSHIP).withAmount(VALID_AMOUNT_PART_TIME)
                 .withCategories(VALID_CATEGORY_WORK).build();
         EditBookmarkIncomeCommand editBookmarkIncomeCommand =
                 new EditBookmarkIncomeCommand(indexLastIncome, descriptor);

@@ -77,6 +77,16 @@ public class BookmarkIncomeListTest {
     }
 
     @Test
+    public void setBookmarkIncome_editedBookmarkIncomeIsDuplicateOfAnotherBookmarkIncome() {
+        bookmarkIncomeList.add(PART_TIME);
+        bookmarkIncomeList.add(INVESTING);
+        BookmarkIncome editedPartTime = new BookmarkTransactionBuilder(PART_TIME)
+                .withTitle(INVESTING.getTitle().toString()).buildBookmarkIncome();
+        assertThrows(DuplicateBookmarkTransactionException.class, ()
+            -> bookmarkIncomeList.setBookmarkIncome(PART_TIME, editedPartTime));
+    }
+
+    @Test
     public void setBookmarkIncome_editedBookmarkIncomeHasDifferentIdentity_success() {
         bookmarkIncomeList.add(PART_TIME);
         bookmarkIncomeList.setBookmarkIncome(PART_TIME, INVESTING);
