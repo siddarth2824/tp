@@ -58,7 +58,7 @@ public class EditBookmarkIncomeCommandParser implements Parser<EditBookmarkIncom
 
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
             editBookmarkIncomeDescriptor.setTitle(ParserUtil
-                    .parseTitleWithAdditionalWhitespace(argMultimap.getValue(PREFIX_TITLE).get()));
+                    .parseTitleAndTrimBetweenWords(argMultimap.getValue(PREFIX_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_AMOUNT).isPresent()) {
             editBookmarkIncomeDescriptor.setAmount(ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get()));

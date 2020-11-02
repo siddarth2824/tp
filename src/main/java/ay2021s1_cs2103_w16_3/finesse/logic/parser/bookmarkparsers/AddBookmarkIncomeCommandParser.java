@@ -45,7 +45,7 @@ public class AddBookmarkIncomeCommandParser implements Parser<AddBookmarkIncomeC
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, BookmarkTransaction.MESSAGE_AMOUNT_CONSTRAINTS));
         }
 
-        Title title = ParserUtil.parseTitleWithAdditionalWhitespace(argMultimap.getValue(PREFIX_TITLE).get());
+        Title title = ParserUtil.parseTitleAndTrimBetweenWords(argMultimap.getValue(PREFIX_TITLE).get());
         Amount amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get());
         Set<Category> categoryList = ParserUtil.parseCategories(argMultimap.getAllValues(PREFIX_CATEGORY));
 
