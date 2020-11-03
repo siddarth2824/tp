@@ -5,13 +5,13 @@ title: Siddarth Nandanahosur Suresh's Project Portfolio Page
 
 ## Project: Fine$$e
 
-## Overview
+### Overview
 
 Fine$$e is a desktop finance tracker that allows tertiary students to better manage their finances, cultivating good financial habits such as saving.
 It is optimised for CLI users so that expenses and income can be tracked efficiently by typing in commands.
 It is written in Java, and has a GUI created with JavaFX.
 
-## Summary of Contributions
+### Summary of Contributions
 
 * **New Feature**: Developed the bookmark expense and income feature of Fine$$e.
     * What it does: Allows university students to store and update, incomes and expenses that they make frequently.
@@ -31,20 +31,20 @@ It is written in Java, and has a GUI created with JavaFX.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=siddarth2824&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 * **Project management**:
-    * Managed release `v1.2` (1 release) on GitHub
+    * Managed release `v1.2` (1 release) on GitHub.
 
 * **Enhancements to existing features**:
-    * Updated the GUI color scheme (Pull requests [#75](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/75))
-    * Updated the GUI basic layout from AddressBook3 (Pull requests [#75](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/75), [#101](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/101))
-    * Updated the layout of the User Guide: [#169](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/169)
+    * Updated the GUI color scheme. (Pull requests [#75](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/75))
+    * Updated the GUI basic layout from AddressBook3. (Pull requests [#75](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/75), [#101](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/101))
+    * Updated the layout of the User Guide: (Pull requests [#169](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/169))
 
 * **Documentation**:
     * User Guide:
-        * Updated User Guide to include Bookmark Expense and Income feature
-        * Updated User Guide with the Introduction of Fine$$e
+        * Updated User Guide to include Bookmark Expense and Income feature.
+        * Updated User Guide with the Introduction of Fine$$e.
     * Developer Guide:
-        * Updated Developer Guide to include Bookmark Expense and Income feature
+        * Updated Developer Guide to include Bookmark Expense and Income feature.
 
 * **Community**:
     * PRs reviewed (with non-trivial comments): [#150](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/150#discussion_r510884713), [#197](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/197#discussion_r512544298)
-    * Reported bugs and suggestions for other teams in the class (examples: Practical Exam Dry Run)
+    * Reported bugs and suggestions for other teams in the class. (examples: Practical Exam Dry Run)
