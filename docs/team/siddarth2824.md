@@ -13,8 +13,6 @@ It is written in Java, and has a GUI created with JavaFX.
 
 ## Summary of Contributions
 
-This section shows the summary of the contributions I made to 
-
 * **Major Enhancement**: Developed the **bookmark expense and income feature** of Fine$$e
     * What it does: Allows university students to store and update, incomes and expenses that they make frequently.
     It also allows users to convert bookmark incomes and expenses into incomes and expenses and store it in Fine$$e.
