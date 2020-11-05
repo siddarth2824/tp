@@ -6,8 +6,6 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGO
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddExpenseCommand;
@@ -61,9 +59,7 @@ public class AddExpenseCommandParser implements Parser<AddExpenseCommand> {
                 date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
             }
         } else {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate currentDate = LocalDate.now();
-            date = new Date(dateTimeFormatter.format(currentDate));
+            date = Date.getCurrentDate();
         }
 
         Expense expense = new Expense(title, amount, date, categoryList);

@@ -21,6 +21,7 @@ public class Date implements Comparable<Date> {
     public static final DateTimeFormatter VALIDATION_FORMAT = DateTimeFormatter.ofPattern("dd/MM/uuuu")
             .withResolverStyle(ResolverStyle.STRICT);
     private static final LocalDate EPOCH = LocalDate.parse(EPOCH_STRING, VALIDATION_FORMAT);
+    private static final LocalDate CURRENT_DATE = LocalDate.now();
 
     private final LocalDate value;
 
@@ -63,6 +64,10 @@ public class Date implements Comparable<Date> {
 
     public LocalDate getDate() {
         return value;
+    }
+
+    public static Date getCurrentDate() {
+        return new Date(VALIDATION_FORMAT.format(CURRENT_DATE));
     }
 
     /**

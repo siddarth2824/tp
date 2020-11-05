@@ -4,9 +4,6 @@ import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALI
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.ArgumentMultimap;
@@ -40,9 +37,7 @@ public class ConvertBookmarkExpenseCommandParser implements Parser<ConvertBookma
                 date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
             }
         } else {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate currentDate = LocalDate.now();
-            date = new Date(dateTimeFormatter.format(currentDate));
+            date = Date.getCurrentDate();
         }
 
         Index index;
