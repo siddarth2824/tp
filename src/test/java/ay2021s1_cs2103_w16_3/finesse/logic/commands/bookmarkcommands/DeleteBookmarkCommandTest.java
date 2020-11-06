@@ -1,4 +1,4 @@
-package ay2021s1_cs2103_w16_3.finesse.logic.commands;
+package ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmarkcommands;
 
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_METHOD_SHOULD_NOT_BE_CALLED;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -10,42 +10,43 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
- * {@code DeleteCommand}.
+ * {@code DeleteBookmarkCommand}.
  */
-public class DeleteCommandTest {
+public class DeleteBookmarkCommandTest {
 
     @Test
     public void execute_throwsCommandException() {
         Model model = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
-        assertCommandFailure(new DeleteCommand(INDEX_FIRST), model, MESSAGE_METHOD_SHOULD_NOT_BE_CALLED);
+        assertCommandFailure(new DeleteBookmarkCommand(INDEX_FIRST), model, MESSAGE_METHOD_SHOULD_NOT_BE_CALLED);
     }
 
     @Test
     public void equals() {
-        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST);
-        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND);
+        DeleteBookmarkCommand deleteBookmarkFirstCommand = new DeleteBookmarkCommand(INDEX_FIRST);
+        DeleteBookmarkCommand deleteBookmarkSecondCommand = new DeleteBookmarkCommand(INDEX_SECOND);
 
         // same object -> returns true
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+        assertTrue(deleteBookmarkFirstCommand.equals(deleteBookmarkFirstCommand));
 
         // same values -> returns true
-        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST);
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+        DeleteBookmarkCommand deleteBookmarkFirstCommandCopy = new DeleteBookmarkCommand(INDEX_FIRST);
+        assertTrue(deleteBookmarkFirstCommand.equals(deleteBookmarkFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(deleteFirstCommand.equals(1));
+        assertFalse(deleteBookmarkFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(deleteFirstCommand.equals(null));
+        assertFalse(deleteBookmarkFirstCommand.equals(null));
 
         // different transactions -> returns false
-        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        assertFalse(deleteBookmarkFirstCommand.equals(deleteBookmarkSecondCommand));
     }
 
 }

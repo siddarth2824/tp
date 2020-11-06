@@ -20,6 +20,10 @@ import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code DeleteBookmarkExpenseCommand}.
+ */
 public class DeleteBookmarkExpenseCommandTest {
     private Model model = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
 
