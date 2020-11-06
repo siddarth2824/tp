@@ -23,6 +23,10 @@ import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code ConvertBookmarkIncomeCommand}.
+ */
 public class ConvertBookmarkIncomeCommandTest {
 
     private Model model = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());

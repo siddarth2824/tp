@@ -23,7 +23,10 @@ import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 
-
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code ConvertBookmarkExpenseCommand}.
+ */
 public class ConvertBookmarkExpenseCommandTest {
 
     private Model model = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
