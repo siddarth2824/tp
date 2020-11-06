@@ -37,6 +37,8 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkIncomeCommand;
@@ -45,8 +47,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetExpenseLimitComman
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetSavingsGoalCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.AddBookmarkExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.AddBookmarkIncomeCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkIncomeCommandParser;
@@ -173,9 +174,9 @@ public class FinanceTrackerParser {
         case ConvertBookmarkCommand.COMMAND_ALIAS:
             switch (uiCurrentTab) {
             case EXPENSES:
-                return new ConvertBookmarkExpenseCommandParser().parse(arguments);
+                return new ConvertBookmarkExpenseCommand(new ConvertBookmarkCommandParser().parse(arguments));
             case INCOME:
-                return new ConvertBookmarkIncomeCommandParser().parse(arguments);
+                return new ConvertBookmarkIncomeCommand(new ConvertBookmarkCommandParser().parse(arguments));
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
                         Tab.EXPENSES, Tab.INCOME));

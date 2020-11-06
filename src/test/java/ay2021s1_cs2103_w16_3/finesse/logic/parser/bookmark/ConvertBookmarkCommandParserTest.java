@@ -15,18 +15,17 @@ import java.time.format.DateTimeFormatter;
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 
-public class ConvertBookmarkExpenseCommandParserTest {
-
+public class ConvertBookmarkCommandParserTest {
     private static final String CURRENT_DATE = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     private static final String MESSAGE_INVALID_FORMAT =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, ConvertBookmarkExpenseCommand.MESSAGE_USAGE);
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, ConvertBookmarkCommand.MESSAGE_USAGE);
 
-    private ConvertBookmarkExpenseCommandParser parser = new ConvertBookmarkExpenseCommandParser();
+    private ConvertBookmarkCommandParser parser = new ConvertBookmarkCommandParser();
 
     @Test
     public void parse_missingParts_failure() {
@@ -70,10 +69,10 @@ public class ConvertBookmarkExpenseCommandParserTest {
 
         String userInput = targetIndex.getOneBased() + DATE_DESC_SPOTIFY_SUBSCRIPTION;
 
-        ConvertBookmarkExpenseCommand expectedConvertBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(targetIndex, convertedDate);
+        ConvertBookmarkCommand expectedConvertBookmarkCommand =
+                new ConvertBookmarkCommand(targetIndex, convertedDate);
 
-        assertParseSuccess(parser, userInput, expectedConvertBookmarkExpenseCommand);
+        assertParseSuccess(parser, userInput, expectedConvertBookmarkCommand);
     }
 
     @Test
@@ -83,10 +82,9 @@ public class ConvertBookmarkExpenseCommandParserTest {
 
         String userInput = String.valueOf(targetIndex.getOneBased());
 
-        ConvertBookmarkExpenseCommand expectedConvertBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(targetIndex, convertedDate);
+        ConvertBookmarkCommand expectedConvertBookmarkCommand =
+                new ConvertBookmarkCommand(targetIndex, convertedDate);
 
-        assertParseSuccess(parser, userInput, expectedConvertBookmarkExpenseCommand);
+        assertParseSuccess(parser, userInput, expectedConvertBookmarkCommand);
     }
-
 }

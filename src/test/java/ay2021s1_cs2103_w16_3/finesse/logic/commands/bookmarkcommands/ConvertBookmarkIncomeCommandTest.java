@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.stubs.ConvertBookmarkCommandStub;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
@@ -31,8 +32,8 @@ public class ConvertBookmarkIncomeCommandTest {
         BookmarkIncome bookmarkIncomeToBeConverted = model.getFinanceTracker().getBookmarkIncomeList()
                 .get(INDEX_FIRST.getZeroBased());
         Date dateOfConvertedIncome = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-        ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand =
-                new ConvertBookmarkIncomeCommand(INDEX_FIRST, dateOfConvertedIncome);
+        ConvertBookmarkCommandStub superCommand = new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedIncome);
+        ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand = new ConvertBookmarkIncomeCommand(superCommand);
 
         ModelManager expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         Income convertedIncome = bookmarkIncomeToBeConverted.convert(dateOfConvertedIncome);
@@ -49,8 +50,9 @@ public class ConvertBookmarkIncomeCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkIncomeList().size() + 1);
         Date dateOfConvertedIncome = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
 
-        ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand =
-                new ConvertBookmarkIncomeCommand(outOfBoundIndex, dateOfConvertedIncome);
+        ConvertBookmarkCommandStub superCommand =
+                new ConvertBookmarkCommandStub(outOfBoundIndex, dateOfConvertedIncome);
+        ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand = new ConvertBookmarkIncomeCommand(superCommand);
 
         assertCommandFailure(convertBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
@@ -60,11 +62,12 @@ public class ConvertBookmarkIncomeCommandTest {
         showBookmarkIncomeAtIndex(model, INDEX_FIRST);
 
         Date dateOfConvertedIncome = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
+        ConvertBookmarkCommandStub superCommand = new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedIncome);
 
         BookmarkIncome bookmarkIncomeToBeConverted = model.getFilteredBookmarkIncomeList()
                 .get(INDEX_FIRST.getZeroBased());
         ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand =
-                new ConvertBookmarkIncomeCommand(INDEX_FIRST, dateOfConvertedIncome);
+                new ConvertBookmarkIncomeCommand(superCommand);
 
         Model expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         Income convertedIncome = bookmarkIncomeToBeConverted.convert(dateOfConvertedIncome);
@@ -85,8 +88,10 @@ public class ConvertBookmarkIncomeCommandTest {
         // ensures that outOfBoundIndex is still in bounds of bookmark income list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkIncomeList().size());
 
+        ConvertBookmarkCommandStub superCommand =
+                new ConvertBookmarkCommandStub(outOfBoundIndex, dateOfConvertedIncome);
         ConvertBookmarkIncomeCommand convertBookmarkIncomeCommand =
-                new ConvertBookmarkIncomeCommand(outOfBoundIndex, dateOfConvertedIncome);
+                new ConvertBookmarkIncomeCommand(superCommand);
 
         assertCommandFailure(convertBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
@@ -94,26 +99,32 @@ public class ConvertBookmarkIncomeCommandTest {
     @Test
     public void equals() {
         Date dateOfConvertedIncome = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-        ConvertBookmarkIncomeCommand convertFirstBookmarkIncomeCommand =
-                new ConvertBookmarkIncomeCommand(INDEX_FIRST, dateOfConvertedIncome);
-        ConvertBookmarkIncomeCommand convertSecondBookmarkIncomeCommand =
-                new ConvertBookmarkIncomeCommand(INDEX_SECOND, dateOfConvertedIncome);
+        ConvertBookmarkCommandStub firstSuperCommand =
+                new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedIncome);
+        ConvertBookmarkIncomeCommand firstConvertBookmarkIncomeCommand =
+                new ConvertBookmarkIncomeCommand(firstSuperCommand);
+        ConvertBookmarkCommandStub secondSuperCommand =
+                new ConvertBookmarkCommandStub(INDEX_SECOND, dateOfConvertedIncome);
+        ConvertBookmarkIncomeCommand secondConvertBookmarkIncomeCommand =
+                new ConvertBookmarkIncomeCommand(secondSuperCommand);
 
         // same object -> returns true
-        assertTrue(convertFirstBookmarkIncomeCommand.equals(convertFirstBookmarkIncomeCommand));
+        assertTrue(firstConvertBookmarkIncomeCommand.equals(firstConvertBookmarkIncomeCommand));
 
         // same values -> returns true
+        ConvertBookmarkCommandStub firstCopySuperCommand =
+                new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedIncome);
         ConvertBookmarkIncomeCommand deleteFirstCommandCopy =
-                new ConvertBookmarkIncomeCommand(INDEX_FIRST, dateOfConvertedIncome);
-        assertTrue(convertFirstBookmarkIncomeCommand.equals(deleteFirstCommandCopy));
+                new ConvertBookmarkIncomeCommand(firstCopySuperCommand);
+        assertTrue(firstConvertBookmarkIncomeCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(convertFirstBookmarkIncomeCommand.equals(1));
+        assertFalse(firstConvertBookmarkIncomeCommand.equals(1));
 
         // null -> returns false
-        assertFalse(convertFirstBookmarkIncomeCommand.equals(null));
+        assertFalse(firstConvertBookmarkIncomeCommand.equals(null));
 
         // different income -> returns false
-        assertFalse(convertFirstBookmarkIncomeCommand.equals(convertSecondBookmarkIncomeCommand));
+        assertFalse(firstConvertBookmarkIncomeCommand.equals(secondConvertBookmarkIncomeCommand));
     }
 }

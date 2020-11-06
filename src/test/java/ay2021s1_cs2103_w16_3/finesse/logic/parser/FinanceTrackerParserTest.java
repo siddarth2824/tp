@@ -35,8 +35,6 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkExpenseCommand;
@@ -435,7 +433,7 @@ public class FinanceTrackerParserTest {
                         + INDEX_FIRST.getOneBased() + " "
                         + PREFIX_DATE + VALID_DATE_INTERNSHIP,
                 incomeUiStateStub);
-        assertEquals(new ConvertBookmarkIncomeCommand(INDEX_FIRST, testDate), command);
+        assertEquals(new ConvertBookmarkCommand(INDEX_FIRST, testDate), command);
     }
 
     @Test
@@ -446,7 +444,7 @@ public class FinanceTrackerParserTest {
                         + INDEX_FIRST.getOneBased() + " "
                         + PREFIX_DATE + VALID_DATE_INTERNSHIP,
                 expensesUiStateStub);
-        assertEquals(new ConvertBookmarkExpenseCommand(INDEX_FIRST, testDate), command);
+        assertEquals(new ConvertBookmarkCommand(INDEX_FIRST, testDate), command);
     }
 
     @Test

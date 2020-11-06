@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.stubs.ConvertBookmarkCommandStub;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
@@ -32,8 +33,9 @@ public class ConvertBookmarkExpenseCommandTest {
         BookmarkExpense bookmarkExpenseToBeConverted = model.getFinanceTracker().getBookmarkExpenseList()
                 .get(INDEX_FIRST.getZeroBased());
         Date dateOfConvertedExpense = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
+        ConvertBookmarkCommandStub superCommand = new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedExpense);
         ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(INDEX_FIRST, dateOfConvertedExpense);
+                new ConvertBookmarkExpenseCommand(superCommand);
 
         ModelManager expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         Expense convertedExpense = bookmarkExpenseToBeConverted.convert(dateOfConvertedExpense);
@@ -50,8 +52,10 @@ public class ConvertBookmarkExpenseCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkExpenseList().size() + 1);
         Date dateOfConvertedExpense = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
 
+        ConvertBookmarkCommandStub superCommand =
+                new ConvertBookmarkCommandStub(outOfBoundIndex, dateOfConvertedExpense);
         ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(outOfBoundIndex, dateOfConvertedExpense);
+                new ConvertBookmarkExpenseCommand(superCommand);
 
         assertCommandFailure(convertBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
@@ -61,11 +65,11 @@ public class ConvertBookmarkExpenseCommandTest {
         showBookmarkExpenseAtIndex(model, INDEX_FIRST);
 
         Date dateOfConvertedExpense = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-
+        ConvertBookmarkCommandStub superCommand = new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedExpense);
         BookmarkExpense bookmarkExpenseToBeConverted = model.getFilteredBookmarkExpenseList()
                 .get(INDEX_FIRST.getZeroBased());
-        ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(INDEX_FIRST, dateOfConvertedExpense);
+
+        ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand = new ConvertBookmarkExpenseCommand(superCommand);
 
         Model expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         Expense convertedExpense = bookmarkExpenseToBeConverted.convert(dateOfConvertedExpense);
@@ -86,8 +90,10 @@ public class ConvertBookmarkExpenseCommandTest {
         // ensures that outOfBoundIndex is still in bounds of bookmark expense list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkExpenseList().size());
 
+        ConvertBookmarkCommandStub superCommand =
+                new ConvertBookmarkCommandStub(outOfBoundIndex, dateOfConvertedExpense);
         ConvertBookmarkExpenseCommand convertBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(outOfBoundIndex, dateOfConvertedExpense);
+                new ConvertBookmarkExpenseCommand(superCommand);
 
         assertCommandFailure(convertBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
@@ -95,26 +101,32 @@ public class ConvertBookmarkExpenseCommandTest {
     @Test
     public void equals() {
         Date dateOfConvertedExpense = new Date(VALID_DATE_SPOTIFY_SUBSCRIPTION);
-        ConvertBookmarkExpenseCommand convertFirstBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(INDEX_FIRST, dateOfConvertedExpense);
-        ConvertBookmarkExpenseCommand convertSecondBookmarkExpenseCommand =
-                new ConvertBookmarkExpenseCommand(INDEX_SECOND, dateOfConvertedExpense);
+        ConvertBookmarkCommandStub firstSuperCommand =
+                new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedExpense);
+        ConvertBookmarkExpenseCommand firstConvertBookmarkExpenseCommand =
+                new ConvertBookmarkExpenseCommand(firstSuperCommand);
+        ConvertBookmarkCommandStub secondSuperCommand =
+                new ConvertBookmarkCommandStub(INDEX_SECOND, dateOfConvertedExpense);
+        ConvertBookmarkExpenseCommand secondConvertBookmarkExpenseCommand =
+                new ConvertBookmarkExpenseCommand(secondSuperCommand);
 
         // same object -> returns true
-        assertTrue(convertFirstBookmarkExpenseCommand.equals(convertFirstBookmarkExpenseCommand));
+        assertTrue(firstConvertBookmarkExpenseCommand.equals(firstConvertBookmarkExpenseCommand));
 
         // same values -> returns true
+        ConvertBookmarkCommandStub firstCopySuperCommand =
+                new ConvertBookmarkCommandStub(INDEX_FIRST, dateOfConvertedExpense);
         ConvertBookmarkExpenseCommand deleteFirstCommandCopy =
-                new ConvertBookmarkExpenseCommand(INDEX_FIRST, dateOfConvertedExpense);
-        assertTrue(convertFirstBookmarkExpenseCommand.equals(deleteFirstCommandCopy));
+                new ConvertBookmarkExpenseCommand(firstCopySuperCommand);
+        assertTrue(firstConvertBookmarkExpenseCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(convertFirstBookmarkExpenseCommand.equals(1));
+        assertFalse(firstConvertBookmarkExpenseCommand.equals(1));
 
         // null -> returns false
-        assertFalse(convertFirstBookmarkExpenseCommand.equals(null));
+        assertFalse(firstConvertBookmarkExpenseCommand.equals(null));
 
         // different expense -> returns false
-        assertFalse(convertFirstBookmarkExpenseCommand.equals(convertSecondBookmarkExpenseCommand));
+        assertFalse(firstConvertBookmarkExpenseCommand.equals(secondConvertBookmarkExpenseCommand));
     }
 }
