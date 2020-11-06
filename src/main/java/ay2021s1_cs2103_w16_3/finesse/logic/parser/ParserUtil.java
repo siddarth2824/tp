@@ -8,7 +8,9 @@ import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Title.MESSAGE_EMPT
 import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
@@ -134,5 +136,21 @@ public class ParserUtil {
             categorySet.add(parseCategory(categoryName));
         }
         return categorySet;
+    }
+
+    /**
+     * Parses {@code Collection<String> categories} into a {@code Set<Category>} if {@code categories} is non-empty.
+     * If {@code categories} contain only one element which is an empty string, it will be parsed into a
+     * {@code Set<Category>} containing zero categories.
+     */
+    public static Optional<Set<Category>> parseCategoriesForEdit(Collection<String> categories) throws ParseException {
+        assert categories != null;
+
+        if (categories.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> categorySet = categories.size() == 1 && categories.contains("")
+                ? Collections.emptySet() : categories;
+        return Optional.of(ParserUtil.parseCategories(categorySet));
     }
 }

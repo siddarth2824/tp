@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkTransactionDescriptor;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.stubs.EditBookmarkCommandStub;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
@@ -38,8 +39,9 @@ public class EditBookmarkIncomeCommandTest {
         BookmarkIncome editedBookmarkIncome = new BookmarkTransactionBuilder().buildBookmarkIncome();
         EditBookmarkTransactionDescriptor descriptor =
                 new EditBookmarkTransactionDescriptorBuilder(editedBookmarkIncome).build();
+        EditBookmarkCommandStub superCommand = new EditBookmarkCommandStub(INDEX_FIRST, descriptor);
         EditBookmarkIncomeCommand editBookmarkIncomeCommand =
-                new EditBookmarkIncomeCommand(INDEX_FIRST, descriptor);
+                new EditBookmarkIncomeCommand(superCommand);
 
         String expectedMessage = String.format(EditBookmarkIncomeCommand.MESSAGE_EDIT_BOOKMARK_INCOME_SUCCESS,
                 editedBookmarkIncome);
@@ -63,8 +65,9 @@ public class EditBookmarkIncomeCommandTest {
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_INTERNSHIP).withAmount(VALID_AMOUNT_PART_TIME)
                 .withCategories(VALID_CATEGORY_WORK).build();
+        EditBookmarkCommandStub superCommand = new EditBookmarkCommandStub(indexLastIncome, descriptor);
         EditBookmarkIncomeCommand editBookmarkIncomeCommand =
-                new EditBookmarkIncomeCommand(indexLastIncome, descriptor);
+                new EditBookmarkIncomeCommand(superCommand);
 
         String expectedMessage = String.format(EditBookmarkIncomeCommand.MESSAGE_EDIT_BOOKMARK_INCOME_SUCCESS,
                 editedIncome);
@@ -80,8 +83,9 @@ public class EditBookmarkIncomeCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkIncomeList().size() + 1);
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_PART_TIME).build();
+        EditBookmarkCommandStub superCommand = new EditBookmarkCommandStub(outOfBoundIndex, descriptor);
         EditBookmarkIncomeCommand editBookmarkIncomeCommand =
-                new EditBookmarkIncomeCommand(outOfBoundIndex, descriptor);
+                new EditBookmarkIncomeCommand(superCommand);
 
         assertCommandFailure(editBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
@@ -98,22 +102,26 @@ public class EditBookmarkIncomeCommandTest {
         // ensures that outOfBoundIndex is still in bounds of bookmark income list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkIncomeList().size());
 
-        EditBookmarkIncomeCommand editBookmarkIncomeCommand = new EditBookmarkIncomeCommand(outOfBoundIndex,
+        EditBookmarkCommandStub superCommand = new EditBookmarkCommandStub(outOfBoundIndex,
                 new EditBookmarkTransactionDescriptorBuilder().withTitle(VALID_TITLE_PART_TIME).build());
+        EditBookmarkIncomeCommand editBookmarkIncomeCommand = new EditBookmarkIncomeCommand(superCommand);
 
         assertCommandFailure(editBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
+        final EditBookmarkCommandStub superCommand = new EditBookmarkCommandStub(INDEX_FIRST,
+                DESC_SPOTIFY_SUBSCRIPTION);
         final EditBookmarkIncomeCommand standardCommand =
-                new EditBookmarkIncomeCommand(INDEX_FIRST, DESC_SPOTIFY_SUBSCRIPTION);
+                new EditBookmarkIncomeCommand(superCommand);
 
         // same values -> returns true
         EditBookmarkTransactionDescriptor copyDescriptor =
                 new EditBookmarkTransactionDescriptor(DESC_SPOTIFY_SUBSCRIPTION);
+        EditBookmarkCommandStub superCommandWithSameValues = new EditBookmarkCommandStub(INDEX_FIRST, copyDescriptor);
         EditBookmarkIncomeCommand commandWithSameValues =
-                new EditBookmarkIncomeCommand(INDEX_FIRST, copyDescriptor);
+                new EditBookmarkIncomeCommand(superCommandWithSameValues);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -124,11 +132,11 @@ public class EditBookmarkIncomeCommandTest {
 
         // different index -> returns false
         assertFalse(standardCommand
-                .equals(new EditBookmarkIncomeCommand(INDEX_SECOND, DESC_SPOTIFY_SUBSCRIPTION)));
+                .equals(new EditBookmarkCommandStub(INDEX_SECOND, DESC_SPOTIFY_SUBSCRIPTION)));
 
         // different descriptor -> returns false
         assertFalse(standardCommand
-                .equals(new EditBookmarkIncomeCommand(INDEX_FIRST, DESC_PHONE_BILL)));
+                .equals(new EditBookmarkCommandStub(INDEX_FIRST, DESC_PHONE_BILL)));
     }
 
 }

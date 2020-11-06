@@ -27,21 +27,22 @@ import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalIndexes.INDEX_THIRD;
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkTransactionDescriptor;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkExpenseCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkTransaction;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
 import ay2021s1_cs2103_w16_3.finesse.testutil.EditBookmarkTransactionDescriptorBuilder;
 
-public class EditBookmarkExpenseCommandParserTest {
+
+public class EditBookmarkCommandParserTest {
 
     private static final String CATEGORY_EMPTY = " " + PREFIX_CATEGORY;
     private static final String MESSAGE_INVALID_FORMAT =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditBookmarkExpenseCommand.MESSAGE_USAGE);
-    private EditBookmarkExpenseCommandParser parser = new EditBookmarkExpenseCommandParser();
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditBookmarkCommand.MESSAGE_USAGE);
+    private EditBookmarkCommandParser parser = new EditBookmarkCommandParser();
 
     @Test
     public void parse_missingParts_failure() {
@@ -49,7 +50,7 @@ public class EditBookmarkExpenseCommandParserTest {
         assertParseFailure(parser, VALID_TITLE_PHONE_BILL, MESSAGE_INVALID_FORMAT);
 
         // no field specified
-        assertParseFailure(parser, "1", EditBookmarkExpenseCommand.MESSAGE_NOT_EDITED);
+        assertParseFailure(parser, "1", EditBookmarkCommand.MESSAGE_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
@@ -103,7 +104,7 @@ public class EditBookmarkExpenseCommandParserTest {
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).withAmount(VALID_AMOUNT_PHONE_BILL)
                 .withCategories(VALID_CATEGORY_UTILITIES, VALID_CATEGORY_MISCELLANEOUS).build();
-        EditBookmarkExpenseCommand expectedCommand = new EditBookmarkExpenseCommand(targetIndex, descriptor);
+        EditBookmarkCommand expectedCommand = new EditBookmarkCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -115,7 +116,7 @@ public class EditBookmarkExpenseCommandParserTest {
 
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
                 .withAmount(VALID_AMOUNT_PHONE_BILL).build();
-        EditBookmarkExpenseCommand expectedCommand = new EditBookmarkExpenseCommand(targetIndex, descriptor);
+        EditBookmarkCommand expectedCommand = new EditBookmarkCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -125,21 +126,22 @@ public class EditBookmarkExpenseCommandParserTest {
         // title
         Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + TITLE_DESC_SPOTIFY_SUBSCRIPTION;
+        System.out.println(userInput);
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder()
                 .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).build();
-        EditBookmarkExpenseCommand expectedCommand = new EditBookmarkExpenseCommand(targetIndex, descriptor);
+        EditBookmarkCommand expectedCommand = new EditBookmarkCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // amounts
         userInput = targetIndex.getOneBased() + AMOUNT_DESC_PHONE_BILL;
         descriptor = new EditBookmarkTransactionDescriptorBuilder().withAmount(VALID_AMOUNT_PHONE_BILL).build();
-        expectedCommand = new EditBookmarkExpenseCommand(targetIndex, descriptor);
+        expectedCommand = new EditBookmarkCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // categories
         userInput = targetIndex.getOneBased() + CATEGORY_DESC_UTILITIES;
         descriptor = new EditBookmarkTransactionDescriptorBuilder().withCategories(VALID_CATEGORY_UTILITIES).build();
-        expectedCommand = new EditBookmarkExpenseCommand(targetIndex, descriptor);
+        expectedCommand = new EditBookmarkCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -163,7 +165,7 @@ public class EditBookmarkExpenseCommandParserTest {
 
         EditBookmarkTransactionDescriptor descriptor = new EditBookmarkTransactionDescriptorBuilder().withCategories()
                 .build();
-        EditBookmarkExpenseCommand expectedCommand = new EditBookmarkExpenseCommand(targetIndex, descriptor);
+        EditBookmarkCommand expectedCommand = new EditBookmarkCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }

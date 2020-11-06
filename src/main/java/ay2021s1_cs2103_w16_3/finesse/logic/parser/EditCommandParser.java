@@ -7,16 +7,10 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
 import static java.util.Objects.requireNonNull;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.EditCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.EditCommand.EditTransactionDescriptor;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
-import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 
 /**
@@ -67,7 +61,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
             editTransactionDescriptor.setDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
         }
-        parseCategoriesForEdit(argMultimap.getAllValues(PREFIX_CATEGORY))
+        ParserUtil.parseCategoriesForEdit(argMultimap.getAllValues(PREFIX_CATEGORY))
                 .ifPresent(editTransactionDescriptor::setCategories);
 
         if (!editTransactionDescriptor.isAnyFieldEdited()) {
@@ -75,22 +69,6 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         return new EditCommand(index, editTransactionDescriptor);
-    }
-
-    /**
-     * Parses {@code Collection<String> categories} into a {@code Set<Category>} if {@code categories} is non-empty.
-     * If {@code categories} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Category>} containing zero categories.
-     */
-    private Optional<Set<Category>> parseCategoriesForEdit(Collection<String> categories) throws ParseException {
-        assert categories != null;
-
-        if (categories.isEmpty()) {
-            return Optional.empty();
-        }
-        Collection<String> categorySet = categories.size() == 1 && categories.contains("")
-                ? Collections.emptySet() : categories;
-        return Optional.of(ParserUtil.parseCategories(categorySet));
     }
 
 }
