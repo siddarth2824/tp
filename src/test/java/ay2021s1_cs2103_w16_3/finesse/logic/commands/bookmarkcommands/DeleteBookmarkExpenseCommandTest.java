@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.stubs.DeleteBookmarkCommandStub;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
@@ -26,8 +27,9 @@ public class DeleteBookmarkExpenseCommandTest {
     public void execute_validIndexUnfilteredList_success() {
         BookmarkExpense bookmarkExpenseToDelete = model.getFilteredBookmarkExpenseList()
                 .get(INDEX_FIRST.getZeroBased());
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(INDEX_FIRST);
         DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand =
-                new DeleteBookmarkExpenseCommand(INDEX_FIRST);
+                new DeleteBookmarkExpenseCommand(superCommand);
 
         String expectedMessage = String.format(DeleteBookmarkExpenseCommand.MESSAGE_DELETE_BOOKMARK_EXPENSE_SUCCESS,
                 bookmarkExpenseToDelete);
@@ -41,7 +43,8 @@ public class DeleteBookmarkExpenseCommandTest {
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkExpenseList().size() + 1);
-        DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand = new DeleteBookmarkExpenseCommand(outOfBoundIndex);
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(outOfBoundIndex);
+        DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand = new DeleteBookmarkExpenseCommand(superCommand);
 
         assertCommandFailure(deleteBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
@@ -52,8 +55,9 @@ public class DeleteBookmarkExpenseCommandTest {
 
         BookmarkExpense bookmarkExpenseToDelete = model.getFilteredBookmarkExpenseList()
                 .get(INDEX_FIRST.getZeroBased());
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(INDEX_FIRST);
         DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand =
-                new DeleteBookmarkExpenseCommand(INDEX_FIRST);
+                new DeleteBookmarkExpenseCommand(superCommand);
 
         String expectedMessage = String.format(DeleteBookmarkExpenseCommand.MESSAGE_DELETE_BOOKMARK_EXPENSE_SUCCESS,
                 bookmarkExpenseToDelete);
@@ -73,34 +77,38 @@ public class DeleteBookmarkExpenseCommandTest {
         // ensures that outOfBoundIndex is still in bounds of bookmark expense list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkExpenseList().size());
 
-        DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand = new DeleteBookmarkExpenseCommand(outOfBoundIndex);
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(outOfBoundIndex);
+        DeleteBookmarkExpenseCommand deleteBookmarkExpenseCommand = new DeleteBookmarkExpenseCommand(superCommand);
 
         assertCommandFailure(deleteBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        DeleteBookmarkExpenseCommand deleteFirstCommand =
-                new DeleteBookmarkExpenseCommand(INDEX_FIRST);
-        DeleteBookmarkExpenseCommand deleteSecondCommand =
-                new DeleteBookmarkExpenseCommand(INDEX_SECOND);
+        DeleteBookmarkCommandStub firstSuperCommand = new DeleteBookmarkCommandStub(INDEX_FIRST);
+        DeleteBookmarkExpenseCommand firstDeleteBookmarkExpenseCommand =
+                new DeleteBookmarkExpenseCommand(firstSuperCommand);
+        DeleteBookmarkCommandStub secondSuperCommand = new DeleteBookmarkCommandStub(INDEX_SECOND);
+        DeleteBookmarkExpenseCommand secondDeleteBookmarkExpenseCommand =
+                new DeleteBookmarkExpenseCommand(secondSuperCommand);
 
         // same object -> returns true
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+        assertTrue(firstDeleteBookmarkExpenseCommand.equals(firstDeleteBookmarkExpenseCommand));
 
         // same values -> returns true
+        DeleteBookmarkCommandStub firstSuperCommandCopy = new DeleteBookmarkCommandStub(INDEX_FIRST);
         DeleteBookmarkExpenseCommand deleteFirstCommandCopy =
-                new DeleteBookmarkExpenseCommand(INDEX_FIRST);
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+                new DeleteBookmarkExpenseCommand(firstSuperCommandCopy);
+        assertTrue(firstDeleteBookmarkExpenseCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(deleteFirstCommand.equals(1));
+        assertFalse(firstDeleteBookmarkExpenseCommand.equals(1));
 
         // null -> returns false
-        assertFalse(deleteFirstCommand.equals(null));
+        assertFalse(firstDeleteBookmarkExpenseCommand.equals(null));
 
         // different expense -> returns false
-        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        assertFalse(firstDeleteBookmarkExpenseCommand.equals(secondDeleteBookmarkExpenseCommand));
     }
 
     /**

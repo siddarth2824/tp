@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.stubs.DeleteBookmarkCommandStub;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
@@ -25,10 +26,10 @@ public class DeleteBookmarkIncomeCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        BookmarkIncome bookmarkIncomeToDelete = model.getFilteredBookmarkIncomeList()
-                .get(INDEX_FIRST.getZeroBased());
+        BookmarkIncome bookmarkIncomeToDelete = model.getFilteredBookmarkIncomeList().get(INDEX_FIRST.getZeroBased());
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(INDEX_FIRST);
         DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand =
-                new DeleteBookmarkIncomeCommand(INDEX_FIRST);
+                new DeleteBookmarkIncomeCommand(superCommand);
 
         String expectedMessage = String.format(DeleteBookmarkIncomeCommand.MESSAGE_DELETE_BOOKMARK_INCOME_SUCCESS,
                 bookmarkIncomeToDelete);
@@ -42,7 +43,8 @@ public class DeleteBookmarkIncomeCommandTest {
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookmarkIncomeList().size() + 1);
-        DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand = new DeleteBookmarkIncomeCommand(outOfBoundIndex);
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(outOfBoundIndex);
+        DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand = new DeleteBookmarkIncomeCommand(superCommand);
 
         assertCommandFailure(deleteBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
@@ -53,8 +55,9 @@ public class DeleteBookmarkIncomeCommandTest {
 
         BookmarkIncome bookmarkIncomeToDelete = model.getFilteredBookmarkIncomeList()
                 .get(INDEX_FIRST.getZeroBased());
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(INDEX_FIRST);
         DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand =
-                new DeleteBookmarkIncomeCommand(INDEX_FIRST);
+                new DeleteBookmarkIncomeCommand(superCommand);
 
         String expectedMessage = String.format(DeleteBookmarkIncomeCommand.MESSAGE_DELETE_BOOKMARK_INCOME_SUCCESS,
                 bookmarkIncomeToDelete);
@@ -74,34 +77,38 @@ public class DeleteBookmarkIncomeCommandTest {
         // ensures that outOfBoundIndex is still in bounds of bookmark income list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFinanceTracker().getBookmarkIncomeList().size());
 
-        DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand = new DeleteBookmarkIncomeCommand(outOfBoundIndex);
+        DeleteBookmarkCommandStub superCommand = new DeleteBookmarkCommandStub(outOfBoundIndex);
+        DeleteBookmarkIncomeCommand deleteBookmarkIncomeCommand = new DeleteBookmarkIncomeCommand(superCommand);
 
         assertCommandFailure(deleteBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        DeleteBookmarkIncomeCommand deleteFirstCommand =
-                new DeleteBookmarkIncomeCommand(INDEX_FIRST);
-        DeleteBookmarkIncomeCommand deleteSecondCommand =
-                new DeleteBookmarkIncomeCommand(INDEX_SECOND);
+        DeleteBookmarkCommandStub firstSuperCommand = new DeleteBookmarkCommandStub(INDEX_FIRST);
+        DeleteBookmarkIncomeCommand firstDeleteBookmarkIncomeCommand =
+                new DeleteBookmarkIncomeCommand(firstSuperCommand);
+        DeleteBookmarkCommandStub secondSuperCommand = new DeleteBookmarkCommandStub(INDEX_SECOND);
+        DeleteBookmarkIncomeCommand secondDeleteBookmarkIncomeCommand =
+                new DeleteBookmarkIncomeCommand(secondSuperCommand);
 
         // same object -> returns true
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+        assertTrue(firstDeleteBookmarkIncomeCommand.equals(firstDeleteBookmarkIncomeCommand));
 
         // same values -> returns true
-        DeleteBookmarkIncomeCommand deleteFirstCommandCopy =
-                new DeleteBookmarkIncomeCommand(INDEX_FIRST);
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+        DeleteBookmarkCommandStub firstSuperCommandCopy = new DeleteBookmarkCommandStub(INDEX_FIRST);
+        DeleteBookmarkIncomeCommand firstDeleteBookmarkIncomeCommandCopy =
+                new DeleteBookmarkIncomeCommand(firstSuperCommandCopy);
+        assertTrue(firstDeleteBookmarkIncomeCommand.equals(firstDeleteBookmarkIncomeCommandCopy));
 
         // different types -> returns false
-        assertFalse(deleteFirstCommand.equals(1));
+        assertFalse(firstDeleteBookmarkIncomeCommand.equals(1));
 
         // null -> returns false
-        assertFalse(deleteFirstCommand.equals(null));
+        assertFalse(firstDeleteBookmarkIncomeCommand.equals(null));
 
         // different income -> returns false
-        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        assertFalse(firstDeleteBookmarkIncomeCommand.equals(secondDeleteBookmarkIncomeCommand));
     }
 
     /**

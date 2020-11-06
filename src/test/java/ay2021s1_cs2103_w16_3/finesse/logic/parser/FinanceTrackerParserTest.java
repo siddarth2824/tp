@@ -38,8 +38,6 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkComm
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkIncomeCommand;
@@ -322,14 +320,14 @@ public class FinanceTrackerParserTest {
     public void parseCommand_deleteBookmarkWhenIncomesTab() throws Exception {
         DeleteBookmarkCommand command = (DeleteBookmarkCommand) parser.parseCommand(
                 DeleteBookmarkCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased(), incomeUiStateStub);
-        assertEquals(new DeleteBookmarkIncomeCommand(INDEX_FIRST), command);
+        assertEquals(new DeleteBookmarkCommand(INDEX_FIRST), command);
     }
 
     @Test
     public void parseCommand_deleteBookmarkWhenExpensesTab() throws Exception {
         DeleteBookmarkCommand command = (DeleteBookmarkCommand) parser.parseCommand(
                 DeleteBookmarkCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased(), expensesUiStateStub);
-        assertEquals(new DeleteBookmarkExpenseCommand(INDEX_FIRST), command);
+        assertEquals(new DeleteBookmarkCommand(INDEX_FIRST), command);
     }
 
     @Test

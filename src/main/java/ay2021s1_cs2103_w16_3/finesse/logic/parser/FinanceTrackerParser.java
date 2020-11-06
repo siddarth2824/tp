@@ -38,6 +38,8 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkExpenseC
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkExpenseCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetExpenseLimitCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetSavingsGoalCommand;
@@ -45,8 +47,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.AddBookmarkExp
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.AddBookmarkIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.ConvertBookmarkIncomeCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkExpenseCommandParser;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkIncomeCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkExpenseCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkIncomeCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.budgetparsers.SetExpenseLimitCommandParser;
@@ -160,9 +161,9 @@ public class FinanceTrackerParser {
         case DeleteBookmarkCommand.COMMAND_WORD:
             switch (uiCurrentTab) {
             case EXPENSES:
-                return new DeleteBookmarkExpenseCommandParser().parse(arguments);
+                return new DeleteBookmarkExpenseCommand(new DeleteBookmarkCommandParser().parse(arguments));
             case INCOME:
-                return new DeleteBookmarkIncomeCommandParser().parse(arguments);
+                return new DeleteBookmarkIncomeCommand(new DeleteBookmarkCommandParser().parse(arguments));
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
                         Tab.EXPENSES, Tab.INCOME));
