@@ -21,8 +21,8 @@ import ay2021s1_cs2103_w16_3.finesse.model.Model;
 public class EditBookmarkCommand extends Command {
     public static final String COMMAND_WORD = "edit-bookmark";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the bookmark transaction identified "
-            + "by the index number used in the displayed bookmark transaction list on the current tab. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the bookmark transaction "
+            + "identified by the index number used in the displayed bookmark transaction list on the current tab. "
             + "Existing values will be overwritten by the input values.\n"
             + "When on Income tab: Edits from the currently displayed bookmark incomes list.\n"
             + "When on Expenses tab: Edits from the currently displayed bookmark expenses list.\n"
