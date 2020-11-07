@@ -17,7 +17,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 /**
  * Parses input arguments and creates a new ConvertBookmarkCommand object
  */
-public class ConvertBookmarkTransactionCommandParser implements Parser<ConvertBookmarkCommand> {
+public class ConvertBookmarkCommandParser implements Parser<ConvertBookmarkCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the ConvertBookmarkCommand

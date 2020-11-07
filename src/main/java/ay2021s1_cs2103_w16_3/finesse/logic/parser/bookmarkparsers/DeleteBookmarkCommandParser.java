@@ -11,7 +11,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new DeleteBookmarkCommand object
  */
-public class DeleteBookmarkTransactionCommandParser implements Parser<DeleteBookmarkCommand> {
+public class DeleteBookmarkCommandParser implements Parser<DeleteBookmarkCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteBookmarkCommand

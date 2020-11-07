@@ -1,15 +1,15 @@
 package ay2021s1_cs2103_w16_3.finesse.logic.parser;
 
-import static ay2021s1_cs2103_w16_3.finesse.commons.util.StringUtil.isEmptyString;
-import static ay2021s1_cs2103_w16_3.finesse.model.category.Category.MESSAGE_EMPTY_CATEGORY;
-import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount.MESSAGE_EMPTY_AMOUNT;
-import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Date.MESSAGE_EMPTY_DATE;
-import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Title.MESSAGE_EMPTY_TITLE;
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static ay2021s1_cs2103_w16_3.finesse.commons.util.StringUtil.isEmptyString;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
+import static ay2021s1_cs2103_w16_3.finesse.model.category.Category.MESSAGE_EMPTY_CATEGORY;
+import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount.MESSAGE_EMPTY_AMOUNT;
+import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Date.MESSAGE_EMPTY_DATE;
+import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Title.MESSAGE_EMPTY_TITLE;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
