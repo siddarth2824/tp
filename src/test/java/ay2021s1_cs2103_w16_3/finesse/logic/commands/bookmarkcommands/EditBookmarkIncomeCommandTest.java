@@ -27,6 +27,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncomeList;
 import ay2021s1_cs2103_w16_3.finesse.testutil.BookmarkTransactionBuilder;
 import ay2021s1_cs2103_w16_3.finesse.testutil.EditBookmarkTransactionDescriptorBuilder;
 
@@ -107,6 +108,21 @@ public class EditBookmarkIncomeCommandTest {
         EditBookmarkIncomeCommand editBookmarkIncomeCommand = new EditBookmarkIncomeCommand(superCommand);
 
         assertCommandFailure(editBookmarkIncomeCommand, model, MESSAGE_INVALID_BOOKMARK_INCOME_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_settingDuplicateEditedBookmarkExpense_throwsDuplicateBookmarkTransactionException() {
+        BookmarkIncome editedBookmarkIncome = new BookmarkTransactionBuilder()
+                .withTitle(VALID_TITLE_PART_TIME).withAmount(VALID_AMOUNT_PART_TIME)
+                .buildBookmarkIncome();
+        EditBookmarkTransactionDescriptor descriptor =
+                new EditBookmarkTransactionDescriptorBuilder(editedBookmarkIncome).build();
+
+        EditBookmarkCommandStub superCommand = new EditBookmarkCommandStub(INDEX_SECOND, descriptor);
+        EditBookmarkIncomeCommand editBookmarkIncomeCommand = new EditBookmarkIncomeCommand(superCommand);
+
+        assertCommandFailure(editBookmarkIncomeCommand, model,
+                BookmarkIncomeList.MESSAGE_OPERATION_WOULD_RESULT_IN_DUPLICATE_BOOKMARK_INCOME);
     }
 
     @Test

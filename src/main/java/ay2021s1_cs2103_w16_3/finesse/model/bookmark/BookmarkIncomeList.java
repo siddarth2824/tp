@@ -19,6 +19,9 @@ import javafx.collections.ObservableList;
  * Supports a minimal set of list operations.
  */
 public class BookmarkIncomeList implements Iterable<BookmarkIncome> {
+    public static final String MESSAGE_OPERATION_WOULD_RESULT_IN_DUPLICATE_BOOKMARK_INCOME =
+            "Operation would result in duplicate bookmark income";
+
     private final ObservableList<BookmarkIncome> internalBookmarkIncomeList = FXCollections.observableArrayList();
     private final ObservableList<BookmarkIncome> internalUnmodifiableBookmarkIncomeList =
             FXCollections.unmodifiableObservableList(internalBookmarkIncomeList);
@@ -29,7 +32,8 @@ public class BookmarkIncomeList implements Iterable<BookmarkIncome> {
     public void add(BookmarkIncome toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateBookmarkTransactionException("income");
+            throw new DuplicateBookmarkTransactionException(
+                    MESSAGE_OPERATION_WOULD_RESULT_IN_DUPLICATE_BOOKMARK_INCOME);
         }
         internalBookmarkIncomeList.add(toAdd);
     }
@@ -57,7 +61,8 @@ public class BookmarkIncomeList implements Iterable<BookmarkIncome> {
         }
 
         if (contains(editedBookmarkIncome) && !(target.getTitle().equals(editedBookmarkIncome.getTitle()))) {
-            throw new DuplicateBookmarkTransactionException("income");
+            throw new DuplicateBookmarkTransactionException(
+                    MESSAGE_OPERATION_WOULD_RESULT_IN_DUPLICATE_BOOKMARK_INCOME);
         }
 
         internalBookmarkIncomeList.set(index, editedBookmarkIncome);

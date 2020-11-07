@@ -5,6 +5,7 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.AMOUN
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.AMOUNT_DESC_PHONE_BILL;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.CATEGORY_DESC_UTILITIES;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.CATEGORY_DESC_WORK;
+import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DATE_DESC_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.INVALID_AMOUNT_DESC;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
@@ -111,5 +112,13 @@ public class AddBookmarkIncomeCommandParserTest {
         assertParseFailure(parser, TITLE_DESC_PHONE_BILL + AMOUNT_DESC_PHONE_BILL
                         + AMOUNT_DESC_PART_TIME + CATEGORY_DESC_UTILITIES,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, BookmarkTransaction.MESSAGE_AMOUNT_CONSTRAINTS));
+    }
+
+    @Test
+    public void parse_dateFieldPresent_failure() {
+        // date field present
+        assertParseFailure(parser, TITLE_DESC_PHONE_BILL + AMOUNT_DESC_PHONE_BILL
+                + DATE_DESC_SPOTIFY_SUBSCRIPTION + CATEGORY_DESC_UTILITIES,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, BookmarkTransaction.MESSAGE_CANNOT_CONTAIN_DATE));
     }
 }

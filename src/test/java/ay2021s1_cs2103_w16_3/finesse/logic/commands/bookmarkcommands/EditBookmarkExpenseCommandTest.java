@@ -17,6 +17,7 @@ import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.getTypi
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpenseList;
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
@@ -108,6 +109,21 @@ public class EditBookmarkExpenseCommandTest {
         EditBookmarkExpenseCommand editBookmarkExpenseCommand = new EditBookmarkExpenseCommand(superCommand);
 
         assertCommandFailure(editBookmarkExpenseCommand, model, MESSAGE_INVALID_BOOKMARK_EXPENSE_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_settingDuplicateEditedBookmarkExpense_throwsDuplicateBookmarkTransactionException() {
+        BookmarkExpense editedBookmarkExpense = new BookmarkTransactionBuilder()
+                .withTitle(VALID_TITLE_SPOTIFY_SUBSCRIPTION).withAmount(VALID_AMOUNT_SPOTIFY_SUBSCRIPTION)
+                .buildBookmarkExpense();
+        EditBookmarkTransactionDescriptor descriptor =
+                new EditBookmarkTransactionDescriptorBuilder(editedBookmarkExpense).build();
+
+        EditBookmarkCommandStub superCommand = new EditBookmarkCommandStub(INDEX_FIRST, descriptor);
+        EditBookmarkExpenseCommand editBookmarkExpenseCommand = new EditBookmarkExpenseCommand(superCommand);
+
+        assertCommandFailure(editBookmarkExpenseCommand, model,
+                BookmarkExpenseList.MESSAGE_OPERATION_WILL_RESULT_IN_DUPLICATE_BOOKMARK_EXPENSE);
     }
 
     @Test

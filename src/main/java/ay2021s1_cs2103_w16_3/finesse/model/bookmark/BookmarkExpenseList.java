@@ -19,6 +19,9 @@ import javafx.collections.ObservableList;
  * Supports a minimal set of list operations.
  */
 public class BookmarkExpenseList implements Iterable<BookmarkExpense> {
+    public static final String MESSAGE_OPERATION_WILL_RESULT_IN_DUPLICATE_BOOKMARK_EXPENSE =
+            "Operation will result in duplicate bookmark expense";
+
     private final ObservableList<BookmarkExpense> internalBookmarkExpenseList = FXCollections.observableArrayList();
     private final ObservableList<BookmarkExpense> internalUnmodifiableBookmarkExpenseList =
             FXCollections.unmodifiableObservableList(internalBookmarkExpenseList);
@@ -29,7 +32,8 @@ public class BookmarkExpenseList implements Iterable<BookmarkExpense> {
     public void add(BookmarkExpense toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateBookmarkTransactionException("expense");
+            throw new DuplicateBookmarkTransactionException(
+                    MESSAGE_OPERATION_WILL_RESULT_IN_DUPLICATE_BOOKMARK_EXPENSE);
         }
         internalBookmarkExpenseList.add(toAdd);
     }
@@ -57,7 +61,8 @@ public class BookmarkExpenseList implements Iterable<BookmarkExpense> {
         }
 
         if (contains(editedBookmarkExpense) && !(target.getTitle().equals(editedBookmarkExpense.getTitle()))) {
-            throw new DuplicateBookmarkTransactionException("expense");
+            throw new DuplicateBookmarkTransactionException(
+                    MESSAGE_OPERATION_WILL_RESULT_IN_DUPLICATE_BOOKMARK_EXPENSE);
         }
 
         internalBookmarkExpenseList.set(index, editedBookmarkExpense);

@@ -3,6 +3,7 @@ package ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmark;
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.AMOUNT_DESC_PHONE_BILL;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.AMOUNT_DESC_SPOTIFY_SUBSCRIPTION;
+import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.DATE_DESC_SPOTIFY_SUBSCRIPTION;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.CATEGORY_DESC_FOOD_BEVERAGE;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.CATEGORY_DESC_MISCELLANEOUS;
 import static ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandTestUtil.CATEGORY_DESC_UTILITIES;
@@ -96,6 +97,13 @@ public class EditBookmarkTransactionCommandParserTest {
     }
 
     @Test
+    public void parse_dateFieldPresent_failure() {
+        assertParseFailure(parser, "1" + TITLE_DESC_SPOTIFY_SUBSCRIPTION + AMOUNT_DESC_SPOTIFY_SUBSCRIPTION
+                + DATE_DESC_SPOTIFY_SUBSCRIPTION,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, BookmarkTransaction.MESSAGE_CANNOT_CONTAIN_DATE));
+    }
+
+    @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND;
         String userInput = targetIndex.getOneBased() + AMOUNT_DESC_PHONE_BILL + CATEGORY_DESC_UTILITIES
@@ -169,4 +177,5 @@ public class EditBookmarkTransactionCommandParserTest {
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
+
 }
