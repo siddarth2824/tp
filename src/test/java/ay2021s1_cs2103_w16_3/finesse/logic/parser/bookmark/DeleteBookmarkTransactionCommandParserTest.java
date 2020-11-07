@@ -8,7 +8,7 @@ import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalIndexes.INDEX_FIRST;
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmarkTransactionCommandParser;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -17,8 +17,8 @@ import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.DeleteBookmark
  * The path variation for those two cases occur inside the ParserUtil, and
  * therefore should be covered by the ParserUtilTest.
  */
-public class DeleteBookmarkCommandParserTest {
-    private DeleteBookmarkCommandParser parser = new DeleteBookmarkCommandParser();
+public class DeleteBookmarkTransactionCommandParserTest {
+    private DeleteBookmarkTransactionCommandParser parser = new DeleteBookmarkTransactionCommandParser();
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {

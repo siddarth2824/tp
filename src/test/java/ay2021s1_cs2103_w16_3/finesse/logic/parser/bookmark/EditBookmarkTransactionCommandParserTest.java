@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkTransactionDescriptor;
-import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkCommandParser;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.EditBookmarkTransactionCommandParser;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkTransaction;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
@@ -37,12 +37,12 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
 import ay2021s1_cs2103_w16_3.finesse.testutil.EditBookmarkTransactionDescriptorBuilder;
 
 
-public class EditBookmarkCommandParserTest {
+public class EditBookmarkTransactionCommandParserTest {
 
     private static final String CATEGORY_EMPTY = " " + PREFIX_CATEGORY;
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditBookmarkCommand.MESSAGE_USAGE);
-    private EditBookmarkCommandParser parser = new EditBookmarkCommandParser();
+    private EditBookmarkTransactionCommandParser parser = new EditBookmarkTransactionCommandParser();
 
     @Test
     public void parse_missingParts_failure() {

@@ -20,7 +20,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkTransaction;
 /**
  * Parses input arguments and creates a new EditBookmarkCommand object
  */
-public class EditBookmarkCommandParser implements Parser<EditBookmarkCommand> {
+public class EditBookmarkTransactionCommandParser implements Parser<EditBookmarkCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditBookmarkIncomeCommand
