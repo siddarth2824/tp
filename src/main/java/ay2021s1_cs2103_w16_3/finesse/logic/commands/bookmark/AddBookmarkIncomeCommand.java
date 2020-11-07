@@ -24,9 +24,9 @@ public class AddBookmarkIncomeCommand extends Command {
             + PREFIX_AMOUNT + "AMOUNT "
             + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TITLE + "Phone Bill "
-            + PREFIX_AMOUNT + "24 "
-            + PREFIX_CATEGORY + "Utilities";
+            + PREFIX_TITLE + "Summer Internship "
+            + PREFIX_AMOUNT + "1000 "
+            + PREFIX_CATEGORY + "Work";
 
     public static final String MESSAGE_SUCCESS = "New bookmark income added: %1$s";
 

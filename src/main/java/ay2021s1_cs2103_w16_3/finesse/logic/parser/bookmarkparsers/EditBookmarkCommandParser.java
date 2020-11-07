@@ -3,6 +3,7 @@ package ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers;
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_CATEGORY;
+import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_DATE;
 import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_TITLE;
 import static java.util.Objects.requireNonNull;
 
@@ -28,7 +29,8 @@ public class EditBookmarkCommandParser implements Parser<EditBookmarkCommand> {
      */
     public EditBookmarkCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_AMOUNT, PREFIX_CATEGORY);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_AMOUNT, PREFIX_DATE,
+                PREFIX_CATEGORY);
 
         Index index;
 
@@ -47,6 +49,11 @@ public class EditBookmarkCommandParser implements Parser<EditBookmarkCommand> {
         if (argMultimap.moreThanOneValuePresent(PREFIX_AMOUNT)) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, BookmarkTransaction.MESSAGE_AMOUNT_CONSTRAINTS));
+        }
+
+        if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, BookmarkTransaction.MESSAGE_CANNOT_CONTAIN_DATE));
         }
 
         EditBookmarkTransactionDescriptor editBookmarkIncomeDescriptor = new EditBookmarkTransactionDescriptor();

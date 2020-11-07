@@ -15,8 +15,9 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
  */
 public abstract class BookmarkTransaction<T extends Transaction> {
 
-    public static final String MESSAGE_TITLE_CONSTRAINTS = "Bookmark transactions should only contain one title.";
-    public static final String MESSAGE_AMOUNT_CONSTRAINTS = "Bookmark transactions should only contain one amount.";
+    public static final String MESSAGE_TITLE_CONSTRAINTS = "Bookmark transactions should only contain one title";
+    public static final String MESSAGE_AMOUNT_CONSTRAINTS = "Bookmark transactions should only contain one amount";
+    public static final String MESSAGE_CANNOT_CONTAIN_DATE = "Bookmark transactions should not contain any date";
 
     private final Title title;
     private final Amount amount;
