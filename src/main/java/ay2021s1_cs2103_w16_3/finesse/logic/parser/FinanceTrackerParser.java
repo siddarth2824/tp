@@ -175,7 +175,8 @@ public class FinanceTrackerParser {
         case ConvertBookmarkCommand.COMMAND_ALIAS:
             switch (uiCurrentTab) {
             case EXPENSES:
-                return new ConvertBookmarkExpenseCommand(new ConvertBookmarkTransactionCommandParser().parse(arguments));
+                return new ConvertBookmarkExpenseCommand(
+                        new ConvertBookmarkTransactionCommandParser().parse(arguments));
             case INCOME:
                 return new ConvertBookmarkIncomeCommand(new ConvertBookmarkTransactionCommandParser().parse(arguments));
             default:
