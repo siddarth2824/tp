@@ -19,7 +19,6 @@ import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
 
-
 public class AddBookmarkExpenseCommandTest {
 
     @Test
