@@ -23,13 +23,13 @@ import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkTransactionDescriptor;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.stubs.EditBookmarkCommandStub;
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.BookmarkTransactionBuilder;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpenseList;
-import ay2021s1_cs2103_w16_3.finesse.testutil.BookmarkTransactionBuilder;
 import ay2021s1_cs2103_w16_3.finesse.testutil.EditBookmarkTransactionDescriptorBuilder;
 
 public class EditBookmarkExpenseCommandTest {

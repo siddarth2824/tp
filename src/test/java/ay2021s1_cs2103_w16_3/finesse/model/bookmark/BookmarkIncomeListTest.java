@@ -13,9 +13,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.BookmarkTransactionBuilder;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.exceptions.BookmarkTransactionNotFoundException;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.exceptions.DuplicateBookmarkTransactionException;
-import ay2021s1_cs2103_w16_3.finesse.testutil.BookmarkTransactionBuilder;
 
 public class BookmarkIncomeListTest {
 
