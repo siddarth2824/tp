@@ -1034,7 +1034,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 * 1b. Bookmark expenses list is empty.
-    
+
     * 1b1. Fine$$e shows an error message.
 
       Use case ends.
