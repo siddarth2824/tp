@@ -43,7 +43,8 @@ It is written in Java, and has a GUI created with JavaFX.
         * Updated User Guide to include Bookmark Expense and Income feature.
         * Updated User Guide with the Introduction of Fine$$e.
     * Developer Guide:
-        * Updated Developer Guide to include Bookmark Expense and Income feature.
+        * Updated Developer Guide to include Bookmark Transactions feature.
+        * Updated the use cases to include use cases for Bookmark Transactions feature.
 
 * **Community**:
     * PRs reviewed (with non-trivial comments): [#150](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/150#discussion_r510884713), [#197](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/197#discussion_r512544298)
