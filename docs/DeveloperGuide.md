@@ -463,31 +463,130 @@ The alternative implementations considered, as well as the rationale behind our 
 | ----------- | -------------------------   |
 | Use the `Amount` class for calculated amounts. | Use a separate class `CalculatedAmount` for calculated amounts, so as to avoid breaking abstraction and support negative values.
 
-### Bookmark Transactions
+### Bookmark Transaction Feature
+##### Overview
 
-#### Proposed Implementation
-The Frequent Expense feature consists of `add-frequent-expense`, `edit-frequent-expense`, `delete-frequent-expense`,
-`convert-frequent-expense`.
+Bookmark transactions are transactions that is a template that allows users to create transactions that they make frequently, such as paying phone bills monthly or receiving stipend for being a teaching assistant.
+This feature reduces the hassle of keying in information repeatedly for identical transactions that occur frequently.
 
-Frequent expenses are expenses that the user have identified to be occurring regularly or with high frequency.
-Examples of such expenses can be phone bill, music subscription or buying bubble tea on a weekly basis.
+Bookmark Transaction object is made up of 3 fields. They are mainly: Title, Amount and Category.
+The class diagram below depicts the structure of the BookmarkTransaction, BookmarkExpense, BookmarkIncome, BookmarkExpenseList and BookmarkIncomeList in the Model Component.
 
-This feature allows users to add frequent expenses to the finance tracker. The user can then choose to convert a
-frequent expense to an expense that the user wants to add to the transaction list in the finance tracker. This is done by
-calling `Logic#execute` which creates an  `AddFrequentExpenseCommand`. This command then calls
-`ModelManager#addFrequentExpense`, adding the specified frequent expense into the frequent expense list.
+The class diagram below depicts the components involved in the budget feature.
 
-This feature also simplifies the deletion and editing of frequent expenses, and they work in a similar manner.
+![Class Diagram for Bookmark Transaction Class](images/BookmarkTransactionClassDiagram.png)
 
-#### Convert Frequent Expense To Expense Feature
+##### Add Bookmark Expense
 
-The purpose of this feature is to allow users to add expenses, that they add to the transaction list in the finance
-tracker on a frequent basis in a convenient manner. After adding a frequent expense into the frequent expense list in
-the finance tracker, the user can call convert-frequent-expense to the respective frequent expense to make the
-conversion.
+The following is a detailed elaboration of how `AddBookmarkExpenseCommand` operates.
 
-Given below is the proposed UML sequence diagram and explanation of an example usage scenario for
-convert-frequent-expense
+> :information_source: &nbsp; Format of adding a Bookmark Expense is `add-bookmark-expense t/TITLE a/AMOUNT [c/CATEGORY...]`
+
+**Step 1**. After the successful parsing of user input, the `AddBookmarkExpenseCommand#execute(Model model)` method is executed.
+
+**Step 2**. `ModelManager#addBookmarkExpense(toAdd)` is invoked to add the new bookmark expense into Fine$$e.
+
+**Step 3**. The new bookmark expense is added into `FinanceTracker#bookmarkExpenses`,  via the `FinanceTracker#addBookmarkExpense(BookmarkExpense bookmarkExpense)`.
+
+**Step 4**. This will then call the `BookmarkExpenseList#add(BookmarkExpense toAdd)` method which will check if the title of the new bookmark expense already exists in `BookmarkExpenseList#internalBookmarkExpenseList` via `BookmarkExpenseList#contains(BookmarkExpense toCheck)` before adding it.
+If the title does exist already, the `DuplicateBookmarkTransactionException` will be thrown otherwise the new bookmark expense will be added.
+
+**Step 5**. After successfully adding the new bookmark expense, the command box will be reflected with `AddBookmarkExpenseCommand#MESSAGE_SUCCESS` and a new `CommandResult` will be returned with the message.
+
+![Sequence Diagram of AddBookmarkExpenseCommand](images/AddBookmarkExpenseSequenceDiagram.png)
+
+{:.image-caption}
+Sequence Diagram for Adding Bookmark Expenses
+
+![Sequence Diagram of parsing input to create AddBookmarkExpenseCommand](images/ParsingAddBookmarkExpenseInputSequenceDiagram.png)
+
+{:.image-caption}
+Reference Frame for Sequence Diagram
+
+##### Add Bookmark Income
+
+The following is a detailed elaboration of how `AddBookmarkIncomeCommand` operates.
+
+> :information_source: &nbsp; Format of adding a Bookmark Income is `add-bookmark-income t/TITLE a/AMOUNT [c/CATEGORY...]`
+
+**Step 1**. After the successful parsing of user input, the `AddBookmarkIncomeCommand#execute(Model model)` method is executed.
+
+**Step 2**. `ModelManager#addBookmarkIncome(toAdd)` is invoked to add the new bookmark income into Fine$$e.
+
+**Step 3**. The new bookmark income is added into `FinanceTracker#bookmarkIncomes`,  via the `FinanceTracker#addBookmarkIncome(BookmarkExpense bookmarkIncome)`.
+
+**Step 4**. This will then call the `BookmarkIncomeList#add(BookmarkIncome toAdd)` method which will check if the title of the new bookmark income already exists in `BookmarkIncomeList#internalBookmarkIncomeList` via `BookmarkIncomeList#contains(BookmarkIncome toCheck)` before adding it.
+If the title does exist already, the `DuplicateBookmarkTransactionException` will be thrown otherwise the new bookmark income will be added.
+
+**Step 5**. After successfully adding the new bookmark income, the command box will be reflected with `AddBookmarkIncomeCommand#MESSAGE_SUCCESS` and a new `CommandResult` will be returned with the message.
+
+
+##### Edit Bookmark Transaction
+
+The edit bookmark transaction feature allows users to edit the details of a specified bookmark transaction in the `FinanceTracker`. 
+
+Below is the class diagram of the components involved in the edit bookmark transaction feature.
+
+![Class diagram for edit bookmark transaction](images/EditBookmarkTransactionClassDiagram.png)
+
+`EditBookmarkExpenseCommand` and `EditBookmarkIncomeCommand` work in similar ways.
+
+Following is a detailed elaboration of how `EditBoomarkExpenseCommand` operates.
+
+> :information_source: &nbsp; This command can only be executed on the Expense Tab.
+
+> :information_source: &nbsp; Format of editing a Bookmark Expense is `edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORY...]`. 
+
+> :information_source: &nbsp; Enclosing [] braces indicate optional fields. At least one of the three fields must be present. 
+
+**Step 1**. After the successful parsing of user input, the `EditBookmarkExpenseCommand#execute(Model model)` method is called which checks if the `Index` defined as an argument when instantiating `EditBookmarkCommand(Index targetIndex, EditBookmarkTransactionDescriptor editBookmarkTransactionDescriptor)` is valid.
+It uses `EditBookmarkTransactionDescriptor` to create a new edited bookmark expense.
+Since it is optional for the users to input fields, the fields which are not entered will reuse the existing values that are currently stored and defined in the `BookmarkExpense` object.
+
+> :information_source: &nbsp; The `Index` must be within the bounds of the list of bookmark expenses.
+
+**Step 2**. A new `BookmarkExpense` with the newly updated attributes will be created which replaces the existing `BookmarkExpense` object using `Model#setBookmarkExpense(BookmarkExpense target, BookmarkExpense editedBookmarkExpense)` method.
+
+**Step 3**. The filtered bookmark expense list is then updated with the new `BookmarkExpense` with the `Model#updateFilteredBookmarkExpenseList(PREDICATE_SHOW_ALL_BOOKMARK_EXPENSES)` method.
+
+**Step 4**. The command box will be reflected with the `EditBookmarkExpenseCommand#MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS` constant and a new `CommandResult` will be returned with the success message.
+
+##### Delete Bookmark Transaction
+
+The delete bookmark transaction feature allows users to delete a specified bookmark transaction in the `FinanceTracker`.
+
+Below is the class diagram of the components involved in the delete bookmark transaction feature.
+
+![Class diagram for delete bookmark transaction](images/DeleteBookmarkTransactionClassDiagram.png)
+
+{:.image-caption}
+Class Diagram for Delete Bookmark Command
+
+`DeleteBookmarkExpenseCommand` and `DeleteBookmarkIncomeCommand` work in similar ways.
+
+Following is a detailed elaboration of how `DeleteBoomarkExpenseCommand` operates.
+
+**Step 1**. After the successful parsing of user input, the `DeleteBookmarkExpenseCommand#execute(Model model)` method is called which checks if the `Index` defined when instantiating the `DeleteBookmarkCommand(Index index)` constructor is valid.
+
+> :information_source: &nbsp; The `Index` must be within the bounds of the list of bookmark expenses.
+
+**Step 2**. The `BookmarkExpense` at the specified `Index` is then removed from the `BookmarkExpenseList#internalBookmarkExpenseList` observable list using the `Model#deleteBookmarkExpense(BookmarkExpense bookmarkExpense)` method.
+
+**Step 3**. The command box will be reflected with the `DeleteBookmarkExpenseCommand#MESSAGE_DELETE_BOOKMARK_EXPENSE_SUCCESS` constant and a new `CommandResult` will be returned with the success message.
+
+The following activity diagram summarizes what happens when the user executes any command that deletes a specified bookmark expense:
+
+![Activity diagram for delete bookmark expense command](images/DeleteBookmarkExpenseActivityDiagram.png)
+
+{:.image-caption}
+Activity Diagram for Deleting Bookmark Expense
+
+##### Convert Bookmark Transaction
+
+The purpose of this feature is to allow users to add expenses, that they add to the transaction list in the finance tracker on a frequent basis in a convenient manner.
+After adding a frequent expense into the frequent expense list in the finance tracker, the user can call convert-frequent-expense to the respective frequent expense to make the conversion.
+
+Given below is the proposed UML sequence diagram and explanation of an example usage scenario for convert-frequent-expense
 
 ![Sequence Diagram of the Convert Frequent Expense To Expense Feature](images/ConvertBookmarkExpenseSequenceDiagram.png)
 
