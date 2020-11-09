@@ -287,6 +287,9 @@ Expected Outcome:
 ```
 New expense added: Bubble Tea Amount: $5.00 Date: 03/10/2020 Categories: [Food & Beverage]
 ```
+
+![Add Expense](images/userguide/AddExpense.png)
+
 Adds a new expense titled `Bubble Tea`, with amount `$5.00`, date `03/10/2020`, and a single category `Food & Beverage`.
 
 #### 4.3.2 Edit Expense: `edit`
@@ -304,19 +307,22 @@ Format: (when on the [Expenses tab](#223-expenses-tab)) `edit INDEX [t/TITLE] [a
 > :bulb: &nbsp; To remove all categories from an expense, simply use `c/` with no category name following it.
 
 Examples:
-* `edit 2 t/Shopee Internship d/24/10/2020`
+* `edit 1 t/Shopee Internship d/24/10/2020`
 * `edit 3 a/$2000 c/`
 
 Example Usage:
 ```
-edit 1 a/5 d/22/09/2020
+edit 2 a/5 d/22/09/2020
 ```
 
 Expected Outcome:
 ```
 Edited Expense: Artificial Intelligence: A Modern Approach Amount: $5.00 Date: 22/09/2020 Categories: [Textbook]
 ```
-Edits the first expense in the currently displayed expenses list to have amount `$5.00` and date `22/09/2020`.
+
+![Edit Expense](images/userguide/EditExpense.png)
+
+Edits the second expense in the currently displayed expenses list to have amount `$5.00` and date `22/09/2020`.
 The rest of the expense information remains unchanged.
 
 #### 4.3.3 Delete Expense: `delete`
@@ -328,18 +334,18 @@ Format: (when on the [Expenses tab](#223-expenses-tab)) `delete INDEX`
 * `INDEX` allows you to choose which expense to delete by specifying its position in the currently displayed expenses list.
 
 Example:
-* `delete 1`
+* `delete 3`
 
 Example Usage:
 ```
-delete 3
+delete 1
 ```
 
 Expected Outcome:
 ```
-Deleted Expense: Bubble Tea Amount: $4.80 Date: 14/10/2020 Categories: [Food & Beverage]
+Deleted Expense: Bubble Tea Amount: $5.00 Date: 22/09/2020 Categories: [Food & Beverage]
 ```
-Deletes the third expense in the currently displayed expenses list.
+Deletes the first expense in the currently displayed expenses list.
 
 #### 4.3.4 List Expense: `ls-expense`
 
@@ -444,9 +450,12 @@ add-income t/Shopee Internship a/560 d/03/10/2020 c/Work
 
 Expected Outcome:
 ```
-New income added: Shopee Internship Amount: $560.00 Date: 03/10/2020 Categories: [Internship]
+New income added: Shopee Internship Amount: $560.00 Date: 03/10/2020 Categories: [Work]
 ```
-Adds a new income titled `Shopee Internship`, with amount `$560.00`, date `03/10/2020`, and a single category `Internship`.
+
+![Add Income](images/userguide/AddIncome.png)
+
+Adds a new income titled `Shopee Internship`, with amount `$560.00`, date `03/10/2020`, and a single category `Work`.
 
 #### 4.4.2 Edit Income: `edit`
 
@@ -473,8 +482,11 @@ edit 3 a/$2000 c/
 
 Expected Outcome:
 ```
-Edited Income: Teaching Assistant Amount: $2000.00 Date: 18/10/2020 Categories:
+Edited Income: Start-up Funding Amount: $2000.00 Date: 01/10/2020 Categories: 
 ```
+
+![Edit Income](images/userguide/EditIncome.png)
+
 Edits the third income in the currently displayed incomes list to have amount `$2000.00` and no categories.
 The rest of the income information remains unchanged.
 
