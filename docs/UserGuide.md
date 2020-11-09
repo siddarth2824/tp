@@ -503,7 +503,7 @@ Example:
 
 Example Usage:
 ```
-delete 2
+delete 1
 ```
 
 Expected Outcome:
@@ -904,6 +904,9 @@ Expected Outcome:
 ```
 New monthly expense limit set: $400.00
 ```
+
+![Set Monthly Expense Limit](images/userguide/SetExpenseLimit.png)
+
 Sets the monthly expense limit in the finance tracker to be `$400.00`.
 
 ### 4.8 Savings Goal
@@ -934,6 +937,9 @@ Expected Outcome:
 ```
 New monthly savings goal set: $50.00
 ```
+
+![Set Savings Goal](images/userguide/SetSavingsGoal.png)
+
 Sets the monthly savings goal in the finance tracker to be `$50.00`.
 
 ### 4.9 Analytics
