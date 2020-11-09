@@ -482,7 +482,7 @@ edit 3 a/$2000 c/
 
 Expected Outcome:
 ```
-Edited Income: Start-up Funding Amount: $2000.00 Date: 01/10/2020 Categories: 
+Edited Income: Start-up Funding Amount: $2000.00 Date: 01/10/2020 Categories:
 ```
 
 ![Edit Income](images/userguide/EditIncome.png)
