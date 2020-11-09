@@ -479,9 +479,27 @@ The class diagram below depicts the components involved in the budget feature.
 {:.image-caption}
 Class diagram for bookmark transaction model component
 
-##### Add bookmark expense
+##### Add bookmark transactions
 
-The add bookmark income feature allows users to add bookmark incomes into the `FinanceTracker`.
+##### Overview
+
+The add bookmark transactions feature allows users to add bookmark transactions into the FinanceTracker.
+Each new bookmark transaction must have the data fields Title, Amount, and Category.
+
+Below is the class diagram of the components involved in the add transactions feature.
+
+![AddBookmarkTransaction Class Diagram](images/AddBookmarkTransactionClassDiagram.png)
+
+##### Implementation of feature
+
+The add bookmark transaction feature is implemented via `AddBookmarkExpenseCommand` and `AddBookmarkIncomeCommand`, which are created from `AddBookmarkExpenseCommandParser` and `AddBookmarkIncomeCommandParser` respectively.
+
+1. `AddBookmarkExpenseCommandParser` and `AddBookmarkIncomeCommandParser` take in the argument string and parses it into an `ArgumentMultiMap` that contains all the different data fields mapped (as strings) to their respective prefix.
+
+2. The strings are then parsed to create the data fields within the Model component (dependency arrows omitted in the above diagram for simplicity).
+
+3. The parsers use the data fields to create `BookmarkExpense` or `BookmarkIncome` objects, which are then used to create `AddBookmarkExpenseCommand` or `AddBookmarkIncomeCommand` objects.
+
 
 The following is a detailed elaboration of how `AddBookmarkExpenseCommand` operates.
 
@@ -505,24 +523,6 @@ Sequence diagram for adding bookmark expenses
 
 {:.image-caption}
 Reference frame for sequence diagram
-
-##### Add bookmark income
-
-The add bookmark income feature allows users to add bookmark incomes into the `FinanceTracker`.
-
-The following is a detailed elaboration of how `AddBookmarkIncomeCommand` operates.
-
-**Step 1**. After the successful parsing of user input, the `AddBookmarkIncomeCommand#execute(Model model)` method is executed.
-
-**Step 2**. `ModelManager#addBookmarkIncome(toAdd)` is invoked to add the new bookmark income into Fine$$e.
-
-**Step 3**. The new bookmark income is added into `FinanceTracker#bookmarkIncomes`,  via the `FinanceTracker#addBookmarkIncome(BookmarkIncome bookmarkIncome)`.
-
-**Step 4**. This will then call the `BookmarkIncomeList#add(BookmarkIncome toAdd)` method which will check if the title of the new bookmark income already exists in `BookmarkIncomeList#internalBookmarkIncomeList` via `BookmarkIncomeList#contains(BookmarkIncome toCheck)` before adding it.
-If the title does exist already, the `DuplicateBookmarkTransactionException` will be thrown otherwise the new bookmark income will be added.
-
-**Step 5**. After successfully adding the new bookmark income, the command box will be reflected with `AddBookmarkIncomeCommand#MESSAGE_SUCCESS` constant and a new `CommandResult` will be returned with the message.
-
 
 ##### Edit bookmark transaction
 
