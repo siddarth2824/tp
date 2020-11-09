@@ -526,7 +526,7 @@ If the title does exist already, the `DuplicateBookmarkTransactionException` wil
 
 ##### Edit bookmark transaction
 
-The edit bookmark transaction feature allows users to edit the details of a specified bookmark transaction in the `FinanceTracker`. 
+The edit bookmark transaction feature allows users to edit the details of a specified bookmark transaction in the `FinanceTracker`.
 
 Below is the class diagram of the components involved in the edit bookmark transaction feature.
 
@@ -606,7 +606,7 @@ Following is a detailed elaboration of how `ConvertBoomarkExpenseCommand` operat
 
 > :information_source: &nbsp; The `Index` must be within the bounds of the list of bookmark expenses.
 
-**Step 2**. The list of bookmark expenses will then be retrieved by calling `Model#getFilteredBookmarkExpenseList()`. 
+**Step 2**. The list of bookmark expenses will then be retrieved by calling `Model#getFilteredBookmarkExpenseList()`.
 
 **Step 3**. The program will then retrieve the specified bookmark expense from the list of bookmark expenses. It will
 then call `BookmarkExpense#convert` on the bookmark expense together with the date the user has inputted and convert
@@ -940,21 +940,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e bookmark expenses list panel will reflect the updated bookmark expenses list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.
-          
+
 * 1b. Title of the new bookmark expense already exists in the bookmark expenses list.
 
     * 1b1. Fine$$e shows an error message.
 
       Use case ends.
-          
+
 **Use case: UC13 - Edit Bookmark Expense**
 
 **MSS**
@@ -964,27 +964,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e bookmark expenses list will display the updated bookmark expenses list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.    
-    
+
 * 1b. Index given is invalid.
 
     * 1b1. Fine$$e shows an error message.
 
       Use case ends.
-          
+
 * 1c. Title of edited expense already exists in the bookmark expenses list.
 
     * 1c1. Fine$$e shows an error message.
 
       Use case ends.
-      
+
 **Use case: UC14 - Delete Bookmark Expense**
 
 **MSS**
@@ -994,27 +994,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e’s bookmark expenses list will display the updated bookmark expenses list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.
 
 * 1b. Bookmark expenses list is empty.    
-    
+
     * 1b1. Fine$$e shows an error message.
-    
+
       Use case ends.
-      
+
 * 1c. Index given is invalid.
 
     * 1c1. Fine$$e shows an error message.
-    
+
       Use case ends.
-      
+
 **Use case: UC15 - Convert Bookmark Expense**
 
 **MSS**
@@ -1024,27 +1024,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e’s expense list will display the updated expenses list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.
 
 * 1b. Bookmark expenses list is empty.    
     
     * 1b1. Fine$$e shows an error message.
-    
+
       Use case ends.
-      
+
 * 1c. Index given is invalid.
 
     * 1c1. Fine$$e shows an error message.
-    
+
       Use case ends.
-      
+
 **Use case: UC16 - Add Bookmark Income**
 
 **MSS**
@@ -1054,15 +1054,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e bookmark incomes list panel will reflect the updated bookmark incomes list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.
-          
+
 * 1b. Title of the new bookmark income already exists in the bookmark incomes list.
 
     * 1b1. Fine$$e shows an error message.
@@ -1078,27 +1078,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e bookmark incomes list will display the updated bookmark incomes list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.    
-    
+
 * 1b. Index given is invalid.
 
     * 1b1. Fine$$e shows an error message.
 
       Use case ends.
-          
+
 * 1c. Title of edited income already exists in the bookmark incomes list.
 
     * 1c1. Fine$$e shows an error message.
 
       Use case ends.
-      
+
 **Use case: UC18 - Delete Bookmark Income**
 
 **MSS**
@@ -1108,27 +1108,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e’s bookmark incomes list will display the updated bookmark incomes list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.
 
 * 1b. Bookmark incomes list is empty.    
-    
+
     * 1b1. Fine$$e shows an error message.
-    
+
       Use case ends.
-      
+
 * 1c. Index given is invalid.
 
     * 1c1. Fine$$e shows an error message.
-    
+
       Use case ends.
-      
+
 **Use case: UC19 - Convert Bookmark Income**
 
 **MSS**
@@ -1138,27 +1138,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Fine$$e’s incomes list will display the updated incomes list.
 
     Use case ends.
-    
+
 **Extensions**
 
 * 1a. Command is invalid.
 
     * 1a1. Fine$$e shows an error message.
-    
+
       Use case ends.
 
 * 1b. Bookmark incomes list is empty.    
-    
+
     * 1b1. Fine$$e shows an error message.
-    
+
       Use case ends.
-      
+
 * 1c. Index given is invalid.
 
     * 1c1. Fine$$e shows an error message.
-    
+
       Use case ends.
-    
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix D: Non-Functional Requirements**
