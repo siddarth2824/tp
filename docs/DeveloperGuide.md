@@ -971,7 +971,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1a1. Fine$$e shows an error message.
 
-      Use case ends.    
+      Use case ends.
 
 * 1b. Index given is invalid.
 
@@ -1003,7 +1003,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. Bookmark expenses list is empty.    
+* 1b. Bookmark expenses list is empty.
 
     * 1b1. Fine$$e shows an error message.
 
@@ -1033,7 +1033,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. Bookmark expenses list is empty.    
+* 1b. Bookmark expenses list is empty.
     
     * 1b1. Fine$$e shows an error message.
 
@@ -1085,7 +1085,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1a1. Fine$$e shows an error message.
 
-      Use case ends.    
+      Use case ends.
 
 * 1b. Index given is invalid.
 
@@ -1117,7 +1117,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. Bookmark incomes list is empty.    
+* 1b. Bookmark incomes list is empty.
 
     * 1b1. Fine$$e shows an error message.
 
@@ -1147,7 +1147,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. Bookmark incomes list is empty.    
+* 1b. Bookmark incomes list is empty.
 
     * 1b1. Fine$$e shows an error message.
 
