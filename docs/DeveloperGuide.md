@@ -910,6 +910,234 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
+**Use case: UC12 - Add Bookmark Expense**
+
+**MSS**
+
+1. User enters command, together with a title, expense amount and categories related to the bookmark expense.
+2. Fine$$e displays the feedback that a new bookmark expense has been added.
+3. Fine$$e bookmark expenses list panel will reflect the updated bookmark expenses list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.
+          
+* 1b. Title of the new bookmark expense already exists in the bookmark expenses list.
+
+    * 1b1. Fine$$e shows an error message.
+
+      Use case ends.
+          
+**Use case: UC13 - Edit Bookmark Expense**
+
+**MSS**
+
+1. User enters command, together with an index of the bookmark expense to edit, and fields to update.
+2. Fine$$e displays feedback that the specific bookmark expense chosen has been edited.
+3. Fine$$e bookmark expenses list will display the updated bookmark expenses list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.    
+    
+* 1b. Index given is invalid.
+
+    * 1b1. Fine$$e shows an error message.
+
+      Use case ends.
+          
+* 1c. Title of edited expense already exists in the bookmark expenses list.
+
+    * 1c1. Fine$$e shows an error message.
+
+      Use case ends.
+      
+**Use case: UC14 - Delete Bookmark Expense**
+
+**MSS**
+
+1. User enters command, together with index of the bookmark expense to delete.
+2. Fine$$e displays the feedback that the specified bookmark expense is deleted.
+3. Fine$$e’s bookmark expenses list will display the updated bookmark expenses list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.
+
+* 1b. Bookmark expenses list is empty.    
+    
+    * 1b1. Fine$$e shows an error message.
+    
+      Use case ends.
+      
+* 1c. Index given is invalid.
+
+    * 1c1. Fine$$e shows an error message.
+    
+      Use case ends.
+      
+**Use case: UC15 - Convert Bookmark Expense**
+
+**MSS**
+
+1. User enters command, together with the index of the bookmark expense to convert and the date of when the user intends to convert the bookmark expense to an expense.
+2. Fine$$e displays the feedback that the specified bookmark expense has been converted and added to the expenses list.
+3. Fine$$e’s expense list will display the updated expenses list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.
+
+* 1b. Bookmark expenses list is empty.    
+    
+    * 1b1. Fine$$e shows an error message.
+    
+      Use case ends.
+      
+* 1c. Index given is invalid.
+
+    * 1c1. Fine$$e shows an error message.
+    
+      Use case ends.
+      
+**Use case: UC16 - Add Bookmark Income**
+
+**MSS**
+
+1. User enters command, together with a title, income amount and categories related to the bookmark income.
+2. Fine$$e displays the feedback that a new bookmark income has been added.
+3. Fine$$e bookmark incomes list panel will reflect the updated bookmark incomes list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.
+          
+* 1b. Title of the new bookmark income already exists in the bookmark incomes list.
+
+    * 1b1. Fine$$e shows an error message.
+
+      Use case ends.
+
+**Use case: UC17 - Edit Bookmark Income**
+
+**MSS**
+
+1. User enters command, together with an index of the bookmark income to edit, and fields to update.
+2. Fine$$e displays feedback that the specific bookmark income chosen has been edited.
+3. Fine$$e bookmark incomes list will display the updated bookmark incomes list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.    
+    
+* 1b. Index given is invalid.
+
+    * 1b1. Fine$$e shows an error message.
+
+      Use case ends.
+          
+* 1c. Title of edited income already exists in the bookmark incomes list.
+
+    * 1c1. Fine$$e shows an error message.
+
+      Use case ends.
+      
+**Use case: UC18 - Delete Bookmark Income**
+
+**MSS**
+
+1. User enters command, together with index of the bookmark income to delete.
+2. Fine$$e displays the feedback that the specified bookmark income is deleted.
+3. Fine$$e’s bookmark incomes list will display the updated bookmark incomes list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.
+
+* 1b. Bookmark incomes list is empty.    
+    
+    * 1b1. Fine$$e shows an error message.
+    
+      Use case ends.
+      
+* 1c. Index given is invalid.
+
+    * 1c1. Fine$$e shows an error message.
+    
+      Use case ends.
+      
+**Use case: UC19 - Convert Bookmark Income**
+
+**MSS**
+
+1. User enters command, together with the index of the bookmark income to convert and the date of when the user intends to convert the bookmark income to an income.
+2. Fine$$e displays the feedback that the specified bookmark income has been converted and added to the incomes list.
+3. Fine$$e’s incomes list will display the updated incomes list.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. Command is invalid.
+
+    * 1a1. Fine$$e shows an error message.
+    
+      Use case ends.
+
+* 1b. Bookmark incomes list is empty.    
+    
+    * 1b1. Fine$$e shows an error message.
+    
+      Use case ends.
+      
+* 1c. Index given is invalid.
+
+    * 1c1. Fine$$e shows an error message.
+    
+      Use case ends.
+    
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix D: Non-Functional Requirements**
