@@ -29,5 +29,3 @@ DeleteBookmarkXYZCommand -up-|> DeleteBookmarkCommand
 note left of DeleteBookmarkXYZCommand: DeleteBookmarkXYZCommand = DeleteBookmarkExpenseCommand, \nDeleteBookmarkIncomeCommand
 
 @enduml
-
-@enduml

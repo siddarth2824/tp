@@ -17,6 +17,7 @@ activate LogicManager
 
 ref over LogicManager : parse user input to create AddBookmarkExpenseCommand
 
+create AddBookmarkExpenseCommand
 LogicManager -> AddBookmarkExpenseCommand: execute(model)
 activate AddBookmarkExpenseCommand
 
