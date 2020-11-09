@@ -5,7 +5,7 @@ start
 :DeleteBookmarkExpenseCommand gets executed;
 
 if () is ([Valid index provided]) then
-:Display delete bookmark expense success message;
+:Deletes specified bookmark expense;
 :Display delete bookmark expense success message;
 
 else ([else])

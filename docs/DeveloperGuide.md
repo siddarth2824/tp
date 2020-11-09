@@ -464,7 +464,6 @@ The alternative implementations considered, as well as the rationale behind our 
 | Use the `Amount` class for calculated amounts. | Use a separate class `CalculatedAmount` for calculated amounts, so as to avoid breaking abstraction and support negative values.
 
 ### Bookmark transaction
-##### Overview
 
 Bookmark transaction is a transaction that is a template that allows users to create transactions that they make frequently, such as paying phone bills monthly or receiving stipend for being a teaching assistant.
 This feature reduces the hassle of keying in information repeatedly for identical transactions that occur frequently.
@@ -479,7 +478,7 @@ The class diagram below depicts the components involved in the budget feature.
 {:.image-caption}
 Class diagram for bookmark transaction model component
 
-##### Add bookmark transactions
+#### Add bookmark transactions
 
 ##### Overview
 
@@ -524,7 +523,9 @@ Sequence diagram for adding bookmark expenses
 {:.image-caption}
 Reference frame for sequence diagram
 
-##### Edit bookmark transaction
+#### Edit bookmark transaction
+
+##### Overview
 
 The edit bookmark transaction feature allows users to edit the details of a specified bookmark transaction in the `FinanceTracker`.
 
@@ -534,6 +535,8 @@ Below is the class diagram of the components involved in the edit bookmark trans
 
 {:.image-caption}
 Class diagram of components involved in edit bookmark transaction feature
+
+##### Implementation of feature
 
 > :information_source: &nbsp; `EditBookmarkExpenseCommand` and `EditBookmarkIncomeCommand` work in similar ways.
 
@@ -553,7 +556,9 @@ Since it is optional for the users to input fields, the fields which are not ent
 
 **Step 4**. The command box will be reflected with the `EditBookmarkExpenseCommand#MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS` constant and a new `CommandResult` will be returned with the success message.
 
-##### Delete bookmark transaction
+#### Delete bookmark transaction
+
+##### Overview
 
 The delete bookmark transaction feature allows users to delete a specified bookmark transaction in the `FinanceTracker`.
 
@@ -563,6 +568,8 @@ Below is the class diagram of the components involved in the delete bookmark tra
 
 {:.image-caption}
 Class diagram of components involved in delete bookmark transaction feature
+
+##### Implementation of feature
 
 > :information_source: &nbsp; `DeleteBookmarkExpenseCommand` and `DeleteBookmarkIncomeCommand` work in similar ways.
 
@@ -585,7 +592,9 @@ The following activity diagram summarizes what happens when the user executes an
 {:.image-caption}
 Activity diagram for deleting bookmark expense
 
-##### Convert bookmark transaction
+#### Convert bookmark transaction
+
+##### Overview
 
 The convert bookmark transaction feature converts a specified bookmark transaction into a transaction and adds it to the `FinanceTracker`.
 
@@ -595,6 +604,8 @@ Below is the class diagram of the components involved in the convert bookmark tr
 
 {:.image-caption}
 Class diagram of components involved in convert bookmark transaction feature
+
+##### Implementation of feature
 
 > :information_source: &nbsp; `ConvertBookmarkExpenseCommand` and `ConvertBookmarkIncomeCommand` work in similar ways.
 
